@@ -55,10 +55,10 @@ namespace ElementalWar
 
                 #region Set Frame.Background property in the App.xaml.cs
                 // Set the application background Image
-                string urlBackgroundImage = "ms-appx:///Assets/Pantallas/PC/Fondo.png";
+                string urlBackgroundImage = "ms-appx:///Assets/PC/Fondo.png";
                 if (DetectPlatform() == Platform.WindowsPhone)
                 {
-                    urlBackgroundImage = "ms-appx:///Assets/Pantallas/Phone/Fondo.jpg";
+                    urlBackgroundImage = "ms-appx:///Assets/Phone/Fondo.png";
                 }
                 rootFrame.Background = new ImageBrush
                 {
@@ -85,7 +85,7 @@ namespace ElementalWar
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(SplashScreen), e.Arguments);
+                    rootFrame.Navigate(typeof(Views.SplashScreen), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
