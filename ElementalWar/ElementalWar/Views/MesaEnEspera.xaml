@@ -7,7 +7,72 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Phone/Fondo.png" />
+        </Grid.Background>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="pcState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
+                        <!--Cabecera-->
+                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
+                        <Setter Target="imgAtras.Height" Value="30"></Setter>
+                        <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
 
+                        <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/MiniLogo.png"></Setter>
+                        <Setter Target="imgLogo.Width" Value="45"></Setter>
+                        <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
+                        <!---->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel x:Name="mainPanel" Orientation="Vertical" VerticalAlignment="Top">
+            <Grid x:Name="Cabecera">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".23*" />
+                    <ColumnDefinition Width=".77*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel x:Name="panelRegresar" Margin="15,0,0,0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Tapped="imgAtras_Tapped">
+                    <Image x:Name="imgAtras" Source="ms-appx:///Assets/Phone/Buttons/Regresar.png" Height="25"/>
+                    <TextBlock x:Name="lblRegresar" HorizontalAlignment="Center" Text="Regresar" FontSize="20" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" />
+                </StackPanel>
+                <StackPanel Margin="20" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock x:Name="lblBienvenido" VerticalAlignment="Center" FontSize="20" Text="Bienvenido" Padding="0,0,5,0" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    <Image x:Name="imgLogo" Width="32" Source="ms-appx:///Assets/Phone/MiniLogo.png"/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel x:Name="Contenido" HorizontalAlignment="Center" Margin="0,0,0,0">
+                <TextBlock FontSize="50" Text="Código de Mesa" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"/>
+                <TextBlock x:Name="lblCodigoMesa" FontSize="60" Text="74850" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel x:Name="panelTablero" Padding="0,30,50,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="imgJug1Izquierda" Height="300" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
+                            <Image x:Name="imgJug1Elemento" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            <Image x:Name="imgJug1Derecha" Height="300" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
+                        </StackPanel>
+                        <TextBlock x:Name="lblJug1Nombre" FontSize="40" Text="Jugador 1" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    </StackPanel>
+                    <StackPanel x:Name="panelJugador" Padding="50,30,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="imgJug2Izquierda" Height="300" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
+                            <Image x:Name="imgJug2Elemento" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            <Image x:Name="imgJug2Derecha" Height="300" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
+                        </StackPanel>
+                        <TextBlock x:Name="lblJug2Nombre" FontSize="40" Text="Jugador 2" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    </StackPanel>
+                </StackPanel>
+                <Image x:Name="imgJugar" Margin="0,20,0,0" Source="ms-appx:///Assets/PC/Buttons/Jugar.png" Height="75" HorizontalAlignment="Center" Tapped="imgJugar_Tapped"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

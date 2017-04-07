@@ -14,12 +14,52 @@
         public static string STREAM_SERVICE_PORT = "22110";
         public static int DELAY = 500;
 
+        public struct Colores
+        {
+            public struct PanelTurno
+            {
+                public const string COLORMANDOACTIVO = "#FF01FE0F";
+                public const string COLORMANDOINACTIVO = "#FFFF0437";
+            }
+        }
+
         #region Mensajes para unirse a la mesa
-        public static string UnirseEnviameConfirmacion = "UnirseEnviameConfirmacion";
-        public static string ConfirmacionUnirseMesa = "ConfirmacionUnirseMesa";
-        public static string JugadorSaleMesa = "JugadorSaleMesa";
-        public static string MesaIndicaSeCierra = "MesaIndicaSeCierra";
-        //public static string MesaIndicaJuegoInicia = "MesaIndicaJuegoInicia";
+        public struct Mensajes
+        {
+            public struct UnirseMesa
+            {
+                public const string SolicitudUnirse = "SolicitudUnirse";
+                public const string ConfirmacionUnirse = "ConfirmacionUnirse";
+            }
+
+            public struct Juego
+            {
+                public const string JugadorSaleMesa = "JugadorSaleMesa";
+                public const string MesaIndicaSeCierra = "MesaIndicaSeCierra";
+
+                public const string MovimientoJugador = "MovimientoJugador";
+                public const string DeshabilitarControles = "InhabilitarControles";
+                public const string HabilitarControles = "HabilitarControles";
+
+                public struct AccionMando
+                {
+                    public const int Izquierda = 1;
+                    public const int Arriba = 2;
+                    public const int Derecha = 3;
+                    public const int Abajo = 4;
+                    public const int Accion = 5;
+                }
+            }
+        }
         #endregion
+
+        public struct Elementos
+        {
+            public const int SIN_ELEMENTO = -1;
+            public const int Agua = 0;
+            public const int Fuego = 1;
+            public const int Tierra = 2;
+            public const int Aire = 3;
+        }
     }
 }

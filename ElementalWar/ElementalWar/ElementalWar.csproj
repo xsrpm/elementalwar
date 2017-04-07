@@ -160,6 +160,11 @@
     <Content Include="Assets\PC\Buttons\Jugar.png" />
     <Content Include="Assets\PC\Buttons\Regresar.png" />
     <Content Include="Assets\PC\Buttons\Unirme.png" />
+    <Content Include="Assets\PC\Mando\Abajo.png" />
+    <Content Include="Assets\PC\Mando\Arriba.png" />
+    <Content Include="Assets\PC\Mando\Derecha.png" />
+    <Content Include="Assets\PC\Mando\Izquierda.png" />
+    <Content Include="Assets\PC\Mando\MandoAccion.png" />
     <Content Include="Assets\PC\MiniLogo.png" />
     <Content Include="Assets\PC\Roles\Jugador.png" />
     <Content Include="Assets\PC\Logo.png" />
@@ -173,6 +178,11 @@
     <Content Include="Assets\Phone\Buttons\Regresar.png" />
     <Content Include="Assets\Phone\Buttons\Unirme.png" />
     <Content Include="Assets\Phone\Logo.png" />
+    <Content Include="Assets\Phone\Mando\Abajo.png" />
+    <Content Include="Assets\Phone\Mando\Arriba.png" />
+    <Content Include="Assets\Phone\Mando\MandoAccion.png" />
+    <Content Include="Assets\Phone\Mando\Derecha.png" />
+    <Content Include="Assets\Phone\Mando\Izquierda.png" />
     <Content Include="Assets\Phone\MiniLogo.png" />
     <Content Include="Assets\Phone\Roles\Jugador.png" />
     <Content Include="Assets\Phone\SplashScreen.png" />
@@ -253,7 +263,11 @@
       <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

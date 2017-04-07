@@ -8,7 +8,18 @@ namespace DataModel
 {
     public class Juego
     {
-        public string JuegoId { get; set; }
+        public string Codigo { get; set; }
         public string Ip { get; set; }
+
+        public List<Jugador> Jugadores { get; set; }
+
+        public Juego()
+        {
+            Jugadores = new List<Jugador>
+            {
+                new Jugador(),
+                new Jugador()
+            };
+        }
     }
 }

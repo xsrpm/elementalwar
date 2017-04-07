@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogicaMesaEnEspera.cs" />
     <Compile Include="LogicaInicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\GameLogic.rd.xml" />
@@ -115,6 +116,10 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{3c4abd87-b7cb-4492-954e-0665575f6957}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{BE5490F6-D816-463E-88CC-ACEA548067C2}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

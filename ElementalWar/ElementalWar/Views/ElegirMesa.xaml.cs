@@ -59,6 +59,7 @@ namespace ElementalWar.Views
 
         private void imgAtras_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            App.objSDK.setObjMetodoReceptorString = null;
             if (App.DetectPlatform() == Platform.WindowsPhone)
             {
                 this.Frame.Navigate(typeof(MenuPrincipal));
@@ -111,16 +112,16 @@ namespace ElementalWar.Views
             try
             {
                 string mesaSeleccionada = txtSala.Text;
-                string strBytes = string.Empty;
+                //string strBytes = string.Empty;
 
                 App.objSDK.clearDeviceCollection();
                 await App.objSDK.MulticastPing();
                 var dispositivos = App.objSDK.getDeviceCollection();
 
-                if (App.objJugador.Imagen != null)
-                    strBytes = Convert.ToBase64String(App.objJugador.Imagen);
-                else
-                    strBytes = Constantes.SIN_IMAGEN;
+                //if (App.objJugador.Imagen != null)
+                //    strBytes = Convert.ToBase64String(App.objJugador.Imagen);
+                //else
+                //    strBytes = Constantes.SIN_IMAGEN;
 
                 if (dispositivos != null)
                 {
@@ -128,17 +129,17 @@ namespace ElementalWar.Views
                     {
                         var hn = new HostName(objDevice.IP);
                         await App.objSDK.ConnectStreamSocket(hn);
-                        await App.objSDK.StreamPing(Constantes.UnirseEnviameConfirmacion + Constantes.SEPARADOR +
+                        await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.SolicitudUnirse + Constantes.SEPARADOR +
                             mesaSeleccionada + Constantes.SEPARADOR +
                             App.objJugador.Ip + Constantes.SEPARADOR +
-                            App.objJugador.Nombre + Constantes.SEPARADOR +
-                            strBytes);
+                            App.objJugador.Nombre/* + Constantes.SEPARADOR +
+                            strBytes*/);
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Helper.MensajeOk(ex.Message);
+                Helper.MensajeOk(ex.Message);
             }
             prConectando.IsActive = false;
             panelConectando.Visibility = Visibility.Collapsed;
@@ -152,7 +153,7 @@ namespace ElementalWar.Views
             try
             {
                 App.UIDispatcher = this.Dispatcher;
-                App.objSDK = MainCore.getInstance(Constantes.MULTICAST_ADDRESS, Constantes.MULTICAST_SERVICE_PORT, Constantes.UNICAST_SERVICE_PORT, Constantes.STREAM_SERVICE_PORT, MiMetodoReceptorSeleccionMesa, Constantes.DELAY);
+                App.objSDK = MainCore.getInstance(Constantes.MULTICAST_ADDRESS, Constantes.MULTICAST_SERVICE_PORT, Constantes.UNICAST_SERVICE_PORT, Constantes.STREAM_SERVICE_PORT, MiReceptorElegirMesa, Constantes.DELAY);
                 int cont = 0;
                 while (!App.objSDK.SocketIsConnected && cont < 3)
                 {
@@ -164,7 +165,7 @@ namespace ElementalWar.Views
                 if (App.objSDK.SocketIsConnected)
                 {
                     App.objJugador.Ip = App.objSDK.MyIP.ToString();
-                    App.objSDK.setObjMetodoReceptorString = MiMetodoReceptorSeleccionMesa;
+                    App.objSDK.setObjMetodoReceptorString = MiReceptorElegirMesa;
                 }
                 else
                 {
@@ -184,13 +185,13 @@ namespace ElementalWar.Views
             }
         }
 
-        public async void MiMetodoReceptorSeleccionMesa(string strIp, string strMessage)
+        public async void MiReceptorElegirMesa(string strIp, string strMessage)
         {
             try
             {
                 await App.UIDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    MiMetodoReceptorSeleccionMesaHelper(strIp, strMessage);
+                    ReceptorElegirMesa(strIp, strMessage);
                 });
             }
             catch (Exception ex)
@@ -200,42 +201,41 @@ namespace ElementalWar.Views
         }
         #endregion
 
-        public void MiMetodoReceptorSeleccionMesaHelper(string strIp, string strMensaje)
+        public void ReceptorElegirMesa(string strIp, string strMensaje)
         {
             try
             {
                 if (!string.IsNullOrEmpty(strIp) && !string.IsNullOrEmpty(strMensaje))
                 {
+                    var mensaje = strMensaje.Split(new string[] { Constantes.SEPARADOR }, StringSplitOptions.None);
+                    //mensaje[0] => Accion
                     #region Jugador recibe la confirmacion que se ha unido a la mesa
-                    if (strMensaje.Trim().Contains(Constantes.ConfirmacionUnirseMesa))
+                    if (mensaje[0] == Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse)
                     {
-                        // Se recibe la confirmación de parte de la mesa que se unido satisfactoriamente
-                        var mensaje = strMensaje.Split(new string[] { Constantes.SEPARADOR }, StringSplitOptions.None);
-                        //mensaje[0] => Acción (ConfirmacionUnirseMesa)
-                        //mensaje[1] => objMesa.Ip
-                        //mensaje[2] => objMesa.MesaID
-                        ///////////////mensaje[3] => objMesa.TipoMapa
+                        //mensaje[1] => objJuego.Ip
+                        //mensaje[2] => objJugador.JugadorId
+                        //mensaje[3] => objJugador.Elemento
                         if (mensaje.Length != 4)
                             return;
 
                         prConectando.IsActive = false;
 
                         //Reenviar a la pantalla del mando, el juega ya inicio
-                        Juego objMesa = new Juego();
-                        objMesa.Ip = mensaje[1];
-                        objMesa.JuegoId = mensaje[2];
+                        App.objJugador.MesaIp = mensaje[1];
+                        App.objJugador.JugadorId = int.Parse(mensaje[2]);
+                        App.objJugador.Elemento = int.Parse(mensaje[3]);
 
-                        this.Frame.Navigate(typeof(MandoJugador), objMesa);
+                        //Aca se enviaria la foto, pero no aplica por el momento
+
+                        this.Frame.Navigate(typeof(MandoJugador));
                     }
                     #endregion
                 }
-
             }
             catch (Exception ex)
             {
                 Helper.MensajeOk(ex.Message);
             }
-
         }
     }
 }
