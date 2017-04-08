@@ -19,7 +19,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
-                        <!--Cabecera-->
+
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
@@ -27,7 +27,6 @@
                         <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
-                        <!---->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -52,11 +51,15 @@
 
             <StackPanel x:Name="Contenido" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,75,0,0">
                 <StackPanel x:Name="panelTablero" Padding="0,30,50,0" Tapped="panelTablero_Tapped">
-                    <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Tablero.png"/>
+                    <Button HorizontalAlignment="Center" Background="Transparent">
+                        <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Tablero.png"/>
+                    </Button>
                     <TextBlock FontSize="40" Text="Tablero" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 </StackPanel>
                 <StackPanel x:Name="panelJugador" Padding="50,30,0,0" Tapped="panelJugador_Tapped">
-                    <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                    <Button HorizontalAlignment="Center" Background="Transparent">
+                        <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                    </Button>
                     <TextBlock FontSize="40" Text="Jugador" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 </StackPanel>
             </StackPanel>

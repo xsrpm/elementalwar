@@ -48,7 +48,7 @@ namespace ElementalWar.Views
             this.Frame.Navigate(typeof(GuardarDatosJugador), typeof(MenuPrincipal));
         }
 
-        private void imgJugar_Tapped(object sender, TappedRoutedEventArgs e)
+        private void btnJugar_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (App.DetectPlatform() == Platform.WindowsPhone)
             {
@@ -60,12 +60,12 @@ namespace ElementalWar.Views
             }
         }
 
-        private void imgComoJugar_Tapped(object sender, TappedRoutedEventArgs e)
+        private void btnComoJugar_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ComoJugar));
         }
 
-        private void imgCreditos_Tapped(object sender, TappedRoutedEventArgs e)
+        private void btnCreditos_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Creditos));
         }

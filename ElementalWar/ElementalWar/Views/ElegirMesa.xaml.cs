@@ -81,7 +81,7 @@ namespace ElementalWar.Views
             {
                 txtSala.IsEnabled = false;
                 txtSala.IsEnabled = true;
-                imgUnirme_Tapped(null, null);
+                btnUnirme_Tapped(null, null);
             }
         }
 
@@ -103,7 +103,7 @@ namespace ElementalWar.Views
             e.Handled = true;
         }
 
-        private async void imgUnirme_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void btnUnirme_Tapped(object sender, TappedRoutedEventArgs e)
         {
             txtSala.IsEnabled = false;
             imgUnirme.Visibility = Visibility.Collapsed;
@@ -223,7 +223,7 @@ namespace ElementalWar.Views
                         //Reenviar a la pantalla del mando, el juega ya inicio
                         App.objJugador.MesaIp = mensaje[1];
                         App.objJugador.JugadorId = int.Parse(mensaje[2]);
-                        App.objJugador.Elemento = int.Parse(mensaje[3]);
+                        App.objJugador.Elemento = new Elemento { ElementoId = int.Parse(mensaje[3]) };
 
                         //Aca se enviaria la foto, pero no aplica por el momento
 

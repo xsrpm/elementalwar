@@ -6,7 +6,6 @@
         public static string FILE_IMAGEN_JUGADOR = "imagenJugador.txt";
         public static string SEPARADOR = ";#;#";
         public static string MessageDialogTitle = "Elemental War";
-        public static string SIN_IMAGEN = "Ninguno";
 
         public static string MULTICAST_ADDRESS = "239.10.2.78";
         public static string MULTICAST_SERVICE_PORT = "54330";
@@ -21,6 +20,12 @@
                 public const string COLORMANDOACTIVO = "#FF01FE0F";
                 public const string COLORMANDOINACTIVO = "#FFFF0437";
             }
+        }
+
+        public struct Imagenes
+        {
+            public const string SIN_IMAGEN = "Ninguno";
+            public const string Jugador = "ms-appx:///Assets/PC/Roles/Jugador.png";
         }
 
         #region Mensajes para unirse a la mesa
@@ -41,6 +46,8 @@
                 public const string DeshabilitarControles = "InhabilitarControles";
                 public const string HabilitarControles = "HabilitarControles";
 
+                public const string MesaIndicaJuegoInicia = "MesaIndicaJuegoInicia";
+
                 public struct AccionMando
                 {
                     public const int Izquierda = 1;
@@ -60,6 +67,36 @@
             public const int Fuego = 1;
             public const int Tierra = 2;
             public const int Aire = 3;
+
+            public struct Imagenes
+            {
+                public const string Agua = "ms-appx:///Assets/Elementos/Agua.png";
+                public const string Fuego = "ms-appx:///Assets/Elementos/Fuego.png";
+                public const string Tierra = "ms-appx:///Assets/Elementos/Tierra.png";
+                public const string Aire = "ms-appx:///Assets/Elementos/Aire.png";
+
+                public struct Victoria
+                {
+                    public const string Agua = "ms-appx:///Assets/Elementos/Victoria/Agua.png";
+                    public const string Fuego = "ms-appx:///Assets/Elementos/Victoria/Fuego.png";
+                    public const string Tierra = "ms-appx:///Assets/Elementos/Victoria/Tierra.png";
+                    public const string Aire = "ms-appx:///Assets/Elementos/Victoria/Aire.png";
+                }
+                public struct Derrota
+                {
+                    public const string Agua = "ms-appx:///Assets/Elementos/Derrota/Agua.png";
+                    public const string Fuego = "ms-appx:///Assets/Elementos/Derrota/Fuego.png";
+                    public const string Tierra = "ms-appx:///Assets/Elementos/Derrota/Tierra.png";
+                    public const string Aire = "ms-appx:///Assets/Elementos/Derrota/Aire.png";
+                }
+                public struct Fondo
+                {
+                    public const string Agua = "ms-appx:///Assets/Elementos/Fondo/Agua.png";
+                    public const string Fuego = "ms-appx:///Assets/Elementos/Fondo/Fuego.png";
+                    public const string Tierra = "ms-appx:///Assets/Elementos/Fondo/Tierra.png";
+                    public const string Aire = "ms-appx:///Assets/Elementos/Fondo/Aire.png";
+                }
+            }
         }
     }
 }

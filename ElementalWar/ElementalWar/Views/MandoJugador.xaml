@@ -19,7 +19,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
-                        <!--Cabecera-->
+
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
@@ -27,9 +27,8 @@
                         <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
-                        <!---->
-                        <!--Contenido-->
-                        <Setter Target="panelEncendido.Width" Value="300"></Setter>
+
+                        <Setter Target="panelTurno.Width" Value="300"></Setter>
                         <Setter Target="imgIzquierda.Source" Value="ms-appx:///Assets/Phone/Mando/Izquierda.png"></Setter>
                         <Setter Target="imgArriba.Source" Value="ms-appx:///Assets/Phone/Mando/Arriba.png"></Setter>
                         <Setter Target="imgDerecha.Source" Value="ms-appx:///Assets/Phone/Mando/Derecha.png"></Setter>
@@ -45,7 +44,6 @@
                         <Setter Target="btnAbajo.Height" Value="120"></Setter>
                         <Setter Target="btnAccion.Width" Value="250"></Setter>
                         <Setter Target="btnAccion.Height" Value="250"></Setter>
-                        <!---->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -83,11 +81,11 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <StackPanel x:Name="panelTurno" Grid.Row="0" Grid.Column="3" Width="150" Background="#FFFF0437" CornerRadius="7">
                         <TextBlock x:Name="lblTurno" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
                     </StackPanel>
-                    
+
                     <Button x:Name="btnIzquierda" Grid.Row="2" Grid.Column="0" Height="60" Width="60" Tapped="btnIzquierda_Tapped">
                         <Image x:Name="imgIzquierda" Source="ms-appx:///Assets/Phone/Mando/Izquierda.png"/>
                     </Button>
@@ -96,14 +94,14 @@
                     </Button>
                     <Button x:Name="btnDerecha" Grid.Row="2" Grid.Column="2" Height="60" Width="60" Tapped="btnDerecha_Tapped">
                         <Image x:Name="imgDerecha" Stretch="Fill" Source="ms-appx:///Assets/Phone/Mando/Derecha.png"/>
-                     </Button>
+                    </Button>
                     <Button x:Name="btnAbajo" Grid.Row="3" Grid.Column="1" Height="60" Width="60" Tapped="btnAbajo_Tapped">
                         <Image x:Name="imgAbajo" Stretch="Fill" Source="ms-appx:///Assets/Phone/Mando/Abajo.png"/>
                     </Button>
-                    
+
                     <Button x:Name="btnAccion" Grid.Row="1" Grid.Column="5" Grid.RowSpan="3" Height="130" Width="130" Tapped="btnAccion_Tapped">
                         <Image x:Name="imgAccion" Stretch="None" Source="ms-appx:///Assets/Phone/Mando/MandoAccion.png"/>
-                    </Button>                    
+                    </Button>
                 </Grid>
             </StackPanel>
         </StackPanel>

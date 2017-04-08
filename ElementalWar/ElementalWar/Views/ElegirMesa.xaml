@@ -19,7 +19,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
-                        <!--Cabecera-->
+
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
@@ -27,12 +27,10 @@
                         <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
-                        <!---->
-                        <!--Contenido-->
+
                         <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/Logo.png"></Setter>
                         <Setter Target="imgLogo.Width" Value="300"></Setter>
                         <Setter Target="imgLogo.Height" Value="300"></Setter>
-                        <!--<Setter Target="imgLogo.Margin" Value="15,0,15,0"></Setter>-->
 
                         <Setter Target="lblTexto.FontSize" Value="30"></Setter>
                         <Setter Target="lblTexto.Margin" Value="0,20,0,0"></Setter>
@@ -44,7 +42,6 @@
                         <Setter Target="lblConectando.FontSize" Value="25"></Setter>
                         <Setter Target="prConectando.Width" Value="30"></Setter>
                         <Setter Target="prConectando.Height" Value="30"></Setter>
-                        <!---->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -67,14 +64,16 @@
                 </StackPanel>
             </Grid>
 
-            <StackPanel x:Name="Contenido" HorizontalAlignment="Center">
+            <StackPanel x:Name="Contenido">
                 <Image x:Name="imgLogo" Margin="0,20,0,35" Width="225" Height="225" Source="ms-appx:///Assets/Phone/Logo.png"/>
-                
+
                 <TextBlock x:Name="lblTexto" Margin="0,30,0,0" FontSize="20" Text="Ingresa el código" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <TextBox x:Name="txtSala" InputScope="NumericPin" BorderBrush="Transparent" Foreground="Black" MaxLength="6" Margin="0,5,0,0" Width="225" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtSala_KeyUp" KeyDown="txtSala_KeyDown"/>
 
-                <Image x:Name="imgUnirme" Margin="0,15,0,0" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Unirme.png" Tapped="imgUnirme_Tapped"/>
-                
+                <Button x:Name="btnUnirme" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" Tapped="btnUnirme_Tapped">
+                    <Image x:Name="imgUnirme" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Unirme.png"/>
+                </Button>
+
                 <StackPanel x:Name="panelConectando" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Margin="0,15,0,0">
                     <TextBlock x:Name="lblConectando" FontSize="20" Text="Conectando..." Foreground="White" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     <ProgressRing x:Name="prConectando" Width="20" Height="20" Margin="0,5,0,0" IsActive="False"/>

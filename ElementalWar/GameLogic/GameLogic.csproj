@@ -107,8 +107,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogicaJuego.cs" />
     <Compile Include="LogicaMesaEnEspera.cs" />
-    <Compile Include="LogicaInicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\GameLogic.rd.xml" />
   </ItemGroup>

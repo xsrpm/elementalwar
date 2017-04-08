@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -35,7 +36,7 @@ namespace ElementalWar.Views
         {
             this.InitializeComponent();
             objJuego = new Juego();
-            imgJugar.Visibility = Visibility.Collapsed;
+            btnJugar.Visibility = Visibility.Collapsed;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -53,6 +54,31 @@ namespace ElementalWar.Views
             App.objSDK.setObjMetodoReceptorString = null;
 
             this.Frame.Navigate(typeof(SeleccionarRol));
+        }
+
+        private void btnJugar_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MesaTablero), objJuego);
+        }
+
+        private void MostrarDatosJugadoresEnPantalla(int jugadorId)
+        {
+            Uri uri;
+            BitmapImage imagenElemento;
+
+            if (objJuego.Jugadores[jugadorId].Ip != "")
+            {
+                uri = new Uri(objJuego.Jugadores[jugadorId].Elemento.RutaImagen);
+                imagenElemento = new BitmapImage(uri);
+            }
+            else
+            {
+                uri = new Uri(Constantes.Imagenes.Jugador);
+                imagenElemento = new BitmapImage(uri);
+            }
+
+            ((Image)this.FindName("imgElementoJug" + jugadorId)).Source = imagenElemento;
+            ((TextBlock)this.FindName("lblNombreJug" + jugadorId)).Text = objJuego.Jugadores[jugadorId].Nombre;
         }
 
         #region Conexion SynapseSDK
@@ -157,7 +183,7 @@ namespace ElementalWar.Views
                             return;
 
                         //Desconectar al jugador
-                        if (GameLogic.LogicaMesaEnEspera.MesaEliminarJugador(objJuego, int.Parse(mensaje[1])))
+                        if (GameLogic.LogicaMesaEnEspera.MesaEliminarJugador(objJuego, objJuego.Jugadores[int.Parse(mensaje[1])].Ip))
                         {
                             MostrarDatosJugadoresEnPantalla(int.Parse(mensaje[1]));
                         }
@@ -175,6 +201,10 @@ namespace ElementalWar.Views
                         CambiarElemento(int.Parse(mensaje[1]), int.Parse(mensaje[2]));
                     }
                     #endregion
+
+                    //Habilitar el boton jugar
+                    if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
+                        btnJugar.Visibility = Visibility.Visible;
                 }
             }
             catch (Exception ex)
@@ -183,19 +213,13 @@ namespace ElementalWar.Views
             }
         }
 
-        private void MostrarDatosJugadoresEnPantalla(int jugadorId)
-        {
-            Helper.MensajeOk("Unir al Jugador " + jugadorId);
-        }
-
         private void CambiarElemento(int jugadorId, int movimiento)
         {
-            Helper.MensajeOk("Implementar cambio de elemento en la capa de logica");
-        }
-
-        private void imgJugar_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Helper.MensajeOk("Implementar INICIO del juego(tablero).");
+            if (GameLogic.LogicaMesaEnEspera.CambiarFichaJugador(objJuego, jugadorId, jugadorId == 0 ? 1 : 0, movimiento))
+            {
+                GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
+                MostrarDatosJugadoresEnPantalla(jugadorId);
+            }
         }
     }
 }

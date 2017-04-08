@@ -104,11 +104,11 @@ namespace ElementalWar.Views
             {
                 txtNombre.IsEnabled = false;
                 txtNombre.IsEnabled = true;
-                imgGrabar_Tapped(null, null);
+                btnGrabar_Tapped(null, null);
             }
         }
 
-        private async void imgGrabar_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void btnGrabar_Tapped(object sender, TappedRoutedEventArgs e)
         {
             string strMensaje;
             try

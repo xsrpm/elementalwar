@@ -19,7 +19,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
-                        <!--Cabecera-->
+
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
@@ -27,8 +27,7 @@
                         <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/MiniLogo.png"></Setter>
                         <Setter Target="imgLogo.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
-                        <!---->
-                        <!--Contenido-->
+
                         <Setter Target="imgFoto.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgFoto.Width" Value="300"></Setter>
                         <Setter Target="imgFoto.Height" Value="300"></Setter>
@@ -39,7 +38,7 @@
 
                         <Setter Target="imgGrabar.Source" Value="ms-appx:///Assets/PC/Buttons/Grabar.png"></Setter>
                         <Setter Target="imgGrabar.Height" Value="75"></Setter>
-                        <!---->
+                        <Setter Target="imgGrabar.Margin" Value="0,0,15,0"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -68,7 +67,9 @@
                 <TextBlock x:Name="lblTexto" Margin="0,30,0,0" FontSize="20" Text="INGRESE SU NOMBRE" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <TextBox x:Name="txtNombre" BorderBrush="Transparent" Foreground="Black" MaxLength="10" Margin="0,5,0,0" Width="225" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtNombre_KeyUp"/>
 
-                <Image x:Name="imgGrabar" Margin="0,15,0,0" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Grabar.png" Tapped="imgGrabar_Tapped"/>
+                <Button x:Name="btnGrabar" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" Tapped="btnGrabar_Tapped">
+                    <Image x:Name="imgGrabar" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Grabar.png"/>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>
