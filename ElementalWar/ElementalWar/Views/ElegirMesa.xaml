@@ -70,7 +70,7 @@
                 <TextBlock x:Name="lblTexto" Margin="0,30,0,0" FontSize="20" Text="Ingresa el código" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <TextBox x:Name="txtSala" InputScope="NumericPin" BorderBrush="Transparent" Foreground="Black" MaxLength="6" Margin="0,5,0,0" Width="225" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtSala_KeyUp" KeyDown="txtSala_KeyDown"/>
 
-                <Button x:Name="btnUnirme" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" Tapped="btnUnirme_Tapped">
+                <Button x:Name="btnUnirme" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Tapped="btnUnirme_Tapped">
                     <Image x:Name="imgUnirme" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Unirme.png"/>
                 </Button>
 

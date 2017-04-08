@@ -51,13 +51,13 @@
 
             <StackPanel x:Name="Contenido" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,75,0,0">
                 <StackPanel x:Name="panelTablero" Padding="0,30,50,0" Tapped="panelTablero_Tapped">
-                    <Button HorizontalAlignment="Center" Background="Transparent">
+                    <Button HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
                         <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Tablero.png"/>
                     </Button>
                     <TextBlock FontSize="40" Text="Tablero" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 </StackPanel>
                 <StackPanel x:Name="panelJugador" Padding="50,30,0,0" Tapped="panelJugador_Tapped">
-                    <Button HorizontalAlignment="Center" Background="Transparent">
+                    <Button HorizontalAlignment="Center" Background="Transparent" BorderThickness="0">
                         <Image Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
                     </Button>
                     <TextBlock FontSize="40" Text="Jugador" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>

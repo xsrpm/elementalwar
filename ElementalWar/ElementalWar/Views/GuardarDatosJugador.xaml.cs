@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using System;
 using Util;
+using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -56,7 +57,7 @@ namespace ElementalWar.Views
             }
             else
             {
-                if (paginaRedirect == typeof(ElegirMesa))
+                if (paginaRedirect == typeof(ElegirMesa) || (App.DetectPlatform() == Platform.WindowsPhone && App.objJugador != null))
                 {
                     panelRegresar.Visibility = Visibility.Collapsed;
                 }

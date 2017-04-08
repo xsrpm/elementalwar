@@ -67,7 +67,7 @@
                 <TextBlock x:Name="lblTexto" Margin="0,30,0,0" FontSize="20" Text="INGRESE SU NOMBRE" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <TextBox x:Name="txtNombre" BorderBrush="Transparent" Foreground="Black" MaxLength="10" Margin="0,5,0,0" Width="225" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtNombre_KeyUp"/>
 
-                <Button x:Name="btnGrabar" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" Tapped="btnGrabar_Tapped">
+                <Button x:Name="btnGrabar" Margin="0,15,0,0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Tapped="btnGrabar_Tapped">
                     <Image x:Name="imgGrabar" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Grabar.png"/>
                 </Button>
             </StackPanel>

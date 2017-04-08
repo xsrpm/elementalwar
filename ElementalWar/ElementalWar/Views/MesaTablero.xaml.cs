@@ -48,7 +48,6 @@ namespace ElementalWar.Views
             }
             IniciarSDK();
             Inicializar();
-            ComunicarJugadoresJuegoInicia();
         }
 
         private void Inicializar()

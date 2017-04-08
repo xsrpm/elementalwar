@@ -80,13 +80,13 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="btnJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="0" Background="Transparent" Tapped="btnJugar_Tapped">
+                    <Button x:Name="btnJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="0" Background="Transparent" BorderThickness="0" Tapped="btnJugar_Tapped">
                         <Image x:Name="imgJugar" Height="75" Source="ms-appx:///Assets/Phone/Buttons/Jugar.png"/>
                     </Button>
-                    <Button x:Name="btnComoJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="1" Background="Transparent" Tapped="btnComoJugar_Tapped">
+                    <Button x:Name="btnComoJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" Tapped="btnComoJugar_Tapped">
                         <Image x:Name="imgComoJugar" Height="75" Source="ms-appx:///Assets/Phone/Buttons/ComoJugar.png"/>
                     </Button>
-                    <Button x:Name="btnCreditos" Margin="0,5,0,5" Grid.Column="1" Grid.Row="2" Background="Transparent" Tapped="btnCreditos_Tapped">
+                    <Button x:Name="btnCreditos" Margin="0,5,0,5" Grid.Column="1" Grid.Row="2" Background="Transparent" BorderThickness="0" Tapped="btnCreditos_Tapped">
                         <Image x:Name="imgCreditos" Height="75" Source="ms-appx:///Assets/Phone/Buttons/Creditos.png"/>
                     </Button>
                 </Grid>

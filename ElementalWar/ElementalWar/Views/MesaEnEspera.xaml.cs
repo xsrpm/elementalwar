@@ -48,11 +48,18 @@ namespace ElementalWar.Views
         private async void imgAtras_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //Notificar a los dispositivos que se ha cerrado la mesa
-            foreach (var item in objJuego.Jugadores)
-                await App.objSDK.UnicastPing(new HostName(item.Ip),
-                    Constantes.Mensajes.Juego.MesaIndicaSeCierra);
-            App.objSDK.setObjMetodoReceptorString = null;
-
+            if (App.objSDK.SocketIsConnected)
+            {
+                foreach (var item in objJuego.Jugadores)
+                {
+                    if (item.Ip != "")
+                    {
+                        await App.objSDK.UnicastPing(new HostName(item.Ip),
+                            Constantes.Mensajes.Juego.MesaIndicaSeCierra);
+                    }
+                }
+                App.objSDK.setObjMetodoReceptorString = null;
+            }
             this.Frame.Navigate(typeof(SeleccionarRol));
         }
 

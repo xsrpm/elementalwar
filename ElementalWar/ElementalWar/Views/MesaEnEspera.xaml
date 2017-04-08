@@ -51,7 +51,7 @@
 
             <StackPanel x:Name="Contenido" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <TextBlock FontSize="50" Text="Código de Mesa" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"/>
-                <TextBlock x:Name="lblCodigoMesa" FontSize="60" Text="74850" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                <TextBlock x:Name="lblCodigoMesa" FontSize="60" Text="-----" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel x:Name="panelTablero" Padding="0,30,50,0">
                         <StackPanel Orientation="Horizontal">
@@ -70,7 +70,7 @@
                         <TextBlock x:Name="lblNombreJug1" FontSize="40" Text="Jugador 2" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>
                 </StackPanel>
-                <Button x:Name="btnJugar" Margin="0,20,0,0" Height="87" HorizontalAlignment="Center" Background="Transparent" Tapped="btnJugar_Tapped">
+                <Button x:Name="btnJugar" Margin="0,20,0,0" Height="87" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Tapped="btnJugar_Tapped">
                     <Image Stretch="Uniform" Source="ms-appx:///Assets/PC/Buttons/Jugar.png"/>
                 </Button>
             </StackPanel>
