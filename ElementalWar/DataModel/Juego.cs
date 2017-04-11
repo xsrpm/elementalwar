@@ -17,8 +17,8 @@ namespace DataModel
         {
             Jugadores = new List<Jugador>
             {
-                new Jugador { JugadorId = 0},
-                new Jugador { JugadorId = 1}
+                new Jugador { JugadorId = 0, Nombre = "Jugador 1"},
+                new Jugador { JugadorId = 1, Nombre = "Jugador 2"}
             };
         }
     }

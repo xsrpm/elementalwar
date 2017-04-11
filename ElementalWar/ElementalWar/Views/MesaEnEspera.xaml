@@ -53,19 +53,19 @@
                 <TextBlock FontSize="50" Text="Código de Mesa" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"/>
                 <TextBlock x:Name="lblCodigoMesa" FontSize="60" Text="-----" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel x:Name="panelTablero" Padding="0,30,50,0">
+                    <StackPanel x:Name="panelTablero" Padding="0,30,100,0">
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="300" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
+                            <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
                             <Image x:Name="imgElementoJug0" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
-                            <Image Height="300" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
+                            <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
                         </StackPanel>
                         <TextBlock x:Name="lblNombreJug0" FontSize="40" Text="Jugador 1" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>
-                    <StackPanel x:Name="panelJugador" Padding="50,30,0,0">
+                    <StackPanel x:Name="panelJugador" Padding="100,30,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="300" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
+                            <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
                             <Image x:Name="imgElementoJug1" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
-                            <Image Height="300" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
+                            <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
                         </StackPanel>
                         <TextBlock x:Name="lblNombreJug1" FontSize="40" Text="Jugador 2" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>

@@ -18,7 +18,7 @@
         public void LimpiarData()
         {
             Ip = "";
-            Nombre = "";
+            Nombre = "Jugador " + (JugadorId + 1).ToString();
             Imagen = null;
             Elemento = new Elemento { ElementoId = -1 };
         }
