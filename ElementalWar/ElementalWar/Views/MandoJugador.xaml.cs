@@ -157,6 +157,23 @@ namespace ElementalWar.Views
                         this.Frame.Navigate(typeof(ElegirMesa));
                     }
                     #endregion
+                    #region Mesa indica que el juego acaba de iniciar
+                    else if (mensaje[0] == Constantes.Mensajes.Juego.MesaIndicaJuegoInicia)
+                    {
+                        //mensaje[1] => objJugador.JugadorId
+                        if (mensaje.Length != 2)
+                            return;
+
+                        if (int.Parse(mensaje[1]) == App.objJugador.JugadorId)
+                        {
+                            HabilitarControles();
+                        }
+                        else
+                        {
+                            DeshabilitarControles();
+                        }
+                    }
+                    #endregion
                     #region La mesa indica Habilitar controles
                     else if (mensaje[0] == Constantes.Mensajes.Juego.HabilitarControles)
                     {
