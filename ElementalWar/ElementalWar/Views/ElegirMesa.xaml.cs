@@ -144,7 +144,7 @@ namespace ElementalWar.Views
             prConectando.IsActive = false;
             panelConectando.Visibility = Visibility.Collapsed;
             imgUnirme.Visibility = Visibility.Visible;
-            txtSala.IsEnabled = false;
+            txtSala.IsEnabled = true;
         }
 
         #region Conexion SynapseSDK

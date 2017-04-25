@@ -56,7 +56,9 @@
                     <StackPanel x:Name="panelTablero" Padding="0,30,100,0">
                         <StackPanel Orientation="Horizontal">
                             <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
-                            <Image x:Name="imgElementoJug0" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            <StackPanel Padding="25,0,25,0">
+                                <Image x:Name="imgElementoJug0" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            </StackPanel>
                             <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
                         </StackPanel>
                         <TextBlock x:Name="lblNombreJug0" FontSize="40" Text="Jugador 1" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
@@ -64,7 +66,9 @@
                     <StackPanel x:Name="panelJugador" Padding="100,30,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Izquierda.png"/>
-                            <Image x:Name="imgElementoJug1" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            <StackPanel Padding="25,0,25,0">
+                                <Image x:Name="imgElementoJug1" Width="300" Height="300" Source="ms-appx:///Assets/PC/Roles/Jugador.png"/>
+                            </StackPanel>
                             <Image Height="250" Source="ms-appx:///Assets/PC/Buttons/Derecha.png"/>
                         </StackPanel>
                         <TextBlock x:Name="lblNombreJug1" FontSize="40" Text="Jugador 2" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>

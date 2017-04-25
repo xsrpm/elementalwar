@@ -32,20 +32,20 @@
                         <Setter Target="imgJugar.Source" Value="ms-appx:///Assets/PC/Buttons/Jugar.png"></Setter>
                         <Setter Target="imgJugar.(Grid.Row)" Value="0"></Setter>
                         <Setter Target="imgJugar.(Grid.Column)" Value="1"></Setter>
-                        <Setter Target="imgJugar.Height" Value="110"></Setter>
-                        <Setter Target="imgJugar.Margin" Value="15,0,15,0"></Setter>
+                        <Setter Target="imgJugar.Height" Value="100"></Setter>
+                        <Setter Target="imgJugar.Margin" Value="25,0,25,0"></Setter>
 
                         <Setter Target="imgComoJugar.Source" Value="ms-appx:///Assets/PC/Buttons/ComoJugar.png"></Setter>
                         <Setter Target="imgComoJugar.(Grid.Row)" Value="0"></Setter>
                         <Setter Target="imgComoJugar.(Grid.Column)" Value="0"></Setter>
-                        <Setter Target="imgComoJugar.Height" Value="110"></Setter>
-                        <Setter Target="imgComoJugar.Margin" Value="15,0,15,0"></Setter>
+                        <Setter Target="imgComoJugar.Height" Value="100"></Setter>
+                        <Setter Target="imgComoJugar.Margin" Value="0,0,25,0"></Setter>
 
                         <Setter Target="imgCreditos.Source" Value="ms-appx:///Assets/PC/Buttons/Creditos.png"></Setter>
                         <Setter Target="imgCreditos.(Grid.Row)" Value="0"></Setter>
                         <Setter Target="imgCreditos.(Grid.Column)" Value="2"></Setter>
-                        <Setter Target="imgCreditos.Height" Value="110"></Setter>
-                        <Setter Target="imgCreditos.Margin" Value="15,0,15,0"></Setter>
+                        <Setter Target="imgCreditos.Height" Value="100"></Setter>
+                        <Setter Target="imgCreditos.Margin" Value="25,0,0,0"></Setter>
 
                     </VisualState.Setters>
                 </VisualState>
@@ -66,7 +66,7 @@
             </Grid>
 
             <StackPanel x:Name="Contenido">
-                <Image x:Name="imgLogo" Margin="0,20,0,35" Width="225" Height="225" Source="ms-appx:///Assets/Phone/Logo.png"/>
+                <Image x:Name="imgLogo" Margin="0,20,0,30" Width="225" Height="225" Source="ms-appx:///Assets/Phone/Logo.png"/>
 
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
@@ -80,9 +80,9 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Image x:Name="imgJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="0" Height="75" Source="ms-appx:///Assets/Phone/Buttons/Jugar.png" Tapped="btnJugar_Tapped"/>
-                    <Image x:Name="imgComoJugar" Margin="0,5,0,5" Grid.Column="1" Grid.Row="1" Height="75" Source="ms-appx:///Assets/Phone/Buttons/ComoJugar.png" Tapped="btnComoJugar_Tapped"/>
-                    <Image x:Name="imgCreditos" Margin="0,5,0,5" Grid.Column="1" Grid.Row="2" Height="75" Source="ms-appx:///Assets/Phone/Buttons/Creditos.png" Tapped="btnCreditos_Tapped"/>
+                    <Image x:Name="imgJugar" Margin="0,15,0,15" Grid.Column="1" Grid.Row="0" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Jugar.png" Tapped="btnJugar_Tapped"/>
+                    <Image x:Name="imgComoJugar" Margin="0,15,0,15" Grid.Column="1" Grid.Row="1" Height="60" Source="ms-appx:///Assets/Phone/Buttons/ComoJugar.png" Tapped="btnComoJugar_Tapped"/>
+                    <Image x:Name="imgCreditos" Margin="0,15,0,15" Grid.Column="1" Grid.Row="2" Height="60" Source="ms-appx:///Assets/Phone/Buttons/Creditos.png" Tapped="btnCreditos_Tapped"/>
                 </Grid>
             </StackPanel>
         </StackPanel>

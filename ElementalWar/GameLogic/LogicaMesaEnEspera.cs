@@ -80,6 +80,10 @@ namespace GameLogic
                 {
                     objJuego.Jugadores[jugadorId].Elemento.ElementoId--;
                 }
+                if (objJuego.Jugadores[jugadorId].Elemento.ElementoId < 0)
+                {
+                    objJuego.Jugadores[jugadorId].Elemento.ElementoId = 3;
+                }
                 huboCambio = true;
             }
             else if (direccion == Constantes.Mensajes.Juego.AccionMando.Derecha)
@@ -92,6 +96,10 @@ namespace GameLogic
                 if (objJuego.Jugadores[jugadorId].Elemento.ElementoId == objJuego.Jugadores[jugadorRivalId].Elemento.ElementoId)
                 {
                     objJuego.Jugadores[jugadorId].Elemento.ElementoId++;
+                }
+                if (objJuego.Jugadores[jugadorId].Elemento.ElementoId > 3)
+                {
+                    objJuego.Jugadores[jugadorId].Elemento.ElementoId = 0;
                 }
                 huboCambio = true;
             }

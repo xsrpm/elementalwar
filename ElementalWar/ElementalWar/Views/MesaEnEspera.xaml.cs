@@ -65,7 +65,8 @@ namespace ElementalWar.Views
 
         private void btnJugar_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MesaTablero), objJuego);
+            if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
+                this.Frame.Navigate(typeof(MesaTablero), objJuego);
         }
 
         private void MostrarDatosJugadoresEnPantalla(int jugadorId)
@@ -175,9 +176,10 @@ namespace ElementalWar.Views
                                 Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse + Constantes.SEPARADOR +
                                 objJuego.Ip + Constantes.SEPARADOR +
                                 jugadorUnido.JugadorId + Constantes.SEPARADOR +
-                                jugadorUnido.Elemento);
+                                jugadorUnido.Elemento.ElementoId);
 
                             //Mostrar datos del jugadors en pantalla
+                            GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorUnido.JugadorId);
                             MostrarDatosJugadoresEnPantalla(jugadorUnido.JugadorId);
                         }
                     }
@@ -212,6 +214,8 @@ namespace ElementalWar.Views
                     //Habilitar el boton jugar
                     if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
                         btnJugar.Visibility = Visibility.Visible;
+                    else
+                        btnJugar.Visibility = Visibility.Collapsed;
                 }
             }
             catch (Exception ex)

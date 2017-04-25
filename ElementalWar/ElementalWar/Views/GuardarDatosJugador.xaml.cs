@@ -57,7 +57,7 @@ namespace ElementalWar.Views
             }
             else
             {
-                if (paginaRedirect == typeof(ElegirMesa) || (App.DetectPlatform() == Platform.WindowsPhone && App.objJugador != null))
+                if (paginaRedirect == typeof(ElegirMesa) || (App.DetectPlatform() == Platform.WindowsPhone && App.objJugador == null))
                 {
                     panelRegresar.Visibility = Visibility.Collapsed;
                 }

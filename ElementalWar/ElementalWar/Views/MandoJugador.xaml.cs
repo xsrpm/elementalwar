@@ -79,7 +79,14 @@ namespace ElementalWar.Views
                     App.objJugador.JugadorId);
                 App.objSDK.setObjMetodoReceptorString = null;
 
-                this.Frame.Navigate(typeof(SeleccionarRol));
+                if (App.DetectPlatform() == Platform.WindowsPhone)
+                {
+                    this.Frame.Navigate(typeof(ElegirMesa));
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(SeleccionarRol));
+                }
             }
         }
 

@@ -36,12 +36,16 @@
                         <Setter Target="imgAccion.Source" Value="ms-appx:///Assets/Phone/Mando/MandoAccion.png"></Setter>
                         <Setter Target="btnIzquierda.Width" Value="120"></Setter>
                         <Setter Target="btnIzquierda.Height" Value="120"></Setter>
+                        <Setter Target="btnIzquierda.Margin" Value="10"></Setter>
                         <Setter Target="btnArriba.Width" Value="120"></Setter>
                         <Setter Target="btnArriba.Height" Value="120"></Setter>
+                        <Setter Target="btnArriba.Margin" Value="10"></Setter>
                         <Setter Target="btnDerecha.Width" Value="120"></Setter>
                         <Setter Target="btnDerecha.Height" Value="120"></Setter>
+                        <Setter Target="btnDerecha.Margin" Value="10"></Setter>
                         <Setter Target="btnAbajo.Width" Value="120"></Setter>
                         <Setter Target="btnAbajo.Height" Value="120"></Setter>
+                        <Setter Target="btnAbajo.Margin" Value="10"></Setter>
                         <Setter Target="btnAccion.Width" Value="250"></Setter>
                         <Setter Target="btnAccion.Height" Value="250"></Setter>
                     </VisualState.Setters>
@@ -67,7 +71,7 @@
             </Grid>
 
             <StackPanel x:Name="Contenido" HorizontalAlignment="Center">
-                <Grid Margin="0,40,0,0">
+                <Grid Margin="0,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
@@ -82,21 +86,21 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="panelTurno" Grid.Row="0" Grid.Column="3" Width="150" Background="#FFFF0437" CornerRadius="7">
+                    <StackPanel x:Name="panelTurno" Grid.Row="0" Grid.Column="3" Width="150" Background="#FFFF0437">
                         <TextBlock x:Name="lblTurno" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
                     </StackPanel>
 
-                    <Button x:Name="btnIzquierda" Grid.Row="2" Grid.Column="0" Height="60" Width="60" Tapped="btnIzquierda_Tapped">
+                    <Button x:Name="btnIzquierda" Margin="5" Grid.Row="2" Grid.Column="0" Height="60" Width="60" Tapped="btnIzquierda_Tapped">
                         <Image x:Name="imgIzquierda" Source="ms-appx:///Assets/Phone/Mando/Izquierda.png"/>
                     </Button>
-                    <Button x:Name="btnArriba" Grid.Row="1" Grid.Column="1" Height="60" Width="60" Tapped="btnArriba_Tapped">
-                        <Image x:Name="imgArriba" Stretch="Fill" Source="ms-appx:///Assets/Phone/Mando/Arriba.png"/>
+                    <Button x:Name="btnArriba" Margin="5" Grid.Row="1" Grid.Column="1" Height="60" Width="60" Tapped="btnArriba_Tapped">
+                        <Image x:Name="imgArriba" Source="ms-appx:///Assets/Phone/Mando/Arriba.png"/>
                     </Button>
-                    <Button x:Name="btnDerecha" Grid.Row="2" Grid.Column="2" Height="60" Width="60" Tapped="btnDerecha_Tapped">
-                        <Image x:Name="imgDerecha" Stretch="Fill" Source="ms-appx:///Assets/Phone/Mando/Derecha.png"/>
+                    <Button x:Name="btnDerecha" Margin="5" Grid.Row="2" Grid.Column="2" Height="60" Width="60" Tapped="btnDerecha_Tapped">
+                        <Image x:Name="imgDerecha" Source="ms-appx:///Assets/Phone/Mando/Derecha.png"/>
                     </Button>
-                    <Button x:Name="btnAbajo" Grid.Row="3" Grid.Column="1" Height="60" Width="60" Tapped="btnAbajo_Tapped">
-                        <Image x:Name="imgAbajo" Stretch="Fill" Source="ms-appx:///Assets/Phone/Mando/Abajo.png"/>
+                    <Button x:Name="btnAbajo" Margin="5" Grid.Row="3" Grid.Column="1" Height="60" Width="60" Tapped="btnAbajo_Tapped">
+                        <Image x:Name="imgAbajo" Source="ms-appx:///Assets/Phone/Mando/Abajo.png"/>
                     </Button>
 
                     <Button x:Name="btnAccion" Grid.Row="1" Grid.Column="5" Grid.RowSpan="3" Height="130" Width="130" Tapped="btnAccion_Tapped">
