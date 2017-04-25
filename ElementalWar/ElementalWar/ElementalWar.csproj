@@ -160,6 +160,9 @@
     <Content Include="Assets\PC\Buttons\Jugar.png" />
     <Content Include="Assets\PC\Buttons\Regresar.png" />
     <Content Include="Assets\PC\Buttons\Unirme.png" />
+    <Content Include="Assets\PC\FondoNumeroFichas.png" />
+    <Content Include="Assets\PC\Jugador\Jugador2.png" />
+    <Content Include="Assets\PC\Jugador\Jugador1.png" />
     <Content Include="Assets\PC\Mando\Abajo.png" />
     <Content Include="Assets\PC\Mando\Arriba.png" />
     <Content Include="Assets\PC\Mando\Derecha.png" />
@@ -268,6 +271,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

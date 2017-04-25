@@ -184,6 +184,25 @@ namespace ElementalWar.Views
                         }
                     }
                     #endregion
+                    #region El jugador envia la imagen que le corresponde para ser representado en el juego
+                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.EnviarImagenJugador)
+                    {
+                        //mensaje[1] => objJugador.MesaIp
+                        //mensaje[2] => objJugador.JugadorId
+                        //mensaje[3] => strBytes (objJugador.Imagen)
+                        if (mensaje.Length != 4)
+                            return;
+
+                        if (mensaje[1] != objJuego.Ip)
+                            return;
+
+                        if (mensaje[3] == Constantes.Imagenes.SIN_IMAGEN)
+                            objJuego.Jugadores[int.Parse(mensaje[2])].Imagen = null;
+                        else
+                            objJuego.Jugadores[int.Parse(mensaje[2])].Imagen = Convert.FromBase64String(mensaje[3]);
+
+                    }
+                    #endregion
                     #region El jugador indica que se sale del mando mientras el juego aun no comienza
                     else if (mensaje[0] == Constantes.Mensajes.Juego.JugadorSaleMesa)
                     {

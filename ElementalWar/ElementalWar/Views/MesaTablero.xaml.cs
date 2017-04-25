@@ -10,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
 using Windows.Networking;
+using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -68,9 +70,37 @@ namespace ElementalWar.Views
             }
         }
 
-        private void DibujarInfoJugadores()
+        private async void DibujarInfoJugadores()
         {
+            Uri uri;
+            BitmapImage imagen;
+            IRandomAccessStream fileStream;
 
+            //Jugador 1
+            if (objJuego.Jugadores[0].Imagen != null)
+            {
+                imagen = new BitmapImage();
+                fileStream = await Convertidor.ConvertImageToStream(objJuego.Jugadores[0].Imagen);
+                imagen.SetSource(fileStream);
+                imgJugador1.Source = imagen;
+            }
+            lblJugador1.Text = objJuego.Jugadores[0].Nombre;
+            uri = new Uri(objJuego.Jugadores[0].Elemento.RutaImagen);
+            imagen = new BitmapImage(uri);
+            imgElementoJugador1.Source = imagen;
+
+            //Jugador 2
+            if (objJuego.Jugadores[1].Imagen != null)
+            {
+                imagen = new BitmapImage();
+                fileStream = await Convertidor.ConvertImageToStream(objJuego.Jugadores[1].Imagen);
+                imagen.SetSource(fileStream);
+                imgJugador2.Source = imagen;
+            }
+            lblJugador2.Text = objJuego.Jugadores[1].Nombre;
+            uri = new Uri(objJuego.Jugadores[1].Elemento.RutaImagen);
+            imagen = new BitmapImage(uri);
+            imgElementoJugador2.Source = imagen;
         }
 
         #region Conexion SynapseSDK

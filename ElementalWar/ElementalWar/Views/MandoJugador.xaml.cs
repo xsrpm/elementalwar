@@ -152,7 +152,7 @@ namespace ElementalWar.Views
                 {
                     var mensaje = strMensaje.Split(new string[] { Constantes.SEPARADOR }, StringSplitOptions.None);
                     //mensaje[0] => Accion
-                    #region Jugador recibe la confirmacion que se ha unido a la mesa
+                    #region Jugador recibe la instruccion que la mesa se ha cerrado
                     if (mensaje[0] == Constantes.Mensajes.Juego.MesaIndicaSeCierra)
                     {
                         if (mensaje.Length != 1)

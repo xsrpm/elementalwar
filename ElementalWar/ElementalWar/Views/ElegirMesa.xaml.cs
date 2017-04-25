@@ -201,7 +201,7 @@ namespace ElementalWar.Views
         }
         #endregion
 
-        public void ReceptorElegirMesa(string strIp, string strMensaje)
+        public async void ReceptorElegirMesa(string strIp, string strMensaje)
         {
             try
             {
@@ -225,7 +225,18 @@ namespace ElementalWar.Views
                         App.objJugador.JugadorId = int.Parse(mensaje[2]);
                         App.objJugador.Elemento = new Elemento { ElementoId = int.Parse(mensaje[3]) };
 
-                        //Aca se enviaria la foto, pero no aplica por el momento
+                        //Se envia la foto del jugador
+                        string strBytesImagen = string.Empty;
+                        if (App.objJugador.Imagen != null)
+                            strBytesImagen = Convert.ToBase64String(App.objJugador.Imagen);
+                        else
+                            strBytesImagen = Constantes.Imagenes.SIN_IMAGEN;
+
+                        await App.objSDK.StreamPing(/*new HostName(App.objJugador.MesaIp),*/
+                            Constantes.Mensajes.UnirseMesa.EnviarImagenJugador + Constantes.SEPARADOR +
+                            App.objJugador.MesaIp + Constantes.SEPARADOR +
+                            App.objJugador.JugadorId + Constantes.SEPARADOR +
+                            strBytesImagen);
 
                         this.Frame.Navigate(typeof(MandoJugador));
                     }

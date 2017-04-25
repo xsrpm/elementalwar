@@ -35,6 +35,7 @@
             {
                 public const string SolicitudUnirse = "SolicitudUnirse";
                 public const string ConfirmacionUnirse = "ConfirmacionUnirse";
+                public const string EnviarImagenJugador = "EnviarImagenJugador";
             }
 
             public struct Juego
