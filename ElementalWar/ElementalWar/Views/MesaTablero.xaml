@@ -34,7 +34,7 @@
                     <StackPanel Margin="0,75,0,0">
                         <Image x:Name="imgElementoJugador1" Height="150" Width="150" Source="ms-appx:///Assets/Elementos/Agua.png"/>
                         <Image Height="40" Source="ms-appx:///Assets/PC/FondoNumeroFichas.png"/>
-                        <TextBlock x:Name="lblPuntosJugador1" Margin="0,-40,0,0" FontSize="36" Text="00" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                        <TextBlock x:Name="lblPuntosJugador1" Margin="0,-40,0,0" FontSize="36" Text="0" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -85,17 +85,16 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="16" />
                             </Grid.ColumnDefinitions>
-
-                            <!--Primera Fila-->
-                            <Image x:Name="elemento00" Grid.Row="1" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <Image x:Name="elemento01" Grid.Row="1" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
+                            
+                            <Image x:Name="elemento00" Grid.Row="1" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
+                            <Image x:Name="elemento01" Grid.Row="1" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento02" Grid.Row="1" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento03" Grid.Row="1" Grid.Column="4" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento04" Grid.Row="1" Grid.Column="5" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento05" Grid.Row="1" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento06" Grid.Row="1" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento07" Grid.Row="1" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Segunda Fila-->
+                            
                             <Image x:Name="elemento10" Grid.Row="2" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento11" Grid.Row="2" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento12" Grid.Row="2" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
@@ -104,7 +103,7 @@
                             <Image x:Name="elemento15" Grid.Row="2" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento16" Grid.Row="2" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento17" Grid.Row="2" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Tercera Fila-->
+                            
                             <Image x:Name="elemento20" Grid.Row="3" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento21" Grid.Row="3" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento22" Grid.Row="3" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
@@ -113,25 +112,25 @@
                             <Image x:Name="elemento25" Grid.Row="3" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento26" Grid.Row="3" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento27" Grid.Row="3" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Cuarta Fila-->
+                            
                             <Image x:Name="elemento30" Grid.Row="4" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento31" Grid.Row="4" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento32" Grid.Row="4" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <Image x:Name="elemento33" Grid.Row="4" Grid.Column="4" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png"/>
-                            <Image x:Name="elemento34" Grid.Row="4" Grid.Column="5" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png"/>
+                            <Image x:Name="elemento33" Grid.Row="4" Grid.Column="4" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
+                            <Image x:Name="elemento34" Grid.Row="4" Grid.Column="5" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento35" Grid.Row="4" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento36" Grid.Row="4" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento37" Grid.Row="4" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Quinta Fila-->
+                            
                             <Image x:Name="elemento40" Grid.Row="5" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento41" Grid.Row="5" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento42" Grid.Row="5" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <Image x:Name="elemento43" Grid.Row="5" Grid.Column="4" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png"/>
-                            <Image x:Name="elemento44" Grid.Row="5" Grid.Column="5" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png"/>
+                            <Image x:Name="elemento43" Grid.Row="5" Grid.Column="4" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
+                            <Image x:Name="elemento44" Grid.Row="5" Grid.Column="5" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento45" Grid.Row="5" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento46" Grid.Row="5" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento47" Grid.Row="5" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Sexta Fila-->
+                            
                             <Image x:Name="elemento50" Grid.Row="6" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento51" Grid.Row="6" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento52" Grid.Row="6" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
@@ -140,7 +139,7 @@
                             <Image x:Name="elemento55" Grid.Row="6" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento56" Grid.Row="6" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento57" Grid.Row="6" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Septima Fila-->
+                            
                             <Image x:Name="elemento60" Grid.Row="7" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento61" Grid.Row="7" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento62" Grid.Row="7" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
@@ -149,7 +148,7 @@
                             <Image x:Name="elemento65" Grid.Row="7" Grid.Column="6" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento66" Grid.Row="7" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento67" Grid.Row="7" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
-                            <!--Octava Fila-->
+                            
                             <Image x:Name="elemento70" Grid.Row="8" Grid.Column="1" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento71" Grid.Row="8" Grid.Column="2" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento72" Grid.Row="8" Grid.Column="3" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
@@ -170,7 +169,7 @@
                     <StackPanel Margin="0,75,0,0">
                         <Image x:Name="imgElementoJugador2" Height="150" Width="150" Source="ms-appx:///Assets/Elementos/Fuego.png"/>
                         <Image Height="40" Source="ms-appx:///Assets/PC/FondoNumeroFichas.png"/>
-                        <TextBlock x:Name="lblPuntosJugador2" Margin="0,-40,0,0" FontSize="36" Text="00" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                        <TextBlock x:Name="lblPuntosJugador2" Margin="0,-40,0,0" FontSize="36" Text="0" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

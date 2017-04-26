@@ -76,7 +76,7 @@
                 <TextBlock x:Name="lblTexto" Margin="0,30,0,0" FontSize="20" Text="Ingresa el código" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
 
                 <StackPanel x:Name="unirmePanel" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBox x:Name="txtSala" VerticalAlignment="Center" InputScope="NumericPin" TextWrapping="Wrap" BorderBrush="Transparent" Foreground="Black" MaxLength="6" Width="144" Height="45" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtSala_KeyUp" KeyDown="txtSala_KeyDown"/>
+                    <TextBox x:Name="txtSala" Text="138" VerticalAlignment="Center" InputScope="NumericPin" TextWrapping="Wrap" BorderBrush="Transparent" Foreground="Black" MaxLength="6" Width="144" Height="45" FontSize="30" TextAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" KeyUp="txtSala_KeyUp" KeyDown="txtSala_KeyDown"/>
 
                     <Button x:Name="btnUnirme" Margin="5,0,0,0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Tapped="btnUnirme_Tapped">
                         <Image x:Name="imgUnirme" Height="50" Source="ms-appx:///Assets/Phone/Buttons/Unirme.png"/>

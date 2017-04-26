@@ -1,9 +1,7 @@
 ﻿using DataModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
@@ -23,13 +21,10 @@ namespace Util
                         cadena = objJugador.Nombre;
                     await FileIO.WriteTextAsync(file, cadena);
                 }
-                //StorageFile imageFile = await localfolder.CreateFileAsync(Constantes.FILE_IMAGEN_JUGADOR, CreationCollisionOption.ReplaceExisting);
                 StorageFile imageFile = await Convertidor.GetTextFile(Constantes.FILE_IMAGEN_JUGADOR);
                 if (imageFile != null)
                 {
                     byte[] imagen = null;
-                    //var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
-                    //"What fools these mortals be", Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
                     if (objJugador.Imagen != null)
                         imagen = objJugador.Imagen;
                     await FileIO.WriteBytesAsync(imageFile, imagen);
@@ -50,7 +45,6 @@ namespace Util
                 if (fileContent != null)
                 {
                     var jugador = new Jugador();
-                    //var cadena = fileContent.Split(new string[] { Constantes.SEPARADOR }, StringSplitOptions.None);
                     jugador.Nombre = fileContent;
 
                     try

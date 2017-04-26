@@ -2,22 +2,13 @@
 using SynapseSDK;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Util;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
 using Windows.Networking;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
@@ -46,17 +37,56 @@ namespace ElementalWar.Views
             else
             {
                 Helper.MensajeOk("No se pudo iniciar el juego.");
-                this.Frame.Navigate(typeof(SeleccionarRol));
             }
+
             IniciarSDK();
+            //#region Pruebas
+            //IniciarDataDePrueba();
+            //#endregion
             Inicializar();
         }
 
+        #region Pruebas
+        private void IniciarDataDePrueba()
+        {
+            objJuego = new Juego
+            {
+                Codigo = "138",
+                Ip = "192.168.1.38",
+                Jugadores = new List<Jugador>
+                {
+                    new Jugador
+                    {
+                        JugadorId = 0,
+                        Ip = "192.168.1.39",
+                        Nombre = "Roy",
+                        Imagen = null,
+                        Elemento = new Elemento{ ElementoId = Constantes.Elementos.Agua }
+                    },
+                    new Jugador
+                    {
+                        JugadorId = 0,
+                        Ip = "192.168.1.40",
+                        Nombre = "Cesar",
+                        Imagen = null,
+                        Elemento = new Elemento{ ElementoId = Constantes.Elementos.Fuego }
+                    }
+                }
+            };
+            GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, 0);
+            GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, 1);
+        }
+        #endregion
+
+        #region Inicializacion
         private void Inicializar()
         {
             GameLogic.LogicaJuego.AsignarTurnos(objJuego);
             ComunicarJugadoresJuegoInicia();
             DibujarInfoJugadores();
+            InicializarFichas();
+            DibujarFichas();
+            ActualizarInfoFichas();
         }
 
         private async void ComunicarJugadoresJuegoInicia()
@@ -102,6 +132,57 @@ namespace ElementalWar.Views
             imagen = new BitmapImage(uri);
             imgElementoJugador2.Source = imagen;
         }
+
+        private void InicializarFichas()
+        {
+            //Asignar las fichas inciales del centro
+            objJuego.Fichas[4, 3].JugadorId = 0;
+            objJuego.Fichas[4, 3].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
+            objJuego.Fichas[3, 4].JugadorId = 0;
+            objJuego.Fichas[3, 4].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
+
+            objJuego.Fichas[3, 3].JugadorId = 1;
+            objJuego.Fichas[3, 3].ElementoId = objJuego.Jugadores[1].Elemento.ElementoId;
+            objJuego.Fichas[4, 4].JugadorId = 1;
+            objJuego.Fichas[4, 4].ElementoId = objJuego.Jugadores[1].Elemento.ElementoId;
+
+            //Asignar las referencias de las imagenes a cada ficha
+            for (int i = 0; i < 8; i++)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    objJuego.Fichas[i, k].Imagen = ((Image)this.FindName("elemento" + i + k));
+                }
+            }
+        }
+
+        private void DibujarFichas()
+        {
+            Uri uri;
+            BitmapImage imagen;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    if (objJuego.Fichas[i, k].ElementoId != Constantes.Elementos.SIN_ELEMENTO)
+                    {
+                        var jugadorId = objJuego.Fichas[i, k].JugadorId;
+                        uri = new Uri(objJuego.Jugadores[jugadorId].Elemento.RutaImagenVictoria);
+                        imagen = new BitmapImage(uri);
+                        objJuego.Fichas[i, k].Imagen.Source = imagen;
+                        objJuego.Fichas[i, k].Imagen.Visibility = Visibility.Visible;
+                    }   
+                }
+            }
+        }
+
+        private void ActualizarInfoFichas()
+        {
+            objJuego.ActualizarInfoFichas();
+            lblPuntosJugador1.Text = objJuego.NroFichasJugador1.ToString();
+            lblPuntosJugador2.Text = objJuego.NroFichasJugador2.ToString();
+        }
+        #endregion
 
         #region Conexion SynapseSDK
         private void IniciarSDK()
