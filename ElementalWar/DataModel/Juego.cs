@@ -11,8 +11,13 @@ namespace DataModel
 
         public Ficha[,] Fichas { get; set; }
 
+        public int JugadorIdTurno { get; set; }
+
         public int NroFichasJugador1 { get; set; }
         public int NroFichasJugador2 { get; set; }
+
+        public int PosXFicha { get; set; }
+        public int PosYFicha { get; set; }
 
         public Juego()
         {
@@ -32,6 +37,11 @@ namespace DataModel
                 {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
                 {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() }
             };
+
+            JugadorIdTurno = 0;
+
+            PosXFicha = 3;
+            PosYFicha = 5;
         }
 
         public void ActualizarInfoFichas()
@@ -49,6 +59,14 @@ namespace DataModel
                         NroFichasJugador2++;
                 }
             }
+        }
+
+        public void CambiarTurno()
+        {
+            if (JugadorIdTurno == 0)
+                JugadorIdTurno = 1;
+            else
+                JugadorIdTurno = 0;
         }
     }
 }

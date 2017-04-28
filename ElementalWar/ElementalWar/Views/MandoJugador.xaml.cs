@@ -161,6 +161,7 @@ namespace ElementalWar.Views
                         if (mensaje.Length != 2)
                             return;
 
+                        mandoActivo = false;
                         if (int.Parse(mensaje[1]) == App.objJugador.JugadorId)
                         {
                             HabilitarControles();
@@ -197,21 +198,27 @@ namespace ElementalWar.Views
 
         private void HabilitarControles()
         {
-            mandoActivo = true;
-            lblTurno.Text = "TURNO";
-            panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOACTIVO);
-            if (App.DetectPlatform() == Platform.WindowsPhone)
+            if (!mandoActivo)
             {
-                var vibration = VibrationDevice.GetDefault();
-                vibration.Vibrate(TimeSpan.FromMilliseconds(500));
+                mandoActivo = true;
+                lblTurno.Text = "TURNO";
+                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOACTIVO);
+                if (App.DetectPlatform() == Platform.WindowsPhone)
+                {
+                    var vibration = VibrationDevice.GetDefault();
+                    vibration.Vibrate(TimeSpan.FromMilliseconds(500));
+                }
             }
         }
 
         private void DeshabilitarControles()
         {
-            mandoActivo = false;
-            lblTurno.Text = "";
-            panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOINACTIVO);
+            if (mandoActivo)
+            {
+                mandoActivo = false;
+                lblTurno.Text = "";
+                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOINACTIVO);
+            }
         }
 
         private async void EnviarMovimiento(int movimiento)

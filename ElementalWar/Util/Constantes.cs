@@ -13,6 +13,8 @@
         public static string STREAM_SERVICE_PORT = "22110";
         public static int DELAY = 500;
 
+        public const int NO_ASIGNADO = -1;
+
         public struct Colores
         {
             public struct PanelTurno
@@ -60,6 +62,15 @@
             }
         }
         #endregion
+
+        public struct Ficha
+        {
+            public struct Propiedades
+            {
+                public const double OPACITY = 0.7;
+                public const double OPACITY_FICHA_COLOCADA = 0.3;
+            }
+        }
 
         public struct Elementos
         {
