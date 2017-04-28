@@ -37,22 +37,22 @@ namespace ElementalWar.Views
             //Inicializando
             App.objJugador = await LocalStorage.ObtenerDatosJugador();
 
-            await Task.Delay(TimeSpan.FromSeconds(1));
+            await Task.Delay(TimeSpan.FromSeconds(3));
 
             if (App.DetectPlatform() == Platform.WindowsPhone)
             {
                 if (App.objJugador == null)
                 {
-                    Frame.Navigate(typeof(GuardarDatosJugador), typeof(ElegirMesa));
+                    Frame.Navigate(typeof(GuardarDatosJugador), typeof(MenuPrincipal));
                 }
                 else
                 {
-                    Frame.Navigate(typeof(ElegirMesa));
+                    Frame.Navigate(typeof(MenuPrincipal));
                 }
             }
             else
             {
-                Frame.Navigate(typeof(MesaEnEspera));
+                Frame.Navigate(typeof(MenuPrincipal));
             }
         }
     }

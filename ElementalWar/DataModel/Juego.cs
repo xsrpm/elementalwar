@@ -19,6 +19,8 @@ namespace DataModel
         public int PosXFicha { get; set; }
         public int PosYFicha { get; set; }
 
+        public int JugadorIdGanador { get; set; }
+
         public Juego()
         {
             Jugadores = new List<Jugador>
@@ -42,6 +44,8 @@ namespace DataModel
 
             PosXFicha = 3;
             PosYFicha = 5;
+
+            JugadorIdGanador = -1;
         }
 
         public void ActualizarInfoFichas()

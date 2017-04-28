@@ -2,6 +2,7 @@
 using SynapseSDK;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Util;
 using Windows.Graphics.Display;
 using Windows.Networking;
@@ -26,6 +27,7 @@ namespace ElementalWar.Views
         private bool recibirComando;
         private SolidColorBrush colorValido;
         private SolidColorBrush colorInvalido;
+
         public MesaTablero()
         {
             this.InitializeComponent();
@@ -444,6 +446,7 @@ namespace ElementalWar.Views
 
                 if (GameLogic.LogicaJuego.HayFichasParaVoltear(fichasParaVoltear))
                 {
+                    ponerFichaSound.Play();
                     DeshabilitarControlesJugadorActual();
                     PonerFichaLugarAccion();
                     VoltearFichas(fichasParaVoltear);
@@ -554,12 +557,14 @@ namespace ElementalWar.Views
         #endregion
 
         #region FIN DEL JUEGO
-        private void FinalizarJuego(bool jugadorSalio = false)
+        private async void FinalizarJuego(bool jugadorSalio = false)
         {
-            var ganador = objJuego.NroFichasJugador1 == objJuego.NroFichasJugador2 ? -1 : objJuego.NroFichasJugador1 >= objJuego.NroFichasJugador2 ? 1 : 0;
+            objJuego.JugadorIdGanador = objJuego.NroFichasJugador1 == objJuego.NroFichasJugador2 ? -1 : objJuego.NroFichasJugador1 >= objJuego.NroFichasJugador2 ? 1 : 0;
+            
+            mensajeFinJuego.Visibility = Visibility.Visible;
+            await Task.Delay(TimeSpan.FromSeconds(3));
 
-            Helper.MensajeOk((jugadorSalio ? "Uno de los jugadores ha salido del juego. Se da por terminada la partida. " : "") +
-                "El juega ha finalizado. GANADOR: " + ganador);
+            this.Frame.Navigate(typeof(FinalPartida), objJuego);
         }
         #endregion
     }

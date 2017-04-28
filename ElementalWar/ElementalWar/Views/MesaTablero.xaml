@@ -55,7 +55,6 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-
                         <Grid Grid.Column="1" Grid.Row="1">
                             <Grid.Background>
                                 <ImageBrush x:Name="imgTablero" ImageSource="ms-appx:///Assets/PC/Tablero.png"/>
@@ -160,6 +159,17 @@
                             <Image x:Name="elemento76" Grid.Row="8" Grid.Column="7" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                             <Image x:Name="elemento77" Grid.Row="8" Grid.Column="8" Margin="4" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png" Visibility="Collapsed"/>
                         </Grid>
+
+                        <StackPanel x:Name="mensajeFinJuego" Grid.RowSpan="3" Grid.ColumnSpan="3" Width="250" Height="150" BorderThickness="4" Visibility="Collapsed">
+                            <StackPanel.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.85"/>
+                            </StackPanel.Background>
+                            <StackPanel.BorderBrush>
+                                <SolidColorBrush Color="Black" Opacity="1"/>
+                            </StackPanel.BorderBrush>
+                            <Image Source="ms-appx:///Assets/PC/MiniLogo.png" Margin="0,15,0,5" Height="75" Width="75"/>
+                            <TextBlock Text="Fin del juego" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" FontSize="40"/>
+                        </StackPanel>
                     </Grid>
                 </StackPanel>
 
@@ -176,5 +186,6 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <MediaElement x:Name="ponerFichaSound" Source="ms-appx:///Assets/Media/PonerFicha.mp3" AutoPlay="False" IsLooping="False" Volume="1" Visibility="Collapsed" />
     </Grid>
 </Page>

@@ -23,6 +23,7 @@ namespace ElementalWar.Views
     public sealed partial class MandoJugador : Page
     {
         private bool mandoActivo = true;
+
         public MandoJugador()
         {
             this.InitializeComponent();
@@ -188,6 +189,33 @@ namespace ElementalWar.Views
                         DeshabilitarControles();
                     }
                     #endregion
+                    #region Jugador Gano
+                    else if (mensaje[0] == Constantes.Mensajes.Juego.FinJuegoGanaste)
+                    {
+                        if (mensaje.Length != 1)
+                            return;
+                        DeshabilitarControles();
+                        MostrarResultadoFinalJuego("GANASTE");
+                    }
+                    #endregion
+                    #region Jugador Perdio
+                    else if (mensaje[0] == Constantes.Mensajes.Juego.FinJuegoPerdiste)
+                    {
+                        if (mensaje.Length != 1)
+                            return;
+                        DeshabilitarControles();
+                        MostrarResultadoFinalJuego("PERDISTE");
+                    }
+                    #endregion
+                    #region Jugador Empato
+                    else if (mensaje[0] == Constantes.Mensajes.Juego.FinJuegoEmpataste)
+                    {
+                        if (mensaje.Length != 1)
+                            return;
+                        DeshabilitarControles();
+                        MostrarResultadoFinalJuego("EMPATASTE");
+                    }
+                    #endregion
                 }
             }
             catch (Exception ex)
@@ -232,6 +260,21 @@ namespace ElementalWar.Views
             }
         }
 
+        private void MostrarResultadoFinalJuego(string mensaje)
+        {
+            if (App.DetectPlatform() == Platform.WindowsPhone)
+            {
+                var vibration = VibrationDevice.GetDefault();
+                vibration.Vibrate(TimeSpan.FromMilliseconds(500));
+            }
+
+            btnMensaje.Content = mensaje;
+
+            panelRegresar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            Contenido.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            mensajeFinJuego.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
         #region Eventos botones
         private void btnIzquierda_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -258,5 +301,10 @@ namespace ElementalWar.Views
             EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Accion);
         }
         #endregion
+
+        private void btnMenuPrincipal_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPrincipal));
+        }
     }
 }

@@ -30,7 +30,7 @@
             public const string Jugador = "ms-appx:///Assets/PC/Roles/Jugador.png";
         }
 
-        #region Mensajes para unirse a la mesa
+        #region Mensajes en el Juego
         public struct Mensajes
         {
             public struct UnirseMesa
@@ -50,6 +50,10 @@
                 public const string HabilitarControles = "HabilitarControles";
 
                 public const string MesaIndicaJuegoInicia = "MesaIndicaJuegoInicia";
+
+                public const string FinJuegoGanaste = "FinJuegoGanaste";
+                public const string FinJuegoPerdiste = "FinJuegoPerdiste";
+                public const string FinJuegoEmpataste = "FinJuegoEmpataste";
 
                 public struct AccionMando
                 {
