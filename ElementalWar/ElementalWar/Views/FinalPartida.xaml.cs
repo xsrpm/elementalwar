@@ -27,13 +27,13 @@ namespace ElementalWar.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             DisplayInformation.AutoRotationPreferences = DisplayOrientations.Landscape;
-            if (e.Parameter != null)
-            {
-                objJuego = (Juego)e.Parameter;
-            }
+            //if (e.Parameter != null)
+            //{
+            //    objJuego = (Juego)e.Parameter;
+            //}
 
-            NotificarJugadoresResultado();
-            DibujarResultadosPartida();
+            //NotificarJugadoresResultado();
+            //DibujarResultadosPartida();
         }
 
         private async void NotificarJugadoresResultado()

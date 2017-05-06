@@ -89,6 +89,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\InterfazFinJuego.png" />
     <Content Include="Assets\Elementos\Agua.png" />
     <Content Include="Assets\Elementos\Aire.png" />
     <Content Include="Assets\Elementos\Derrota\Agua.png" />
@@ -107,6 +108,7 @@
     <Content Include="Assets\Elementos\Victoria\Tierra.png" />
     <Content Include="Assets\Fonts\BigNoodleTitling.ttf" />
     <Content Include="Assets\Fonts\CaviarDreams.ttf" />
+    <None Include="Design\projectGuides.guides" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
