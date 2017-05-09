@@ -26,8 +26,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <!--<Image x:Name="ms_appx____Assets_InterfazFinJuego_png" Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/InterfazFinJuego.png" Stretch="Fill" d:IsHidden="True"/>-->
-            <Path Grid.Column="1" Data="M445.456,199.992 L1235.21,200.499 L955.915,932.455 L444.948,932.115" Grid.Row="1" Stretch="Fill" UseLayoutRounding="False" Margin="0.5,0.833,502.333,-0.167" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Fill="Black"/>
-            <Path Grid.Column="1" Data="M837.203,227.971 L1356.92,232.552 L1357.7,980.396 L548.837,982.875 z" Fill="#FFDA3131" Margin="503.625,-0.125,3.25,1.125" Grid.Row="1" Stretch="Fill" UseLayoutRounding="False" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+            <Path Grid.Column="1" Data="M0,0 H779 L503,720 H0 Z" Grid.Row="1" UseLayoutRounding="False" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Path Grid.Column="1" Data="M779,0 H1280 V720 H503 Z" Fill="#FFDA3131" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
 
 
@@ -39,6 +39,6 @@
                 <SolidColorBrush Color="Black" Opacity="0.8"/>
             </Button.Background>
         </Button>
-        
+
     </Grid>
 </Page>
