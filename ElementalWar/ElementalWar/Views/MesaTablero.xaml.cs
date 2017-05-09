@@ -96,15 +96,11 @@ namespace ElementalWar.Views
             ComunicarJugadoresJuegoInicia();
         }
 
-        private async void ComunicarJugadoresJuegoInicia()
+        private void IniciarVariables()
         {
-            //Indica a los jugadores que inicio el juego y quien es el primer
-            for (int i = 0; i < objJuego.Jugadores.Count; i++)
-            {
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[i].Ip),
-                    Constantes.Mensajes.Juego.MesaIndicaJuegoInicia + Constantes.SEPARADOR +
-                    objJuego.Jugadores[0].JugadorId);
-            }
+            recibirComando = true;
+            colorValido = new SolidColorBrush(Windows.UI.Colors.Green);
+            colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
         }
 
         private async void DibujarInfoJugadores()
@@ -190,7 +186,7 @@ namespace ElementalWar.Views
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Source = imagen;
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Visibility = Visibility.Visible;
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Opacity = Constantes.Ficha.Propiedades.OPACITY;
-            bordeFichaSeleccionada.Stroke = colorValido;
+            bordeFichaSeleccionada.Stroke = colorInvalido;
             bordeFichaSeleccionada.SetValue(Grid.RowProperty, objJuego.PosYFicha + 1);
             bordeFichaSeleccionada.SetValue(Grid.ColumnProperty, objJuego.PosXFicha + 1);
         }
@@ -202,11 +198,15 @@ namespace ElementalWar.Views
             lblPuntosJugador2.Text = objJuego.NroFichasJugador2.ToString();
         }
 
-        private void IniciarVariables()
+        private async void ComunicarJugadoresJuegoInicia()
         {
-            recibirComando = true;
-            colorValido = new SolidColorBrush(Windows.UI.Colors.Green);
-            colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
+            //Indica a los jugadores que inicio el juego y quien es el primer
+            for (int i = 0; i < objJuego.Jugadores.Count; i++)
+            {
+                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[i].Ip),
+                    Constantes.Mensajes.Juego.MesaIndicaJuegoInicia + Constantes.SEPARADOR +
+                    objJuego.Jugadores[0].JugadorId);
+            }
         }
         #endregion
 
@@ -559,6 +559,7 @@ namespace ElementalWar.Views
         #region FIN DEL JUEGO
         private async void FinalizarJuego(bool jugadorSalio = false)
         {
+            objJuego.ActualizarInfoFichas();
             objJuego.JugadorIdGanador = objJuego.NroFichasJugador1 == objJuego.NroFichasJugador2 ? -1 : objJuego.NroFichasJugador1 >= objJuego.NroFichasJugador2 ? 1 : 0;
             
             mensajeFinJuego.Visibility = Visibility.Visible;

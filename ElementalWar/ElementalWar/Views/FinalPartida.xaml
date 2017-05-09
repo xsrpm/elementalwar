@@ -11,7 +11,7 @@
         <Grid.Background>
             <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/PC/Fondo.png" />
         </Grid.Background>
-        
+
         <Grid x:Name="gridJuego">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -25,19 +25,45 @@
             </Grid.ColumnDefinitions>
             <Path Grid.Column="1" Data="M0,0 H779 L503,720 H0 Z" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Path.Fill>
-                    <ImageBrush x:Name="FondoJugador1" ImageSource="ms-appx:///Assets/Elementos/Fondo/Agua.png"/>
+                    <ImageBrush x:Name="imgFondoJugador1" ImageSource="ms-appx:///Assets/Elementos/Fondo/Agua.png"/>
                 </Path.Fill>
             </Path>
             <Path Grid.Column="1" Data="M779,0 H1280 V720 H503 Z" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Path.Fill>
-                    <ImageBrush x:Name="FondoJugador2" ImageSource="ms-appx:///Assets/Elementos/Fondo/Fuego.png"/>
+                    <ImageBrush x:Name="imgFondoJugador2" ImageSource="ms-appx:///Assets/Elementos/Fondo/Fuego.png"/>
                 </Path.Fill>
             </Path>
+
+            <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Top">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" Margin="25,50,0,0">
+                        <Image x:Name="imgJugador1" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador1.png"/>
+                        <TextBlock x:Name="lblJugador1" Padding="10,0,0,0" FontSize="35" Text="PAPA BENED" VerticalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,50,25,0" HorizontalAlignment="Right">
+                        <TextBlock x:Name="lblJugador2" Padding="0,0,10,0" FontSize="35" Text="PAPA BENED" VerticalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                        <Image x:Name="imgJugador2" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador2.png"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,125,0">
+                        <Image x:Name="imgElemento1" Height="350" Width="350" Source="ms-appx:///Assets/Elementos/Victoria/Agua.png"/>
+                        <TextBlock x:Name="lblResultado1" Text="Victoria" Padding="10" FontSize="60" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Margin="125,0,0,0">
+                        <Image x:Name="imgElemento2" Height="350" Width="350" Source="ms-appx:///Assets/Elementos/Victoria/Fuego.png"/>
+                        <TextBlock x:Name="lblResultado2" Text="Victoria" Padding="10" FontSize="60" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
-        
-        <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="40" Foreground="White" Tapped="btnMenuPrincipal_Tapped">
+
+        <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" Foreground="White" Tapped="btnMenuPrincipal_Tapped">
             <Button.Background>
-                <SolidColorBrush Color="Black" Opacity="0.8"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Button.Background>
         </Button>
 

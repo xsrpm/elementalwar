@@ -52,7 +52,7 @@ namespace ElementalWar.Views
             }
             else
             {
-                Frame.Navigate(typeof(FinalPartida));
+                Frame.Navigate(typeof(MenuPrincipal));
             }
         }
     }

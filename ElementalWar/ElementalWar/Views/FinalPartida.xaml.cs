@@ -3,6 +3,7 @@ using System;
 using Util;
 using Windows.Graphics.Display;
 using Windows.Networking;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
@@ -27,13 +28,13 @@ namespace ElementalWar.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             DisplayInformation.AutoRotationPreferences = DisplayOrientations.Landscape;
-            //if (e.Parameter != null)
-            //{
-            //    objJuego = (Juego)e.Parameter;
-            //}
+            if (e.Parameter != null)
+            {
+                objJuego = (Juego)e.Parameter;
+            }
 
-            //NotificarJugadoresResultado();
-            //DibujarResultadosPartida();
+            NotificarJugadoresResultado();
+            DibujarResultadosPartida();
         }
 
         private async void NotificarJugadoresResultado()
@@ -57,18 +58,37 @@ namespace ElementalWar.Views
             }
         }
 
-        private void DibujarResultadosPartida()
+        private async void DibujarResultadosPartida()
         {
             Uri uri;
             BitmapImage imagen;
+            IRandomAccessStream fileStream;
+
+            //Dibujar Info Jugadores
+            if (objJuego.Jugadores[0].Imagen != null)
+            {
+                imagen = new BitmapImage();
+                fileStream = await Convertidor.ConvertImageToStream(objJuego.Jugadores[0].Imagen);
+                imagen.SetSource(fileStream);
+                imgJugador1.Source = imagen;
+            }
+            lblJugador1.Text = objJuego.Jugadores[0].Nombre;
+            if (objJuego.Jugadores[1].Imagen != null)
+            {
+                imagen = new BitmapImage();
+                fileStream = await Convertidor.ConvertImageToStream(objJuego.Jugadores[1].Imagen);
+                imagen.SetSource(fileStream);
+                imgJugador2.Source = imagen;
+            }
+            lblJugador2.Text = objJuego.Jugadores[1].Nombre;
 
             //Dibujar Fondos
             uri = new Uri(objJuego.Jugadores[0].Elemento.RutaImagenFondo);
             imagen = new BitmapImage(uri);
-            //////////SETEAR FONDO 1
+            imgFondoJugador1.ImageSource = imagen;
             uri = new Uri(objJuego.Jugadores[1].Elemento.RutaImagenFondo);
             imagen = new BitmapImage(uri);
-            //////////SETEAR FONDO 2
+            imgFondoJugador2.ImageSource = imagen;
 
             var mensajeResultado1 = "";
             var mensajeResultado2 = "";
@@ -84,7 +104,7 @@ namespace ElementalWar.Views
                 mensajeResultado1 = "PERDISTE";
             }
             imagen = new BitmapImage(uri);
-            //////////SETEAR IMAGEN JUGADOR 1
+            imgElemento1.Source = imagen;
             if (objJuego.JugadorIdGanador == 1)
             {
                 uri = new Uri(objJuego.Jugadores[1].Elemento.RutaImagenVictoria);
@@ -96,15 +116,15 @@ namespace ElementalWar.Views
                 mensajeResultado2 = "PERDISTE";
             }
             imagen = new BitmapImage(uri);
-            //////////SETEAR IMAGEN JUGADOR 2
+            imgElemento2.Source = imagen;
 
             if (objJuego.JugadorIdGanador == Constantes.NO_ASIGNADO)
             {
                 mensajeResultado1 = "EMPATE";
                 mensajeResultado2 = "EMPATE";
             }
-            //////////SETEAR TEXTO RESULTADO JUGADOR 1
-            //////////SETEAR TEXTO RESULTADO JUGADOR 2
+            lblResultado1.Text = mensajeResultado1;
+            lblResultado1.Text = mensajeResultado2;
         }
 
         private void btnMenuPrincipal_Tapped(object sender, TappedRoutedEventArgs e)
