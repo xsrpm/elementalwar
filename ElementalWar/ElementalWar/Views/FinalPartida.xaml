@@ -11,9 +11,7 @@
         <Grid.Background>
             <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/PC/Fondo.png" />
         </Grid.Background>
-
-
-
+        
         <Grid x:Name="gridJuego">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -25,15 +23,18 @@
                 <ColumnDefinition Width="1280" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <!--<Image x:Name="ms_appx____Assets_InterfazFinJuego_png" Grid.Column="1" Grid.Row="1" Source="ms-appx:///Assets/InterfazFinJuego.png" Stretch="Fill" d:IsHidden="True"/>-->
-            <Path Grid.Column="1" Data="M0,0 H779 L503,720 H0 Z" Grid.Row="1" UseLayoutRounding="False" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Path Grid.Column="1" Data="M779,0 H1280 V720 H503 Z" Fill="#FFDA3131" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
-
-
+            <Path Grid.Column="1" Data="M0,0 H779 L503,720 H0 Z" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Path.Fill>
+                    <ImageBrush x:Name="FondoJugador1" ImageSource="ms-appx:///Assets/Elementos/Fondo/Agua.png"/>
+                </Path.Fill>
+            </Path>
+            <Path Grid.Column="1" Data="M779,0 H1280 V720 H503 Z" Grid.Row="1" UseLayoutRounding="False" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Path.Fill>
+                    <ImageBrush x:Name="FondoJugador2" ImageSource="ms-appx:///Assets/Elementos/Fondo/Fuego.png"/>
+                </Path.Fill>
+            </Path>
         </Grid>
-
-
+        
         <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="40" Foreground="White" Tapped="btnMenuPrincipal_Tapped">
             <Button.Background>
                 <SolidColorBrush Color="Black" Opacity="0.8"/>
