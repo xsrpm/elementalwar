@@ -169,6 +169,7 @@ namespace ElementalWar.Views
                         }
                         else
                         {
+                            panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORINACTIVO);
                             DeshabilitarControles();
                         }
                     }
@@ -230,7 +231,7 @@ namespace ElementalWar.Views
             {
                 mandoActivo = true;
                 lblTurno.Text = "TURNO";
-                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOACTIVO);
+                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORACTIVO);
                 if (App.DetectPlatform() == Platform.WindowsPhone)
                 {
                     var vibration = VibrationDevice.GetDefault();
@@ -245,7 +246,7 @@ namespace ElementalWar.Views
             {
                 mandoActivo = false;
                 lblTurno.Text = "";
-                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.PanelTurno.COLORMANDOINACTIVO);
+                panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORINACTIVO);
             }
         }
 

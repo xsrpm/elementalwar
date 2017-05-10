@@ -124,7 +124,7 @@ namespace ElementalWar.Views
                 mensajeResultado2 = "EMPATE";
             }
             lblResultado1.Text = mensajeResultado1;
-            lblResultado1.Text = mensajeResultado2;
+            lblResultado2.Text = mensajeResultado2;
         }
 
         private void btnMenuPrincipal_Tapped(object sender, TappedRoutedEventArgs e)

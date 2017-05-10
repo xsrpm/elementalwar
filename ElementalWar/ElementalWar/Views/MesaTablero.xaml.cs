@@ -1,7 +1,6 @@
 ﻿using DataModel;
 using SynapseSDK;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Util;
 using Windows.Graphics.Display;
@@ -27,6 +26,8 @@ namespace ElementalWar.Views
         private bool recibirComando;
         private SolidColorBrush colorValido;
         private SolidColorBrush colorInvalido;
+        private SolidColorBrush colorActivo;
+        private SolidColorBrush colorTransparente;
 
         public MesaTablero()
         {
@@ -46,43 +47,8 @@ namespace ElementalWar.Views
             }
 
             IniciarSDK();
-            //#region Pruebas
-            //IniciarDataDePrueba();
-            //#endregion
             Inicializar();
         }
-
-        #region Pruebas
-        private void IniciarDataDePrueba()
-        {
-            objJuego = new Juego
-            {
-                Codigo = "138",
-                Ip = "192.168.1.38",
-                Jugadores = new List<Jugador>
-                {
-                    new Jugador
-                    {
-                        JugadorId = 0,
-                        Ip = "192.168.1.39",
-                        Nombre = "Roy",
-                        Imagen = null,
-                        Elemento = new Elemento{ ElementoId = Constantes.Elementos.Agua }
-                    },
-                    new Jugador
-                    {
-                        JugadorId = 0,
-                        Ip = "192.168.1.40",
-                        Nombre = "Cesar",
-                        Imagen = null,
-                        Elemento = new Elemento{ ElementoId = Constantes.Elementos.Fuego }
-                    }
-                }
-            };
-            GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, 0);
-            GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, 1);
-        }
-        #endregion
 
         #region Inicializacion
         private void Inicializar()
@@ -101,6 +67,8 @@ namespace ElementalWar.Views
             recibirComando = true;
             colorValido = new SolidColorBrush(Windows.UI.Colors.Green);
             colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
+            colorActivo = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORACTIVO);
+            colorTransparente = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORTRANSPARENTE);
         }
 
         private async void DibujarInfoJugadores()
@@ -139,15 +107,15 @@ namespace ElementalWar.Views
         private void InicializarFichas()
         {
             //Asignar las fichas inciales del centro
-            objJuego.Fichas[4, 3].JugadorId = 0;
-            objJuego.Fichas[4, 3].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
-            objJuego.Fichas[3, 4].JugadorId = 0;
-            objJuego.Fichas[3, 4].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
+            objJuego.Fichas[5, 4].JugadorId = 0;
+            objJuego.Fichas[5, 4].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
+            objJuego.Fichas[4, 5].JugadorId = 0;
+            objJuego.Fichas[4, 5].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
 
-            objJuego.Fichas[3, 3].JugadorId = 1;
-            objJuego.Fichas[3, 3].ElementoId = objJuego.Jugadores[1].Elemento.ElementoId;
             objJuego.Fichas[4, 4].JugadorId = 1;
             objJuego.Fichas[4, 4].ElementoId = objJuego.Jugadores[1].Elemento.ElementoId;
+            objJuego.Fichas[5, 5].JugadorId = 1;
+            objJuego.Fichas[5, 5].ElementoId = objJuego.Jugadores[1].Elemento.ElementoId;
 
             //Asignar la ficha inicial que se mueve por el tablero
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].ElementoId = objJuego.Jugadores[0].Elemento.ElementoId;
@@ -157,7 +125,7 @@ namespace ElementalWar.Views
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    objJuego.Fichas[i, k].Imagen = ((Image)this.FindName("elemento" + k + i));
+                    objJuego.Fichas[i + 1, k + 1].Imagen = ((Image)this.FindName("elemento" + k + i));
                 }
             }
         }
@@ -166,9 +134,9 @@ namespace ElementalWar.Views
         {
             Uri uri;
             BitmapImage imagen;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 0; k < 10; k++)
                 {
                     if (objJuego.Fichas[i, k].JugadorId != Constantes.NO_ASIGNADO)
                     {
@@ -187,8 +155,10 @@ namespace ElementalWar.Views
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Visibility = Visibility.Visible;
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Opacity = Constantes.Ficha.Propiedades.OPACITY;
             bordeFichaSeleccionada.Stroke = colorInvalido;
-            bordeFichaSeleccionada.SetValue(Grid.RowProperty, objJuego.PosYFicha + 1);
-            bordeFichaSeleccionada.SetValue(Grid.ColumnProperty, objJuego.PosXFicha + 1);
+            bordeFichaSeleccionada.SetValue(Grid.RowProperty, objJuego.PosYFicha);
+            bordeFichaSeleccionada.SetValue(Grid.ColumnProperty, objJuego.PosXFicha);
+
+            DibujarBordeTurnoJugador();
         }
 
         private void ActualizarInfoFichas()
@@ -376,9 +346,9 @@ namespace ElementalWar.Views
 
         private void PintarFichaDestino()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 1; i < 9; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 1; k < 9; k++)
                 {
                     objJuego.Fichas[i, k].Imagen.Opacity = 1;
                 }
@@ -391,8 +361,8 @@ namespace ElementalWar.Views
             var posY = objJuego.PosYFicha;
 
             //Mover Borde
-            bordeFichaSeleccionada.SetValue(Grid.RowProperty, posY + 1);
-            bordeFichaSeleccionada.SetValue(Grid.ColumnProperty, posX + 1);
+            bordeFichaSeleccionada.SetValue(Grid.RowProperty, posY);
+            bordeFichaSeleccionada.SetValue(Grid.ColumnProperty, posX);
             //Pintar Borde
             if (objJuego.Fichas[posX, posY].JugadorId == Constantes.NO_ASIGNADO)
             {
@@ -402,9 +372,9 @@ namespace ElementalWar.Views
                 {
                     bordeFichaSeleccionada.Stroke = colorValido;
                     //Se translucen las fichas que podrian ser volteadas
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < 10; i++)
                     {
-                        for (int k = 0; k < 8; k++)
+                        for (int k = 0; k < 10; k++)
                         {
                             if (fichas[i, k] == 1)
                             {
@@ -447,7 +417,6 @@ namespace ElementalWar.Views
                 if (GameLogic.LogicaJuego.HayFichasParaVoltear(fichasParaVoltear))
                 {
                     ponerFichaSound.Play();
-                    DeshabilitarControlesJugadorActual();
                     PonerFichaLugarAccion();
                     VoltearFichas(fichasParaVoltear);
                     ActualizarInfoFichas();
@@ -475,9 +444,9 @@ namespace ElementalWar.Views
             objJuego.Fichas[objJuego.PosXFicha, objJuego.PosYFicha].Imagen.Source = imagen;
 
             //Se voltean las fichas
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 0; k < 10; k++)
                 {
                     if (fichas[i, k] == 1)
                     {
@@ -489,12 +458,6 @@ namespace ElementalWar.Views
                 }
             }
         }
-
-        private async void DeshabilitarControlesJugadorActual()
-        {
-            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[objJuego.JugadorIdTurno].Ip),
-                    Constantes.Mensajes.Juego.DeshabilitarControles);
-        }
         #endregion
 
         #region Cambio de Turno
@@ -505,6 +468,7 @@ namespace ElementalWar.Views
             if (VerificarAunSePuedenVoltearFichas())
             {
                 PonerFichaDeMovimiento();
+                DibujarBordeTurnoJugador();
                 ComunicarJugadoresTurno();
             }
             else
@@ -515,9 +479,9 @@ namespace ElementalWar.Views
 
         private bool VerificarAunSePuedenVoltearFichas()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 1; i < 9; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 1; k < 9; k++)
                 {
                     if (objJuego.Fichas[i, k].JugadorId == Constantes.NO_ASIGNADO)
                     {
@@ -539,20 +503,30 @@ namespace ElementalWar.Views
             bordeFichaSeleccionada.Stroke = colorInvalido;
         }
 
+        private void DibujarBordeTurnoJugador()
+        {
+            var jugadorId = (objJuego.JugadorIdTurno) + 1;
+            var jugadorIdRival = (objJuego.JugadorIdTurno == 0 ? 1 : 0) + 1;
+            ((StackPanel)FindName("panelElemento" + jugadorId)).BorderBrush = colorActivo;
+            ((StackPanel)FindName("panelElemento" + jugadorIdRival)).BorderBrush = colorTransparente;
+        }
+
         private async void ComunicarJugadoresTurno()
         {
             var jugadorId = objJuego.JugadorIdTurno;
-            var jugadorIdRival = jugadorId == 0 ? 1 : 0;
+            var jugadorIdRival = objJuego.JugadorIdTurno == 0 ? 1 : 0;
 
-            //Se vuelve a enviar por si no llego a deshabilitarse los controles
+            //Se envia dos veces para asegurarse que reciba el mensaje
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
-                    Constantes.Mensajes.Juego.DeshabilitarControles);
+                Constantes.Mensajes.Juego.DeshabilitarControles);
+            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
+                Constantes.Mensajes.Juego.DeshabilitarControles);
 
             //Se envia dos veces para asegurarse que reciba el mensaje
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
-                    Constantes.Mensajes.Juego.HabilitarControles);
+                Constantes.Mensajes.Juego.HabilitarControles);
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
-                    Constantes.Mensajes.Juego.HabilitarControles);
+                Constantes.Mensajes.Juego.HabilitarControles);
         }
         #endregion
 
@@ -560,8 +534,10 @@ namespace ElementalWar.Views
         private async void FinalizarJuego(bool jugadorSalio = false)
         {
             objJuego.ActualizarInfoFichas();
-            objJuego.JugadorIdGanador = objJuego.NroFichasJugador1 == objJuego.NroFichasJugador2 ? -1 : objJuego.NroFichasJugador1 >= objJuego.NroFichasJugador2 ? 1 : 0;
-            
+
+            panelElemento1.BorderBrush = colorTransparente;
+            panelElemento2.BorderBrush = colorTransparente;
+            bordeFichaSeleccionada.Visibility = Visibility.Collapsed;
             mensajeFinJuego.Visibility = Visibility.Visible;
             await Task.Delay(TimeSpan.FromSeconds(3));
 

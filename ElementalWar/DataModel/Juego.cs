@@ -28,22 +28,24 @@ namespace DataModel
                 new Jugador { JugadorId = 0, Nombre = "Jugador 1"},
                 new Jugador { JugadorId = 1, Nombre = "Jugador 2"}
             };
-            Fichas = new Ficha[8, 8]
+            Fichas = new Ficha[10, 10]
             {
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
-                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() }
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() },
+                {new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha(), new Ficha() }
             };
 
             JugadorIdTurno = 0;
 
-            PosXFicha = 3;
-            PosYFicha = 5;
+            PosXFicha = 4;
+            PosYFicha = 6;
 
             JugadorIdGanador = -1;
         }
@@ -53,9 +55,9 @@ namespace DataModel
             NroFichasJugador1 = 0;
             NroFichasJugador2 = 0;
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 0; k < 10; k++)
                 {
                     if (Fichas[i, k].JugadorId == 0)
                         NroFichasJugador1++;
@@ -63,6 +65,8 @@ namespace DataModel
                         NroFichasJugador2++;
                 }
             }
+
+            JugadorIdGanador = NroFichasJugador1 == NroFichasJugador2 ? -1 : NroFichasJugador1 > NroFichasJugador2 ? 0 : 1;
         }
 
         public void CambiarTurno()

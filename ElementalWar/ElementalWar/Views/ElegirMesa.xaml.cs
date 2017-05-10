@@ -103,17 +103,11 @@ namespace ElementalWar.Views
             try
             {
                 string mesaSeleccionada = txtSala.Text;
-                //string strBytes = string.Empty;
 
                 App.objSDK.clearDeviceCollection();
                 await App.objSDK.MulticastPing();
                 var dispositivos = App.objSDK.getDeviceCollection();
-
-                //if (App.objJugador.Imagen != null)
-                //    strBytes = Convert.ToBase64String(App.objJugador.Imagen);
-                //else
-                //    strBytes = Constantes.SIN_IMAGEN;
-
+                
                 if (dispositivos != null)
                 {
                     foreach (var objDevice in dispositivos)
@@ -123,14 +117,12 @@ namespace ElementalWar.Views
                         await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.SolicitudUnirse + Constantes.SEPARADOR +
                             mesaSeleccionada + Constantes.SEPARADOR +
                             App.objJugador.Ip + Constantes.SEPARADOR +
-                            App.objJugador.Nombre/* + Constantes.SEPARADOR +
-                            strBytes*/);
+                            App.objJugador.Nombre);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Helper.MensajeOk(ex.Message);
             }
             prConectando.IsActive = false;
             panelConectando.Visibility = Visibility.Collapsed;

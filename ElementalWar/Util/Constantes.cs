@@ -17,11 +17,9 @@
 
         public struct Colores
         {
-            public struct PanelTurno
-            {
-                public const string COLORMANDOACTIVO = "#FF01FE0F";
-                public const string COLORMANDOINACTIVO = "#FFFF0437";
-            }
+            public const string COLORACTIVO = "#FF01FE0F";
+            public const string COLORINACTIVO = "#FFFF0437";
+            public const string COLORTRANSPARENTE = "#00000000";
         }
 
         public struct Imagenes

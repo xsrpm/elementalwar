@@ -61,7 +61,7 @@
             </Grid>
         </Grid>
 
-        <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="30" Foreground="White" Tapped="btnMenuPrincipal_Tapped">
+        <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Foreground="White" Tapped="btnMenuPrincipal_Tapped">
             <Button.Background>
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Button.Background>

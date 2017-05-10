@@ -90,7 +90,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="panelTurno" Margin="0,0,0,20" Grid.Row="0" Grid.ColumnSpan="5" Width="150" Background="#FFFF0437" CornerRadius="7">
+                    <StackPanel x:Name="panelTurno" Margin="0,0,0,20" Grid.Row="0" Grid.ColumnSpan="5" Width="150" Background="#FF01FE0F" CornerRadius="7">
                         <TextBlock x:Name="lblTurno" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
                     </StackPanel>
 

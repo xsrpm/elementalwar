@@ -19,19 +19,19 @@ namespace GameLogic
             switch (direccion)
             {
                 case Constantes.Mensajes.Juego.AccionMando.Izquierda:
-                    if (posX - 1 >= 0)
+                    if (posX - 1 >= 1)
                         valido = true;
                     break;
                 case Constantes.Mensajes.Juego.AccionMando.Arriba:
-                    if (posY - 1 >= 0)
+                    if (posY - 1 >= 1)
                         valido = true;
                     break;
                 case Constantes.Mensajes.Juego.AccionMando.Derecha:
-                    if (posX + 1 <= 7)
+                    if (posX + 1 <= 8)
                         valido = true;
                     break;
                 case Constantes.Mensajes.Juego.AccionMando.Abajo:
-                    if (posY + 1 <= 7)
+                    if (posY + 1 <= 8)
                         valido = true;
                     break;
             }
@@ -46,16 +46,18 @@ namespace GameLogic
 
         public static int[,] FichasParaVoltear(Juego objJuego, int posX, int posY)
         {
-            int[,] fichas = new int[8, 8]
+            int[,] fichas = new int[10, 10]
             {
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 },
-                { 0,0,0,0,0,0,0,0 }
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 },
+                { 0,0,0,0,0,0,0,0,0,0 }
             };
 
             var jugadorId = objJuego.JugadorIdTurno;
@@ -88,7 +90,7 @@ namespace GameLogic
 
             #region Horizontal Derecha
             cont = 0;
-            for (int i = posX + 1; i < 8; i++)
+            for (int i = posX + 1; i < 10; i++)
             {
                 if (objJuego.Fichas[i, posY].JugadorId == jugadorIdRival)
                     cont++;
@@ -136,7 +138,7 @@ namespace GameLogic
 
             #region Vertical Abajo
             cont = 0;
-            for (int i = posY + 1; i < 8; i++)
+            for (int i = posY + 1; i < 10; i++)
             {
                 if (objJuego.Fichas[posX, i].JugadorId == jugadorIdRival)
                     cont++;
@@ -160,7 +162,7 @@ namespace GameLogic
 
             #region Diagonal Abajo Derecha
             cont = 0;
-            for (int i = posX + 1, k = posY + 1; i < 8 && k < 8; i++, k++)
+            for (int i = posX + 1, k = posY + 1; i < 10 && k < 10; i++, k++)
             {
                 if (objJuego.Fichas[i, k].JugadorId == jugadorIdRival)
                     cont++;
@@ -184,7 +186,7 @@ namespace GameLogic
 
             #region Diagonal Abajo Izquierda
             cont = 0;
-            for (int i = posX - 1, k = posY + 1; i >= 0 && k < 8; i--, k++)
+            for (int i = posX - 1, k = posY + 1; i >= 0 && k < 10; i--, k++)
             {
                 if (objJuego.Fichas[i, k].JugadorId == jugadorIdRival)
                     cont++;
@@ -208,7 +210,7 @@ namespace GameLogic
 
             #region Diagonal Arriba Derecha
             cont = 0;
-            for (int i = posX + 1, k = posY - 1; i < 8 && k >= 0; i++, k--)
+            for (int i = posX + 1, k = posY - 1; i < 10 && k >= 0; i++, k--)
             {
                 if (objJuego.Fichas[i, k].JugadorId == jugadorIdRival)
                     cont++;
@@ -261,9 +263,9 @@ namespace GameLogic
         {
             var hayFichasParaVoltear = false;
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int k = 0; k < 8; k++)
+                for (int k = 0; k < 10; k++)
                 {
                     if (fichas[i, k] == 1)
                     {
