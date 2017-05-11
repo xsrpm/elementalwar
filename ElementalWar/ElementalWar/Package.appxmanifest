@@ -3,9 +3,9 @@
   <Identity Name="266b32f5-b3f5-4d72-acc3-aa30c6b2b9cc" Publisher="CN=Roy-PC" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="266b32f5-b3f5-4d72-acc3-aa30c6b2b9cc" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ElementalWar</DisplayName>
-    <PublisherDisplayName>Roy-PC</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <DisplayName>Elemental War</DisplayName>
+    <PublisherDisplayName>Escuela de Ingeniería de Sistemas y Computación</PublisherDisplayName>
+    <Logo>Assets\PackageImages\StoreLogo\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
@@ -15,10 +15,15 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ElementalWar.App">
-      <uap:VisualElements DisplayName="ElementalWar" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ElementalWar" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="Elemental War" Square150x150Logo="Assets\PackageImages\Square150x150Logo\Square150x150Logo.png" Square44x44Logo="Assets\PackageImages\Square44x44Logo\Square44x44Logo.png" Description="Elemental War" BackgroundColor="transparent">
+        <uap:LockScreen Notification="badge" BadgeLogo="Assets\PackageImages\BadgeLogo\BadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\PackageImages\Square71x71Logo\Square71x71Logo.png" Square310x310Logo="Assets\PackageImages\Square310x310Logo\Square310x310Logo.png" ShortName="Elemental War">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#D3D3D3" />
       </uap:VisualElements>
     </Application>
   </Applications>
