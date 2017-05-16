@@ -16,7 +16,11 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>ElementalWar_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>ElementalWar_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>52F2B2C45F5B0E996042DADC20154D8116D28A28</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -108,6 +112,7 @@
     <Content Include="Assets\Fonts\BigNoodleTitling.ttf" />
     <Content Include="Assets\Fonts\CaviarDreams.ttf" />
     <None Include="Design\projectGuides.guides" />
+    <None Include="ElementalWar_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -157,11 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Media\PonerFicha.mp3" />
-    <Content Include="Assets\PackageImages\BadgeLogo\BadgeLogo.scale-100.png" />
-    <Content Include="Assets\PackageImages\BadgeLogo\BadgeLogo.scale-125.png" />
-    <Content Include="Assets\PackageImages\BadgeLogo\BadgeLogo.scale-150.png" />
-    <Content Include="Assets\PackageImages\BadgeLogo\BadgeLogo.scale-200.png" />
-    <Content Include="Assets\PackageImages\BadgeLogo\BadgeLogo.scale-400.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\PackageImages\Square150x150Logo\Square150x150Logo.scale-100.png" />
     <Content Include="Assets\PackageImages\Square150x150Logo\Square150x150Logo.scale-125.png" />
@@ -235,10 +235,11 @@
     <Content Include="Assets\Phone\Roles\Jugador.png" />
     <Content Include="Assets\Phone\SplashScreen.png" />
     <Content Include="Assets\Phone\Fondo.png" />
-    <Content Include="lib\SynapseSDK.dll" />
-    <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="lib\SynapseSDK.dll" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

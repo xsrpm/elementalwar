@@ -13,5 +13,15 @@ namespace ElementalWar.Views
         {
             this.InitializeComponent();
         }
+
+        private void imgAtras_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPrincipal));
+        }
+
+        private void panelInfoJugador_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GuardarDatosJugador), typeof(ComoJugar));
+        }
     }
 }

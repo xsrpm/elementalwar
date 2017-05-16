@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="266b32f5-b3f5-4d72-acc3-aa30c6b2b9cc" Publisher="CN=Roy-PC" Version="1.0.0.0" />
+  <Identity Name="13204EscueladeIngenierade.ElementalWar" Publisher="CN=BA869065-7E18-4773-89AB-9D7D49398EB9" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="266b32f5-b3f5-4d72-acc3-aa30c6b2b9cc" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Elemental War</DisplayName>
@@ -16,7 +16,6 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ElementalWar.App">
       <uap:VisualElements DisplayName="Elemental War" Square150x150Logo="Assets\PackageImages\Square150x150Logo\Square150x150Logo.png" Square44x44Logo="Assets\PackageImages\Square44x44Logo\Square44x44Logo.png" Description="Elemental War" BackgroundColor="transparent">
-        <uap:LockScreen Notification="badge" BadgeLogo="Assets\PackageImages\BadgeLogo\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\PackageImages\Square71x71Logo\Square71x71Logo.png" Square310x310Logo="Assets\PackageImages\Square310x310Logo\Square310x310Logo.png" ShortName="Elemental War">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
