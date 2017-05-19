@@ -23,8 +23,7 @@
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
-
-                        <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
+                        
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
 
@@ -73,7 +72,7 @@
             </Grid>
 
             <StackPanel x:Name="Contenido">
-                <Image x:Name="imgLogo" Margin="0,15,0,20" Width="225" Height="225" Source="ms-appx:///Assets/Phone/Logo.png"/>
+                <Image x:Name="imgLogo" Margin="0,3,0,3" Width="205" Height="205" Source="ms-appx:///Assets/Phone/Logo.png"/>
                 <StackPanel x:Name="CreditosPanel" Orientation="Vertical" Margin="0,0,0,0" Width="200">
                     <TextBlock x:Name="txt1" FontSize="17" Text="El videojuego Elemental War fue elaborado en el curso de" TextAlignment="Center" TextWrapping="WrapWholeWords" Foreground="White" FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"/>
                     <TextBlock x:Name="txt2" FontSize="17" Text="Taller de Proyecto." TextAlignment="Center" FontWeight="Bold" Foreground="White" FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"/>

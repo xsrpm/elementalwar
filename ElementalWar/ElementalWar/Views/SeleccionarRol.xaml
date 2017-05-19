@@ -24,7 +24,6 @@
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
 
-                        <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
                     </VisualState.Setters>

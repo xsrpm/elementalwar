@@ -28,7 +28,6 @@
                         <Setter Target="imgLogo.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
 
-                        <Setter Target="imgFoto.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgFoto.Width" Value="300"></Setter>
                         <Setter Target="imgFoto.Height" Value="300"></Setter>
 

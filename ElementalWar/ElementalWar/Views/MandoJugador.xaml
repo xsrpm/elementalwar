@@ -24,11 +24,11 @@
                         <Setter Target="imgAtras.Height" Value="30"></Setter>
                         <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
 
-                        <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
 
                         <Setter Target="panelTurno.Width" Value="300"></Setter>
+                        <Setter Target="lblTurno.FontSize" Value="20"></Setter>
                         <Setter Target="imgIzquierda.Source" Value="ms-appx:///Assets/Phone/Mando/Izquierda.png"></Setter>
                         <Setter Target="imgArriba.Source" Value="ms-appx:///Assets/Phone/Mando/Arriba.png"></Setter>
                         <Setter Target="imgDerecha.Source" Value="ms-appx:///Assets/Phone/Mando/Derecha.png"></Setter>
@@ -90,8 +90,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="panelTurno" Margin="0,0,0,20" Grid.Row="0" Grid.ColumnSpan="5" Width="150" Background="#FF01FE0F" CornerRadius="7">
-                        <TextBlock x:Name="lblTurno" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+                    <StackPanel x:Name="panelTurno" Margin="0,0,0,20" Grid.Row="0" Grid.ColumnSpan="5" Width="150" Background="Yellow" CornerRadius="7">
+                        <TextBlock x:Name="lblTurno" Text="En espera inicio partida..." FontWeight="Bold" HorizontalAlignment="Center" FontSize="10" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <Button x:Name="btnIzquierda" Margin="5" Grid.Row="2" Grid.Column="0" Height="60" Width="60" Tapped="btnIzquierda_Tapped">

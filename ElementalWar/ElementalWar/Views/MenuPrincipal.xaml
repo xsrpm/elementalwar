@@ -19,8 +19,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
-
-                        <Setter Target="imgJugador.Source" Value="ms-appx:///Assets/PC/Roles/Jugador.png"></Setter>
+                        
                         <Setter Target="imgJugador.Width" Value="45"></Setter>
                         <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
 

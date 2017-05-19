@@ -215,8 +215,7 @@ namespace ElementalWar.Views
                         else
                             strBytesImagen = Constantes.Imagenes.SIN_IMAGEN;
 
-                        await App.objSDK.StreamPing(/*new HostName(App.objJugador.MesaIp),*/
-                            Constantes.Mensajes.UnirseMesa.EnviarImagenJugador + Constantes.SEPARADOR +
+                        await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.EnviarImagenJugador + Constantes.SEPARADOR +
                             App.objJugador.MesaIp + Constantes.SEPARADOR +
                             App.objJugador.JugadorId + Constantes.SEPARADOR +
                             strBytesImagen);

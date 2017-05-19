@@ -163,6 +163,7 @@ namespace ElementalWar.Views
                             return;
 
                         mandoActivo = false;
+                        lblTurno.Text = "";
                         if (int.Parse(mensaje[1]) == App.objJugador.JugadorId)
                         {
                             HabilitarControles();

@@ -519,12 +519,8 @@ namespace ElementalWar.Views
             //Se envia dos veces para asegurarse que reciba el mensaje
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
                 Constantes.Mensajes.Juego.DeshabilitarControles);
-            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
-                Constantes.Mensajes.Juego.DeshabilitarControles);
 
             //Se envia dos veces para asegurarse que reciba el mensaje
-            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
-                Constantes.Mensajes.Juego.HabilitarControles);
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
                 Constantes.Mensajes.Juego.HabilitarControles);
         }
