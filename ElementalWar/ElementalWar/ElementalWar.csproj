@@ -17,7 +17,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>ElementalWar_StoreKey.pfx</PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>52F2B2C45F5B0E996042DADC20154D8116D28A28</PackageCertificateThumbprint>
@@ -216,8 +216,8 @@
     <Content Include="Assets\PC\Roles\Jugador.png" />
     <Content Include="Assets\PC\Logo.png" />
     <Content Include="Assets\PC\Roles\Tablero.png" />
-    <Content Include="Assets\PC\SplashScreen.png" />
     <Content Include="Assets\PC\Fondo.png" />
+    <Content Include="Assets\PC\SplashScreen.png" />
     <Content Include="Assets\PC\Tablero.png" />
     <Content Include="Assets\Phone\Buttons\ComoJugar.png" />
     <Content Include="Assets\Phone\Buttons\Creditos.png" />
@@ -233,8 +233,8 @@
     <Content Include="Assets\Phone\Mando\Izquierda.png" />
     <Content Include="Assets\Phone\MiniLogo.png" />
     <Content Include="Assets\Phone\Roles\Jugador.png" />
-    <Content Include="Assets\Phone\SplashScreen.png" />
     <Content Include="Assets\Phone\Fondo.png" />
+    <Content Include="Assets\Phone\SplashScreen.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="lib\SynapseSDK.dll" />
