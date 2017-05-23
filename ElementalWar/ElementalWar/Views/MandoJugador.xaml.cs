@@ -100,6 +100,7 @@ namespace ElementalWar.Views
                 {
                     App.objJugador.Ip = App.objSDK.MyIP.ToString();
                     App.objSDK.setObjMetodoReceptorString = MiReceptorMandoJugador;
+                    App.objSDK.MulticastPing();
                 }
                 else
                 {
@@ -158,13 +159,13 @@ namespace ElementalWar.Views
                     #region Mesa indica que el juego acaba de iniciar
                     else if (mensaje[0] == Constantes.Mensajes.Juego.MesaIndicaJuegoInicia)
                     {
-                        //mensaje[1] => objJugador.JugadorId
+                        //mensaje[1] => objJugador.Ip
                         if (mensaje.Length != 2)
                             return;
 
                         mandoActivo = false;
                         lblTurno.Text = "";
-                        if (int.Parse(mensaje[1]) == App.objJugador.JugadorId)
+                        if (mensaje[1] == App.objJugador.Ip)
                         {
                             HabilitarControles();
                         }

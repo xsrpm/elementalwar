@@ -175,7 +175,7 @@ namespace ElementalWar.Views
             {
                 await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[i].Ip),
                     Constantes.Mensajes.Juego.MesaIndicaJuegoInicia + Constantes.SEPARADOR +
-                    objJuego.Jugadores[0].JugadorId);
+                    objJuego.Jugadores[objJuego.JugadorIdTurno].Ip);
             }
         }
         #endregion
@@ -198,6 +198,7 @@ namespace ElementalWar.Views
                 if (App.objSDK.SocketIsConnected)
                 {
                     App.objSDK.setObjMetodoReceptorString = MiReceptorJuego;
+                    App.objSDK.MulticastPing();
                 }
                 else
                 {
@@ -516,11 +517,9 @@ namespace ElementalWar.Views
             var jugadorId = objJuego.JugadorIdTurno;
             var jugadorIdRival = objJuego.JugadorIdTurno == 0 ? 1 : 0;
 
-            //Se envia dos veces para asegurarse que reciba el mensaje
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
                 Constantes.Mensajes.Juego.DeshabilitarControles);
 
-            //Se envia dos veces para asegurarse que reciba el mensaje
             await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
                 Constantes.Mensajes.Juego.HabilitarControles);
         }
