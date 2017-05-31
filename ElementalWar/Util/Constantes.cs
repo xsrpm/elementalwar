@@ -19,7 +19,14 @@
         {
             public const string COLORACTIVO = "#FF01FE0F";
             public const string COLORINACTIVO = "#FFFF0437";
+            public const string COLORENESPERA = "#FFFFFF00";
             public const string COLORTRANSPARENTE = "#00000000";
+        }
+
+        public struct MensajesMando {
+            public const string MANDOINACTIVO = "Esperando Turno";
+            public const string MANDOACTIVO = "En Turno";
+            public const string MANDOMESAENESPERA = "Esperando inicio de juego...";
         }
 
         public struct Imagenes

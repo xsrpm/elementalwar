@@ -46,6 +46,8 @@ namespace ElementalWar.Views
                     imgJugador.Source = bimgBitmapImage;
                 }
             }
+            lblTurno.Text = Constantes.MensajesMando.MANDOMESAENESPERA;
+            panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORENESPERA);
             IniciarSDK();
         }
 
@@ -164,14 +166,13 @@ namespace ElementalWar.Views
                             return;
 
                         mandoActivo = false;
-                        lblTurno.Text = "";
+                        
                         if (mensaje[1] == App.objJugador.Ip)
                         {
                             HabilitarControles();
                         }
                         else
                         {
-                            panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORINACTIVO);
                             DeshabilitarControles();
                         }
                     }
@@ -232,7 +233,7 @@ namespace ElementalWar.Views
             if (!mandoActivo)
             {
                 mandoActivo = true;
-                lblTurno.Text = "TURNO";
+                lblTurno.Text = Constantes.MensajesMando.MANDOACTIVO;
                 panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORACTIVO);
                 if (App.DetectPlatform() == Platform.WindowsPhone)
                 {
@@ -247,7 +248,7 @@ namespace ElementalWar.Views
             if (mandoActivo)
             {
                 mandoActivo = false;
-                lblTurno.Text = "";
+                lblTurno.Text = Constantes.MensajesMando.MANDOINACTIVO;
                 panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORINACTIVO);
             }
         }
@@ -275,6 +276,7 @@ namespace ElementalWar.Views
 
             panelRegresar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             Contenido.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            panelTurno.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             mensajeFinJuego.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 

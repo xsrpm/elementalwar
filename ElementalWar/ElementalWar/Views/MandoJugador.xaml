@@ -2,130 +2,238 @@
     x:Class="ElementalWar.Views.MandoJugador"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ElementalWar.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ElementalWar.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Grid>
         <Grid.Background>
-            <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Phone/Fondo.png" />
+            <ImageBrush
+                x:Name="Fondo"
+                ImageSource="ms-appx:///Assets/Phone/Fondo.png"
+                Stretch="UniformToFill" />
         </Grid.Background>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="pcState">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="770"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png"></Setter>
 
-                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png"></Setter>
-                        <Setter Target="imgAtras.Height" Value="30"></Setter>
-                        <Setter Target="lblRegresar.FontSize" Value="30"></Setter>
 
-                        <Setter Target="imgJugador.Width" Value="45"></Setter>
-                        <Setter Target="lblBienvenido.FontSize" Value="30"></Setter>
+        <Grid x:Name="Cabecera" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".50*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width=".50*" />
+            </Grid.ColumnDefinitions>
 
-                        <Setter Target="panelTurno.Width" Value="300"></Setter>
-                        <Setter Target="lblTurno.FontSize" Value="20"></Setter>
-                        <Setter Target="imgIzquierda.Source" Value="ms-appx:///Assets/Phone/Mando/Izquierda.png"></Setter>
-                        <Setter Target="imgArriba.Source" Value="ms-appx:///Assets/Phone/Mando/Arriba.png"></Setter>
-                        <Setter Target="imgDerecha.Source" Value="ms-appx:///Assets/Phone/Mando/Derecha.png"></Setter>
-                        <Setter Target="imgAbajo.Source" Value="ms-appx:///Assets/Phone/Mando/Abajo.png"></Setter>
-                        <Setter Target="imgAccion.Source" Value="ms-appx:///Assets/Phone/Mando/MandoAccion.png"></Setter>
-                        <Setter Target="btnIzquierda.Width" Value="120"></Setter>
-                        <Setter Target="btnIzquierda.Height" Value="120"></Setter>
-                        <Setter Target="btnIzquierda.Margin" Value="10"></Setter>
-                        <Setter Target="btnArriba.Width" Value="120"></Setter>
-                        <Setter Target="btnArriba.Height" Value="120"></Setter>
-                        <Setter Target="btnArriba.Margin" Value="10"></Setter>
-                        <Setter Target="btnDerecha.Width" Value="120"></Setter>
-                        <Setter Target="btnDerecha.Height" Value="120"></Setter>
-                        <Setter Target="btnDerecha.Margin" Value="10"></Setter>
-                        <Setter Target="btnAbajo.Width" Value="120"></Setter>
-                        <Setter Target="btnAbajo.Height" Value="120"></Setter>
-                        <Setter Target="btnAbajo.Margin" Value="10"></Setter>
-                        <Setter Target="btnAccion.Width" Value="250"></Setter>
-                        <Setter Target="btnAccion.Height" Value="250"></Setter>
+            <StackPanel
+                x:Name="panelRegresar"
+                Grid.Column="0"
+                Margin="15,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Tapped="imgAtras_Tapped">
+                <Image
+                    x:Name="imgAtras"
+                    Height="25"
+                    Source="ms-appx:///Assets/Phone/Buttons/Regresar.png" />
+                <TextBlock
+                    x:Name="lblRegresar"
+                    HorizontalAlignment="Center"
+                    FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                    FontSize="20"
+                    Text="Regresar" />
+            </StackPanel>
+            <StackPanel
+                x:Name="panelTurno"
+                Grid.Column="1"
+                Margin="50,0"
+                Padding="0"
+                VerticalAlignment="Center"
+                Background="Yellow"
+                CornerRadius="2">
 
-                        <Setter Target="btnMensaje.Margin" Value="0,30,0,50"></Setter>
-                        <Setter Target="btnMensaje.FontSize" Value="150"></Setter>
-                        <Setter Target="btnMenuPrincipal.FontSize" Value="40"></Setter>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+                <TextBlock
+                    x:Name="lblTurno"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Text="Esperando inicio de juego..." />
+            </StackPanel>
+            <StackPanel
+                x:Name="panelInfoJugador"
+                Grid.Column="2"
+                Margin="15"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBlock
+                    x:Name="lblBienvenido"
+                    Padding="0,0,5,0"
+                    VerticalAlignment="Center"
+                    FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                    FontSize="20"
+                    Text="Bienvenido" />
+                <Image
+                    x:Name="imgJugador"
+                    Width="32"
+                    Source="ms-appx:///Assets/Phone/Roles/Jugador.png" />
+            </StackPanel>
+        </Grid>
 
-        <StackPanel x:Name="mainPanel" Orientation="Vertical" VerticalAlignment="Top">
-            <Grid x:Name="Cabecera">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".23*" />
-                    <ColumnDefinition Width=".77*"/>
-                </Grid.ColumnDefinitions>
+        <StackPanel x:Name="mainPanel" VerticalAlignment="Center">
 
-                <StackPanel x:Name="panelRegresar" Margin="15,0,0,0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Tapped="imgAtras_Tapped">
-                    <Image x:Name="imgAtras" Source="ms-appx:///Assets/Phone/Buttons/Regresar.png" Height="25"/>
-                    <TextBlock x:Name="lblRegresar" HorizontalAlignment="Center" Text="Regresar" FontSize="20" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling" />
-                </StackPanel>
-                <StackPanel x:Name="panelInfoJugador" Margin="20" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock x:Name="lblBienvenido" VerticalAlignment="Center" FontSize="20" Text="Bienvenido" Padding="0,0,5,0" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
-                    <Image x:Name="imgJugador" Width="32" Source="ms-appx:///Assets/Phone/Roles/Jugador.png"/>
-                </StackPanel>
-            </Grid>
-
-            <StackPanel x:Name="Contenido" HorizontalAlignment="Center">
-                <Grid Margin="0,-30,0,0">
+            <StackPanel x:Name="Contenido" Padding="20">
+                <Grid Margin="0,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="8*" />
+                        <RowDefinition Height="8*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="150" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="24*" />
+                        <ColumnDefinition Width="16*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel x:Name="panelTurno" Margin="0,0,0,20" Grid.Row="0" Grid.ColumnSpan="5" Width="150" Background="Yellow" CornerRadius="7">
-                        <TextBlock x:Name="lblTurno" Text="En espera inicio partida..." FontWeight="Bold" HorizontalAlignment="Center" FontSize="10" VerticalAlignment="Center"/>
-                    </StackPanel>
 
-                    <Button x:Name="btnIzquierda" Margin="5" Grid.Row="2" Grid.Column="0" Height="60" Width="60" Tapped="btnIzquierda_Tapped">
-                        <Image x:Name="imgIzquierda" Source="ms-appx:///Assets/Phone/Mando/Izquierda.png"/>
+                    <Button
+                        x:Name="btnIzquierda"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="60"
+                        Height="60"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Tapped="btnIzquierda_Tapped">
+                        <Image x:Name="imgIzquierda" Source="ms-appx:///Assets/Phone/Mando/Izquierda.png" />
                     </Button>
-                    <Button x:Name="btnArriba" Margin="5" Grid.Row="1" Grid.Column="1" Height="60" Width="60" Tapped="btnArriba_Tapped">
-                        <Image x:Name="imgArriba" Source="ms-appx:///Assets/Phone/Mando/Arriba.png"/>
+                    <Button
+                        x:Name="btnArriba"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="60"
+                        Height="60"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Tapped="btnArriba_Tapped">
+                        <Image x:Name="imgArriba" Source="ms-appx:///Assets/Phone/Mando/Arriba.png" />
                     </Button>
-                    <Button x:Name="btnDerecha" Margin="5" Grid.Row="2" Grid.Column="2" Height="60" Width="60" Tapped="btnDerecha_Tapped">
-                        <Image x:Name="imgDerecha" Source="ms-appx:///Assets/Phone/Mando/Derecha.png"/>
+                    <Button
+                        x:Name="btnDerecha"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="60"
+                        Height="60"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Tapped="btnDerecha_Tapped">
+                        <Image x:Name="imgDerecha" Source="ms-appx:///Assets/Phone/Mando/Derecha.png" />
                     </Button>
-                    <Button x:Name="btnAbajo" Margin="5" Grid.Row="3" Grid.Column="1" Height="60" Width="60" Tapped="btnAbajo_Tapped">
-                        <Image x:Name="imgAbajo" Source="ms-appx:///Assets/Phone/Mando/Abajo.png"/>
+                    <Button
+                        x:Name="btnAbajo"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="60"
+                        Height="60"
+                        Margin="5"
+                        HorizontalAlignment="Center"
+                        Tapped="btnAbajo_Tapped">
+                        <Image x:Name="imgAbajo" Source="ms-appx:///Assets/Phone/Mando/Abajo.png" />
                     </Button>
-
-                    <Button x:Name="btnAccion" Grid.Row="1" Grid.Column="5" Grid.RowSpan="3" Height="130" Width="120" Tapped="btnAccion_Tapped">
-                        <Image x:Name="imgAccion" Stretch="Uniform" Source="ms-appx:///Assets/Phone/Mando/MandoAccion.png"/>
+                    <StackPanel Grid.Column="3" />
+                    <Button
+                        x:Name="btnAccion"
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Grid.Column="4"
+                        Width="120"
+                        Height="130"
+                        HorizontalAlignment="Center"
+                        Tapped="btnAccion_Tapped">
+                        <Image
+                            x:Name="imgAccion"
+                            Source="ms-appx:///Assets/Phone/Mando/MandoAccion.png"
+                            Stretch="Uniform" />
                     </Button>
                 </Grid>
             </StackPanel>
 
-            <StackPanel x:Name="mensajeFinJuego" HorizontalAlignment="Center" Visibility="Collapsed">
-                <Button x:Name="btnMensaje" Content="FIN DEL JUEGO" Margin="0,10,0,30" FontSize="50" Foreground="White" HorizontalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling">
+            <StackPanel
+                x:Name="mensajeFinJuego"
+                HorizontalAlignment="Center"
+                Visibility="Collapsed">
+                <Button
+                    x:Name="btnMensaje"
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Center"
+                    Content="FIN DEL JUEGO"
+                    FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                    FontSize="50"
+                    Foreground="White">
                     <Button.Background>
-                        <SolidColorBrush Color="Black" Opacity="1"/>
+                        <SolidColorBrush Opacity="1" Color="Black" />
                     </Button.Background>
                 </Button>
-                <Button x:Name="btnMenuPrincipal" Content="Volver al Menú Principal" FontSize="20" Foreground="White" HorizontalAlignment="Center" Tapped="btnMenuPrincipal_Tapped">
+                <Button
+                    x:Name="btnMenuPrincipal"
+                    HorizontalAlignment="Center"
+                    Content="Volver al Menú Principal"
+                    FontSize="20"
+                    Foreground="White"
+                    Tapped="btnMenuPrincipal_Tapped">
                     <Button.Background>
-                        <SolidColorBrush Color="Black" Opacity="0.85"/>
+                        <SolidColorBrush Opacity="0.85" Color="Black" />
                     </Button.Background>
                 </Button>
             </StackPanel>
         </StackPanel>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="pcState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="770" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
+
+                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
+                        <Setter Target="imgAtras.Height" Value="45" />
+                        <Setter Target="lblRegresar.FontSize" Value="35" />
+
+                        <Setter Target="imgJugador.Width" Value="90" />
+                        <Setter Target="lblBienvenido.FontSize" Value="40" />
+
+                        <Setter Target="lblTurno.FontSize" Value="28" />
+                        <Setter Target="imgIzquierda.Source" Value="ms-appx:///Assets/Phone/Mando/Izquierda.png" />
+                        <Setter Target="imgArriba.Source" Value="ms-appx:///Assets/Phone/Mando/Arriba.png" />
+                        <Setter Target="imgDerecha.Source" Value="ms-appx:///Assets/Phone/Mando/Derecha.png" />
+                        <Setter Target="imgAbajo.Source" Value="ms-appx:///Assets/Phone/Mando/Abajo.png" />
+                        <Setter Target="imgAccion.Source" Value="ms-appx:///Assets/Phone/Mando/MandoAccion.png" />
+                        <Setter Target="btnIzquierda.Width" Value="120" />
+                        <Setter Target="btnIzquierda.Height" Value="120" />
+                        <Setter Target="btnIzquierda.Margin" Value="10" />
+                        <Setter Target="btnArriba.Width" Value="120" />
+                        <Setter Target="btnArriba.Height" Value="120" />
+                        <Setter Target="btnArriba.Margin" Value="10" />
+                        <Setter Target="btnDerecha.Width" Value="120" />
+                        <Setter Target="btnDerecha.Height" Value="120" />
+                        <Setter Target="btnDerecha.Margin" Value="10" />
+                        <Setter Target="btnAbajo.Width" Value="120" />
+                        <Setter Target="btnAbajo.Height" Value="120" />
+                        <Setter Target="btnAbajo.Margin" Value="10" />
+                        <Setter Target="btnAccion.Width" Value="250" />
+                        <Setter Target="btnAccion.Height" Value="250" />
+
+                        <Setter Target="btnMensaje.Margin" Value="0,30,0,50" />
+                        <Setter Target="btnMensaje.FontSize" Value="150" />
+                        <Setter Target="btnMenuPrincipal.FontSize" Value="40" />
+
+                        <Setter Target="Contenido.Padding" Value="100,40" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
