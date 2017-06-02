@@ -44,6 +44,7 @@ namespace ElementalWar.Views
             {
                 if (App.objJugador.Nombre != null)
                 {
+                    lblBienvenido.Text = App.objJugador.Nombre;
                     txtNombre.Text = App.objJugador.Nombre;
                 }
                 if (App.objJugador.Imagen != null)
@@ -52,6 +53,7 @@ namespace ElementalWar.Views
                     bimgBitmapImage = new BitmapImage();
                     IRandomAccessStream fileStream = await Convertidor.ConvertImageToStream(fotoBytes);
                     bimgBitmapImage.SetSource(fileStream);
+                    imgJugador.Source = bimgBitmapImage;
                     imgFoto.Source = bimgBitmapImage;
                 }
             }
