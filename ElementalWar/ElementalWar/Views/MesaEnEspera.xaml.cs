@@ -45,8 +45,8 @@ namespace ElementalWar.Views
                 {
                     if (item.Ip != "")
                     {
-                        await App.objSDK.UnicastPing(new HostName(item.Ip),
-                            Constantes.Mensajes.Juego.MesaIndicaSeCierra);
+                        await App.objSDK.ConnectStreamSocket(new HostName(item.Ip));
+                        await App.objSDK.StreamPing(Constantes.Mensajes.Juego.MesaIndicaSeCierra);
                     }
                 }
                 App.objSDK.setObjMetodoReceptorString = null;
@@ -157,14 +157,13 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
-                        //if (!mensaje[4].Equals(Constantes.SIN_IMAGEN))
-                        //    jugador.Imagen = Convert.FromBase64String(mensaje[4]);
+
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
                         {
                             //Notificar al nuevo jugador que se ha unido a la mesa
-                            await App.objSDK.UnicastPing(new HostName(jugadorUnido.Ip),
-                                Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse + Constantes.SEPARADOR +
+                            await App.objSDK.ConnectStreamSocket(new HostName(jugadorUnido.Ip));
+                            await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse + Constantes.SEPARADOR +
                                 objJuego.Ip + Constantes.SEPARADOR +
                                 jugadorUnido.JugadorId + Constantes.SEPARADOR +
                                 jugadorUnido.Elemento.ElementoId);

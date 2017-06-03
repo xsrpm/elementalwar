@@ -201,7 +201,10 @@ namespace ElementalWar.Views
                         if (mensaje.Length != 4)
                             return;
 
-                        prConectando.IsActive = false;
+                        txtSala.IsEnabled = false;
+                        imgUnirme.Visibility = Visibility.Collapsed;
+                        panelConectando.Visibility = Visibility.Visible;
+                        prConectando.IsActive = true;
 
                         //Reenviar a la pantalla del mando, el juega ya inicio
                         App.objJugador.MesaIp = mensaje[1];

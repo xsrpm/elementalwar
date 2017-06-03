@@ -173,8 +173,8 @@ namespace ElementalWar.Views
             //Indica a los jugadores que inicio el juego y quien es el primer
             for (int i = 0; i < objJuego.Jugadores.Count; i++)
             {
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[i].Ip),
-                    Constantes.Mensajes.Juego.MesaIndicaJuegoInicia + Constantes.SEPARADOR +
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[i].Ip));
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.MesaIndicaJuegoInicia + Constantes.SEPARADOR +
                     objJuego.Jugadores[objJuego.JugadorIdTurno].Ip);
             }
         }
@@ -517,11 +517,11 @@ namespace ElementalWar.Views
             var jugadorId = objJuego.JugadorIdTurno;
             var jugadorIdRival = objJuego.JugadorIdTurno == 0 ? 1 : 0;
 
-            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdRival].Ip),
-                Constantes.Mensajes.Juego.DeshabilitarControles);
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorIdRival].Ip));
+            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
 
-            await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorId].Ip),
-                Constantes.Mensajes.Juego.HabilitarControles);
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorId].Ip));
+            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
         }
         #endregion
 

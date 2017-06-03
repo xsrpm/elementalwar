@@ -41,20 +41,22 @@ namespace ElementalWar.Views
         {
             if (objJuego.JugadorIdGanador == Constantes.NO_ASIGNADO)
             {
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[0].Ip),
-                    Constantes.Mensajes.Juego.FinJuegoEmpataste);
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[1].Ip),
-                    Constantes.Mensajes.Juego.FinJuegoEmpataste);
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[0].Ip));
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.FinJuegoEmpataste);
+
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[1].Ip));
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.FinJuegoEmpataste);
             }
             else
             {
                 var jugadorIdGanador = objJuego.JugadorIdGanador;
                 var jugadorIdPerdedor = jugadorIdGanador == 0 ? 1 : 0;
 
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdGanador].Ip),
-                    Constantes.Mensajes.Juego.FinJuegoGanaste);
-                await App.objSDK.UnicastPing(new HostName(objJuego.Jugadores[jugadorIdPerdedor].Ip),
-                    Constantes.Mensajes.Juego.FinJuegoPerdiste);
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorIdGanador].Ip));
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.FinJuegoGanaste);
+
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorIdPerdedor].Ip));
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.FinJuegoPerdiste);
             }
         }
 
