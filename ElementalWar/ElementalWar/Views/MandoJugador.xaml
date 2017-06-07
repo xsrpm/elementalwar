@@ -57,26 +57,6 @@
                     FontSize="20"
                     Text="Regresar" />
             </Grid>
-            <!--
-            <StackPanel
-                x:Name="panelRegresar"
-                Grid.Column="0"
-                Margin="15,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Tapped="imgAtras_Tapped">
-                <Image
-                    x:Name="imgAtras"
-                    Height="25"
-                    Source="ms-appx:///Assets/Phone/Buttons/Regresar.png" />
-                <TextBlock
-                    x:Name="lblRegresar"
-                    HorizontalAlignment="Center"
-                    FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
-                    FontSize="20"
-                    Text="Regresar" />
-            </StackPanel>
-            -->
             <StackPanel
                 x:Name="panelTurno"
                 Grid.Column="1"
@@ -114,27 +94,6 @@
                     HorizontalAlignment="Right"
                     Source="ms-appx:///Assets/Phone/Roles/Jugador.png" />
             </Grid>
-            <!---
-            <StackPanel
-                x:Name="panelInfoJugador"
-                Grid.Column="2"
-                Margin="15"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <TextBlock
-                    x:Name="lblBienvenido"
-                    Padding="0,0,5,0"
-                    VerticalAlignment="Center"
-                    FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
-                    FontSize="20"
-                    Text="Bienvenido" />
-                <Image
-                    x:Name="imgJugador"
-                    Width="32"
-                    Source="ms-appx:///Assets/Phone/Roles/Jugador.png"
-                    Tapped="imgJugador_Tapped" />
-            </StackPanel>
-            -->
         </Grid>
 
         <StackPanel

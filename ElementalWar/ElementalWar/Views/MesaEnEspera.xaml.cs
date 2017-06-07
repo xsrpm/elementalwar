@@ -223,6 +223,8 @@ namespace ElementalWar.Views
                     //Deshabilitar el boton jugar cuando hayan menos de 2 jugadores
                     if (objJuego.Jugadores.Count(x => x.Ip != "") < 2)
                         btnJugar.Visibility = Visibility.Collapsed;
+                    else
+                        btnJugar.Visibility = Visibility.Visible;
                 }
             }
             catch (Exception ex)

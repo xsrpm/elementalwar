@@ -67,7 +67,7 @@ namespace ElementalWar.Views
             recibirComando = true;
             colorValido = new SolidColorBrush(Windows.UI.Colors.Green);
             colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
-            colorActivo = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORACTIVO);
+            colorActivo = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORSOMBREADO);
             colorTransparente = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORTRANSPARENTE);
         }
 
@@ -508,8 +508,9 @@ namespace ElementalWar.Views
         {
             var jugadorId = (objJuego.JugadorIdTurno) + 1;
             var jugadorIdRival = (objJuego.JugadorIdTurno == 0 ? 1 : 0) + 1;
-            ((StackPanel)FindName("panelElemento" + jugadorId)).BorderBrush = colorActivo;
-            ((StackPanel)FindName("panelElemento" + jugadorIdRival)).BorderBrush = colorTransparente;
+            ((Grid)FindName("panelJugador" + jugadorId)).Background = colorActivo;
+            ((Grid)FindName("panelJugador" + jugadorIdRival)).Background = colorTransparente;
+
         }
 
         private async void ComunicarJugadoresTurno()
@@ -534,8 +535,8 @@ namespace ElementalWar.Views
         {
             objJuego.ActualizarInfoFichas();
 
-            panelElemento1.BorderBrush = colorTransparente;
-            panelElemento2.BorderBrush = colorTransparente;
+            panelJugador1.Background = colorTransparente;
+            panelJugador2.Background = colorTransparente;
             bordeFichaSeleccionada.Visibility = Visibility.Collapsed;
             mensajeFinJuego.Visibility = Visibility.Visible;
             await Task.Delay(TimeSpan.FromSeconds(3));

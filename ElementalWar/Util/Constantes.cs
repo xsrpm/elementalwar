@@ -18,6 +18,7 @@
         public struct Colores
         {
             public const string COLORACTIVO = "#FF01FE0F";
+            public const string COLORSOMBREADO = "#4C01FA0F";
             public const string COLORINACTIVO = "#FFFF0437";
             public const string COLORENESPERA = "#FFFFFF00";
             public const string COLORTRANSPARENTE = "#00000000";
