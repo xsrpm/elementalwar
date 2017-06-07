@@ -45,8 +45,8 @@ namespace ElementalWar.Views
                 {
                     if (item.Ip != "")
                     {
-                        await App.objSDK.UnicastPing(new HostName(item.Ip),
-                            Constantes.Mensajes.Juego.MesaIndicaSeCierra);
+                        await App.objSDK.ConnectStreamSocket(new HostName(item.Ip));
+                        await App.objSDK.StreamPing(Constantes.Mensajes.Juego.MesaIndicaSeCierra);
                     }
                 }
                 App.objSDK.setObjMetodoReceptorString = null;
@@ -157,14 +157,13 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
-                        //if (!mensaje[4].Equals(Constantes.SIN_IMAGEN))
-                        //    jugador.Imagen = Convert.FromBase64String(mensaje[4]);
+
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
                         {
                             //Notificar al nuevo jugador que se ha unido a la mesa
-                            await App.objSDK.UnicastPing(new HostName(jugadorUnido.Ip),
-                                Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse + Constantes.SEPARADOR +
+                            await App.objSDK.ConnectStreamSocket(new HostName(jugadorUnido.Ip));
+                            await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.ConfirmacionUnirse + Constantes.SEPARADOR +
                                 objJuego.Ip + Constantes.SEPARADOR +
                                 jugadorUnido.JugadorId + Constantes.SEPARADOR +
                                 jugadorUnido.Elemento.ElementoId);
@@ -178,19 +177,19 @@ namespace ElementalWar.Views
                     #region El jugador envia la imagen que le corresponde para ser representado en el juego
                     else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.EnviarImagenJugador)
                     {
-                        //mensaje[1] => objJugador.MesaIp
-                        //mensaje[2] => objJugador.JugadorId
-                        //mensaje[3] => strBytes (objJugador.Imagen)
-                        if (mensaje.Length != 4)
+                        //mensaje[1] => objJugador.JugadorId
+                        //mensaje[2] => strBytes (objJugador.Imagen)
+                        if (mensaje.Length != 3)
                             return;
 
-                        if (mensaje[1] != objJuego.Ip)
-                            return;
-
-                        if (mensaje[3] == Constantes.Imagenes.SIN_IMAGEN)
-                            objJuego.Jugadores[int.Parse(mensaje[2])].Imagen = null;
+                        if (mensaje[2] == Constantes.Imagenes.SIN_IMAGEN)
+                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = null;
                         else
-                            objJuego.Jugadores[int.Parse(mensaje[2])].Imagen = Convert.FromBase64String(mensaje[3]);
+                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = Convert.FromBase64String(mensaje[2]);
+
+                        //Habilitar el boton jugar solo despues de que el jugador haya enviado su imagen
+                        if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
+                            btnJugar.Visibility = Visibility.Visible;
 
                     }
                     #endregion
@@ -221,10 +220,8 @@ namespace ElementalWar.Views
                     }
                     #endregion
 
-                    //Habilitar el boton jugar
-                    if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
-                        btnJugar.Visibility = Visibility.Visible;
-                    else
+                    //Deshabilitar el boton jugar cuando hayan menos de 2 jugadores
+                    if (objJuego.Jugadores.Count(x => x.Ip != "") < 2)
                         btnJugar.Visibility = Visibility.Collapsed;
                 }
             }

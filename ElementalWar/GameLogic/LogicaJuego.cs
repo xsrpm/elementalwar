@@ -7,9 +7,9 @@ namespace GameLogic
     {
         public static void AsignarTurnos(Juego objJuego)
         {
-            //objJuego.Jugadores.Shuffle();
-            //for (int i = 0; i < objJuego.Jugadores.Count; i++)
-            //    objJuego.Jugadores[i].JugadorId = i;
+            objJuego.Jugadores.Shuffle();
+            for (int i = 0; i < objJuego.Jugadores.Count; i++)
+                objJuego.Jugadores[i].JugadorId = i;
         }
 
         public static bool MovimientoValido(int posX, int posY, int direccion)

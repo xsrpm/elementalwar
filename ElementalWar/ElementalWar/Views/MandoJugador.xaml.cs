@@ -67,8 +67,7 @@ namespace ElementalWar.Views
             if ((int)result.Id == 1)
             {
                 //Notificar a la mesa que se esta saliendo de la mesa
-                await App.objSDK.UnicastPing(new HostName(App.objJugador.MesaIp),
-                    Constantes.Mensajes.Juego.JugadorSaleMesa + Constantes.SEPARADOR +
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.JugadorSaleMesa + Constantes.SEPARADOR +
                     App.objJugador.JugadorId);
                 App.objSDK.setObjMetodoReceptorString = null;
 
@@ -103,6 +102,7 @@ namespace ElementalWar.Views
                     App.objJugador.Ip = App.objSDK.MyIP.ToString();
                     App.objSDK.setObjMetodoReceptorString = MiReceptorMandoJugador;
                     App.objSDK.MulticastPing();
+                    App.objSDK.ConnectStreamSocket(new HostName(App.objJugador.MesaIp));
                 }
                 else
                 {
@@ -165,14 +165,16 @@ namespace ElementalWar.Views
                         if (mensaje.Length != 2)
                             return;
 
-                        mandoActivo = false;
-                        
                         if (mensaje[1] == App.objJugador.Ip)
                         {
+                            App.objJugador.JugadorId = 0;
+                            mandoActivo = false;
                             HabilitarControles();
                         }
                         else
                         {
+                            App.objJugador.JugadorId = 1;
+                            mandoActivo = true;
                             DeshabilitarControles();
                         }
                     }
@@ -257,8 +259,7 @@ namespace ElementalWar.Views
         {
             if (mandoActivo)
             {
-                await App.objSDK.UnicastPing(new HostName(App.objJugador.MesaIp),
-                    Constantes.Mensajes.Juego.MovimientoJugador + Constantes.SEPARADOR +
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.MovimientoJugador + Constantes.SEPARADOR +
                     App.objJugador.JugadorId + Constantes.SEPARADOR +
                     movimiento);
             }
@@ -310,6 +311,11 @@ namespace ElementalWar.Views
         private void btnMenuPrincipal_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MenuPrincipal));
+        }
+
+        private void imgJugador_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            IniciarSDK();
         }
     }
 }
