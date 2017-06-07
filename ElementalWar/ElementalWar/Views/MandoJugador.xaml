@@ -74,7 +74,8 @@
                 <Image
                     x:Name="imgJugador"
                     Width="32"
-                    Source="ms-appx:///Assets/Phone/Roles/Jugador.png" />
+                    Source="ms-appx:///Assets/Phone/Roles/Jugador.png"
+                    Tapped="imgJugador_Tapped" />
             </StackPanel>
         </Grid>
 

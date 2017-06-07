@@ -514,14 +514,18 @@ namespace ElementalWar.Views
 
         private async void ComunicarJugadoresTurno()
         {
-            var jugadorId = objJuego.JugadorIdTurno;
-            var jugadorIdRival = objJuego.JugadorIdTurno == 0 ? 1 : 0;
-
-            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorIdRival].Ip));
-            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
-
-            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorId].Ip));
-            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
+            for (int i = 0; i < objJuego.Jugadores.Count; i++)
+            {
+                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[i].Ip));
+                if (objJuego.JugadorIdTurno == objJuego.Jugadores[i].JugadorId)
+                {
+                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
+                }
+                else
+                {
+                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
+                }
+            }
         }
         #endregion
 
@@ -539,5 +543,31 @@ namespace ElementalWar.Views
             this.Frame.Navigate(typeof(FinalPartida), objJuego);
         }
         #endregion
+
+        private async void imgJugador1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[0].Ip));
+            if (objJuego.JugadorIdTurno == 0)
+            {
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
+            }
+            else
+            {
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
+            }
+        }
+
+        private async void imgJugador2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[1].Ip));
+            if (objJuego.JugadorIdTurno == 1)
+            {
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
+            }
+            else
+            {
+                await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
+            }
+        }
     }
 }

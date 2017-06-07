@@ -107,7 +107,7 @@ namespace ElementalWar.Views
                 App.objSDK.clearDeviceCollection();
                 await App.objSDK.MulticastPing();
                 var dispositivos = App.objSDK.getDeviceCollection();
-                
+
                 if (dispositivos != null)
                 {
                     foreach (var objDevice in dispositivos)
@@ -218,8 +218,8 @@ namespace ElementalWar.Views
                         else
                             strBytesImagen = Constantes.Imagenes.SIN_IMAGEN;
 
+                        await App.objSDK.ConnectStreamSocket(new HostName(App.objJugador.MesaIp));
                         await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.EnviarImagenJugador + Constantes.SEPARADOR +
-                            App.objJugador.MesaIp + Constantes.SEPARADOR +
                             App.objJugador.JugadorId + Constantes.SEPARADOR +
                             strBytesImagen);
 

@@ -165,16 +165,16 @@ namespace ElementalWar.Views
                         if (mensaje.Length != 2)
                             return;
 
-                        mandoActivo = false;
-
                         if (mensaje[1] == App.objJugador.Ip)
                         {
-                            App.objJugador.JugadorId = 0;
+                            //App.objJugador.JugadorId = 0;
+                            mandoActivo = false;
                             HabilitarControles();
                         }
                         else
                         {
-                            App.objJugador.JugadorId = 1;
+                            //App.objJugador.JugadorId = 1;
+                            mandoActivo = true;
                             DeshabilitarControles();
                         }
                     }
@@ -311,6 +311,11 @@ namespace ElementalWar.Views
         private void btnMenuPrincipal_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MenuPrincipal));
+        }
+
+        private void imgJugador_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            IniciarSDK();
         }
     }
 }

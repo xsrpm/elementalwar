@@ -28,7 +28,7 @@
 
                 <StackPanel x:Name="panelJugador1" Width="275">
                     <StackPanel Orientation="Horizontal" Margin="25,50,0,0">
-                        <Image x:Name="imgJugador1" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador1.png"/>
+                        <Image x:Name="imgJugador1" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador1.png" Tapped="imgJugador1_Tapped" />
                         <TextBlock x:Name="lblJugador1" Padding="10,0,0,0" FontSize="35" Text="PAPA BENED" VerticalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
                     </StackPanel>
                     <StackPanel x:Name="panelElemento1" Margin="0,75,0,0" Width="200" BorderThickness="1" BorderBrush="#FF01FE0F">
@@ -176,7 +176,7 @@
                 <StackPanel x:Name="panelJugador2" Width="275">
                     <StackPanel Orientation="Horizontal" Margin="0,50,25,0" HorizontalAlignment="Right">
                         <TextBlock x:Name="lblJugador2" Padding="0,0,10,0" FontSize="35" Text="PAPA BENED" VerticalAlignment="Center" FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"/>
-                        <Image x:Name="imgJugador2" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador2.png"/>
+                        <Image x:Name="imgJugador2" Height="100" Width="100" VerticalAlignment="Center" Source="ms-appx:///Assets/PC/Jugador/Jugador2.png" Tapped="imgJugador2_Tapped"/>
                     </StackPanel>
                     <StackPanel x:Name="panelElemento2" Margin="0,75,0,0" Width="200" BorderThickness="1" BorderBrush="#FF01FE0F">
                         <Image x:Name="imgElementoJugador2" Height="150" Width="150" Source="ms-appx:///Assets/Elementos/Fuego.png" Margin="0,1,0,0"/>
