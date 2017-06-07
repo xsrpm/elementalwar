@@ -167,13 +167,13 @@ namespace ElementalWar.Views
 
                         if (mensaje[1] == App.objJugador.Ip)
                         {
-                            //App.objJugador.JugadorId = 0;
+                            App.objJugador.JugadorId = 0;
                             mandoActivo = false;
                             HabilitarControles();
                         }
                         else
                         {
-                            //App.objJugador.JugadorId = 1;
+                            App.objJugador.JugadorId = 1;
                             mandoActivo = true;
                             DeshabilitarControles();
                         }
