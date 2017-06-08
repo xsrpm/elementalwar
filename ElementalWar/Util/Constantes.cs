@@ -4,7 +4,7 @@
     {
         public static string FILE_NOMBRE_JUGADOR = "nombreJugador.txt";
         public static string FILE_IMAGEN_JUGADOR = "imagenJugador.txt";
-        public static string SEPARADOR = ";#;#";
+        public static string SEPARADOR = ";#";
         public static string MessageDialogTitle = "Elemental War";
 
         public static string MULTICAST_ADDRESS = "239.10.2.78";
@@ -32,7 +32,7 @@
 
         public struct Imagenes
         {
-            public const string SIN_IMAGEN = "Ninguno";
+            public const string SIN_IMAGEN = "NN";
             public const string Jugador = "ms-appx:///Assets/PC/Roles/Jugador.png";
         }
 
@@ -41,25 +41,25 @@
         {
             public struct UnirseMesa
             {
-                public const string SolicitudUnirse = "SolicitudUnirse";
-                public const string ConfirmacionUnirse = "ConfirmacionUnirse";
-                public const string EnviarImagenJugador = "EnviarImagenJugador";
+                public const string SolicitudUnirse = "SU";
+                public const string ConfirmacionUnirse = "CU";
+                public const string EnviarImagenJugador = "EIJ";
             }
 
             public struct Juego
             {
-                public const string JugadorSaleMesa = "JugadorSaleMesa";
-                public const string MesaIndicaSeCierra = "MesaIndicaSeCierra";
+                public const string JugadorSaleMesa = "JSM";
+                public const string MesaIndicaSeCierra = "MIC";
 
-                public const string MovimientoJugador = "MovimientoJugador";
-                public const string DeshabilitarControles = "InhabilitarControles";
-                public const string HabilitarControles = "HabilitarControles";
+                public const string MovimientoJugador = "MJ";
+                public const string DeshabilitarControles = "IC";
+                public const string HabilitarControles = "DC";
 
-                public const string MesaIndicaJuegoInicia = "MesaIndicaJuegoInicia";
+                public const string MesaIndicaJuegoInicia = "MIJI";
 
-                public const string FinJuegoGanaste = "FinJuegoGanaste";
-                public const string FinJuegoPerdiste = "FinJuegoPerdiste";
-                public const string FinJuegoEmpataste = "FinJuegoEmpataste";
+                public const string FinJuegoGanaste = "FJG";
+                public const string FinJuegoPerdiste = "FJP";
+                public const string FinJuegoEmpataste = "FJE";
 
                 public struct AccionMando
                 {

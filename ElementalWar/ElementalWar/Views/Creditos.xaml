@@ -160,11 +160,19 @@
                         x:Name="txt11"
                         FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
                         FontSize="17"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="Patsy Rodriguez"
+                        TextAlignment="Center" />
+                    <TextBlock
+                        x:Name="txt12"
+                        FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
+                        FontSize="17"
                         Foreground="White"
                         Text="ASESOR"
                         TextAlignment="Center" />
                     <TextBlock
-                        x:Name="txt12"
+                        x:Name="txt13"
                         FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
                         FontSize="17"
                         FontWeight="Bold"
@@ -212,6 +220,7 @@
                         <Setter Target="txt10.FontSize" Value="23" />
                         <Setter Target="txt11.FontSize" Value="23" />
                         <Setter Target="txt12.FontSize" Value="23" />
+                        <Setter Target="txt13.FontSize" Value="23" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

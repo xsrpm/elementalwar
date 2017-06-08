@@ -92,6 +92,7 @@
                     x:Name="imgJugador"
                     Grid.Column="3"
                     HorizontalAlignment="Right"
+                    Tapped="imgJugador_Tapped"
                     Source="ms-appx:///Assets/Phone/Roles/Jugador.png" />
             </Grid>
         </Grid>

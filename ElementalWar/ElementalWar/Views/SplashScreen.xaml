@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/PC/SplashScreen.png" />
+            <ImageBrush x:Name="Fondo" Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Phone/SplashScreen.png" />
         </Grid.Background>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -18,7 +18,7 @@
                         <AdaptiveTrigger MinWindowWidth="720"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/Phone/SplashScreen.png"></Setter>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/SplashScreen.png"></Setter>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

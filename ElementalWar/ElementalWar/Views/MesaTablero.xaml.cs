@@ -469,8 +469,8 @@ namespace ElementalWar.Views
             if (VerificarAunSePuedenVoltearFichas())
             {
                 PonerFichaDeMovimiento();
-                DibujarBordeTurnoJugador();
                 ComunicarJugadoresTurno();
+                DibujarBordeTurnoJugador();
             }
             else
             {
@@ -504,29 +504,24 @@ namespace ElementalWar.Views
             bordeFichaSeleccionada.Stroke = colorInvalido;
         }
 
+        private async void ComunicarJugadoresTurno()
+        {
+            var jugadorId = objJuego.JugadorIdTurno;
+            var jugadorRivalId = jugadorId == 0 ? 1 : 0;
+
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorRivalId].Ip));
+            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
+
+            await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[jugadorId].Ip));
+            await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
+        }
+
         private void DibujarBordeTurnoJugador()
         {
             var jugadorId = (objJuego.JugadorIdTurno) + 1;
             var jugadorIdRival = (objJuego.JugadorIdTurno == 0 ? 1 : 0) + 1;
             ((Grid)FindName("panelJugador" + jugadorId)).Background = colorActivo;
             ((Grid)FindName("panelJugador" + jugadorIdRival)).Background = colorTransparente;
-
-        }
-
-        private async void ComunicarJugadoresTurno()
-        {
-            for (int i = 0; i < objJuego.Jugadores.Count; i++)
-            {
-                await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[i].Ip));
-                if (objJuego.JugadorIdTurno == objJuego.Jugadores[i].JugadorId)
-                {
-                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
-                }
-                else
-                {
-                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.DeshabilitarControles);
-                }
-            }
         }
         #endregion
 
@@ -547,6 +542,7 @@ namespace ElementalWar.Views
 
         private async void imgJugador1_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            IniciarSDK();
             await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[0].Ip));
             if (objJuego.JugadorIdTurno == 0)
             {
@@ -560,6 +556,7 @@ namespace ElementalWar.Views
 
         private async void imgJugador2_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            IniciarSDK();
             await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[1].Ip));
             if (objJuego.JugadorIdTurno == 1)
             {
