@@ -8,6 +8,7 @@ using Windows.Phone.Devices.Notification;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
@@ -49,6 +50,8 @@ namespace ElementalWar.Views
             lblTurno.Text = Constantes.MensajesMando.MANDOMESAENESPERA;
             panelTurno.Background = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORENESPERA);
             IniciarSDK();
+
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
         }
 
         private async void imgAtras_Tapped(object sender, TappedRoutedEventArgs e)
@@ -257,6 +260,9 @@ namespace ElementalWar.Views
 
         private async void EnviarMovimiento(int movimiento)
         {
+            pageMando.IsEnabled = false;
+            pageMando.IsEnabled = true;
+
             if (mandoActivo)
             {
                 await App.objSDK.StreamPing(Constantes.Mensajes.Juego.MovimientoJugador + Constantes.SEPARADOR +
@@ -316,6 +322,31 @@ namespace ElementalWar.Views
         private void imgJugador_Tapped(object sender, TappedRoutedEventArgs e)
         {
             IniciarSDK();
+        }
+
+        private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs args)
+        {
+            switch (args.VirtualKey)
+            {
+                case Windows.System.VirtualKey.Left:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Izquierda);
+                    break;
+                case Windows.System.VirtualKey.Up:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Arriba);
+                    break;
+                case Windows.System.VirtualKey.Right:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Derecha);
+                    break;
+                case Windows.System.VirtualKey.Down:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Abajo);
+                    break;
+                case Windows.System.VirtualKey.Space:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Accion);
+                    break;
+                case Windows.System.VirtualKey.Enter:
+                    EnviarMovimiento(Constantes.Mensajes.Juego.AccionMando.Accion);
+                    break;
+            }
         }
     }
 }

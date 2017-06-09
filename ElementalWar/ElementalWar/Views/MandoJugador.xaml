@@ -1,4 +1,5 @@
 ﻿<Page
+    x:Name="pageMando"
     x:Class="ElementalWar.Views.MandoJugador"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -164,6 +165,7 @@
                         Grid.Column="5"
                         HorizontalAlignment="Center"
                         Background="{x:Null}"
+                        TabIndex="1000"
                         Tapped="btnAccion_Tapped">
                         <Image
                             x:Name="imgAccion"
