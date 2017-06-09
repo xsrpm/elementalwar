@@ -82,12 +82,12 @@
                 <TextBlock
                     x:Name="lblBienvenido"
                     Grid.Column="1"
-                    Margin="0,53,0,46"
                     HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
                     FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
                     FontSize="20"
                     Text="Bienvenido"
-                    d:LayoutOverrides="Height, TopPosition, BottomPosition" />
+                    Visibility="Collapsed" />
                 <Image
                     x:Name="imgJugador"
                     Grid.Column="3"
@@ -178,7 +178,6 @@
                 Visibility="Collapsed">
                 <Button
                     x:Name="btnMensaje"
-                    Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     Content="FIN DEL JUEGO"
                     FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
@@ -215,12 +214,36 @@
                         <Setter Target="lblRegresar.FontSize" Value="40" />
 
                         <Setter Target="lblBienvenido.FontSize" Value="40" />
+                        <Setter Target="lblBienvenido.Visibility" Value="Visible" />
 
                         <Setter Target="lblTurno.FontSize" Value="32" />
 
                         <Setter Target="btnMensaje.Margin" Value="0,30,0,50" />
                         <Setter Target="btnMensaje.FontSize" Value="150" />
                         <Setter Target="btnMenuPrincipal.FontSize" Value="40" />
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState x:Name="fullhdState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1920" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
+
+                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
+                        <Setter Target="lblRegresar.FontSize" Value="60" />
+
+                        <Setter Target="lblBienvenido.FontSize" Value="70" />
+                        <Setter Target="lblBienvenido.Visibility" Value="Visible" />
+
+                        <Setter Target="lblTurno.FontSize" Value="50" />
+
+                        <Setter Target="btnMensaje.Margin" Value="0,30,0,50" />
+                        <Setter Target="btnMensaje.FontSize" Value="180" />
+                        <Setter Target="btnMenuPrincipal.FontSize" Value="50" />
 
                     </VisualState.Setters>
                 </VisualState>
