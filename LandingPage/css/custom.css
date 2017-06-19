@@ -1,0 +1,20 @@
+#juega {
+    color: white;
+}
+
+#juega h3{
+    text-shadow: 2px 2px #000000;
+    font-weight: normal;
+    padding-bottom: 15px;
+}
+
+#juega h4{
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+#juega img{
+    filter: brightness(0) invert(1);
+    max-height: 64px;
+    max-width: 64px;
+}
