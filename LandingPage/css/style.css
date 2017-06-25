@@ -416,8 +416,6 @@ ul.callbacks_tabs.callbacks1_tabs {
 /*-- Real --*/
 .real {
 	background: url("../images/real.png");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-position: center;
 	padding: 100px 0;
 	text-align: center;
