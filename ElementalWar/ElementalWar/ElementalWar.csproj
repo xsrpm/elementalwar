@@ -237,7 +237,6 @@
     <Content Include="Assets\Phone\SplashScreen.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="lib\SynapseSDK.dll" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
@@ -313,7 +312,7 @@
   <ItemGroup>
     <Reference Include="SynapseSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\SynapseSDK.dll</HintPath>
+      <HintPath>..\..\Libraries\SynapseSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
