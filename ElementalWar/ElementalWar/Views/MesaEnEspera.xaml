@@ -88,12 +88,18 @@
                                 x:Name="flechaizq0"
                                 Height="180"
                                 Source="ms-appx:///Assets/PC/Buttons/Izquierda.png" />
-                            <StackPanel Padding="25,0,25,0">
+                            <Grid Padding="25,0,25,0">
                                 <Image
                                     x:Name="imgElementoJug0"
                                     Width="300"
                                     Source="ms-appx:///Assets/PC/Roles/Jugador.png" />
-                            </StackPanel>
+                                <Image
+                                    x:Name="imglisto0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Width="80"
+                                    Source="ms-appx:///Assets/PC/Jugador/Listo.png" />
+                            </Grid>
                             <Image
                                 x:Name="flechader0"
                                 Height="180"
@@ -112,12 +118,18 @@
                                 x:Name="flechaizq1"
                                 Height="180"
                                 Source="ms-appx:///Assets/PC/Buttons/Izquierda.png" />
-                            <StackPanel Padding="25,0,25,0">
+                            <Grid Padding="25,0,25,0">
                                 <Image
                                     x:Name="imgElementoJug1"
                                     Width="300"
                                     Source="ms-appx:///Assets/PC/Roles/Jugador.png" />
-                            </StackPanel>
+                                <Image
+                                    x:Name="imglisto1"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Width="80"
+                                    Source="ms-appx:///Assets/PC/Jugador/Listo.png" />
+                            </Grid>
                             <Image
                                 x:Name="flechader1"
                                 Height="180"
@@ -131,16 +143,23 @@
                             Text="Jugador 2" />
                     </StackPanel>
                 </StackPanel>
-                <Button
-                    x:Name="btnJugar"
-                    Height="87"
-                    Margin="0,20,0,0"
+                <StackPanel
+                    x:Name="contadorPanel"
                     HorizontalAlignment="Center"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Tapped="btnJugar_Tapped">
-                    <Image Source="ms-appx:///Assets/PC/Buttons/Jugar.png" Stretch="Uniform" />
-                </Button>
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="lblTituloContador"
+                        HorizontalAlignment="Center"
+                        FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                        FontSize="30"
+                        Text="El juego está por comenzar" />
+                    <TextBlock
+                        x:Name="lblContador"
+                        HorizontalAlignment="Center"
+                        FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                        FontSize="70"
+                        Text="3" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <VisualStateManager.VisualStateGroups>
@@ -185,6 +204,7 @@
                         <Setter Target="lblCodigoMesa.FontSize" Value="80" />
 
                         <Setter Target="imgElementoJug0.Width" Value="430" />
+                        <Setter Target="imglisto0.Width" Value="100" />
                         <Setter Target="lblNombreJug0.FontSize" Value="60" />
                         <Setter Target="flechaizq0.Height" Value="250" />
                         <Setter Target="flechader0.Height" Value="250" />
@@ -192,9 +212,10 @@
                         <Setter Target="flechader1.Height" Value="250" />
                         <Setter Target="lblNombreJug1.FontSize" Value="60" />
                         <Setter Target="imgElementoJug1.Width" Value="430" />
+                        <Setter Target="imglisto1.Width" Value="100" />
 
-                        <Setter Target="btnJugar.Height" Value="110" />
-
+                        <Setter Target="lblTituloContador.FontSize" Value="40" />
+                        <Setter Target="lblContador.FontSize" Value="90" />
 
                     </VisualState.Setters>
                 </VisualState>

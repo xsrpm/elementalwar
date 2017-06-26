@@ -7,6 +7,7 @@
         public string Nombre { get; set; }
         public byte[] Imagen { get; set; }
         public Elemento Elemento { get; set; }
+        public bool Listo { get; set; }
 
         public string MesaIp { get; set; }
 
@@ -21,6 +22,7 @@
             Nombre = "Jugador " + (JugadorId + 1).ToString();
             Imagen = null;
             Elemento = new Elemento { ElementoId = -1 };
+            Listo = false;
         }
     }
 }
