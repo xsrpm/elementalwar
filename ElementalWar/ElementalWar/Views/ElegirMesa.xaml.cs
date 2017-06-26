@@ -104,6 +104,12 @@ namespace ElementalWar.Views
             {
                 string mesaSeleccionada = txtSala.Text;
 
+                string strBytesImagen = "";
+                if (App.objJugador.Imagen != null)
+                    strBytesImagen = Convert.ToBase64String(App.objJugador.Imagen);
+                else
+                    strBytesImagen = Constantes.Imagenes.SIN_IMAGEN;
+
                 App.objSDK.clearDeviceCollection();
                 await App.objSDK.MulticastPing();
                 var dispositivos = App.objSDK.getDeviceCollection();
@@ -117,7 +123,8 @@ namespace ElementalWar.Views
                         await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.SolicitudUnirse + Constantes.SEPARADOR +
                             mesaSeleccionada + Constantes.SEPARADOR +
                             App.objJugador.Ip + Constantes.SEPARADOR +
-                            App.objJugador.Nombre);
+                            App.objJugador.Nombre + Constantes.SEPARADOR +
+                            strBytesImagen);
                     }
                 }
             }
@@ -184,7 +191,7 @@ namespace ElementalWar.Views
         }
         #endregion
 
-        public async void ReceptorElegirMesa(string strIp, string strMensaje)
+        public void ReceptorElegirMesa(string strIp, string strMensaje)
         {
             try
             {
@@ -210,18 +217,6 @@ namespace ElementalWar.Views
                         App.objJugador.MesaIp = mensaje[1];
                         App.objJugador.JugadorId = int.Parse(mensaje[2]);
                         App.objJugador.Elemento = new Elemento { ElementoId = int.Parse(mensaje[3]) };
-
-                        //Se envia la foto del jugador
-                        string strBytesImagen = string.Empty;
-                        if (App.objJugador.Imagen != null)
-                            strBytesImagen = Convert.ToBase64String(App.objJugador.Imagen);
-                        else
-                            strBytesImagen = Constantes.Imagenes.SIN_IMAGEN;
-
-                        await App.objSDK.ConnectStreamSocket(new HostName(App.objJugador.MesaIp));
-                        await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.EnviarImagenJugador + Constantes.SEPARADOR +
-                            App.objJugador.JugadorId + Constantes.SEPARADOR +
-                            strBytesImagen);
 
                         this.Frame.Navigate(typeof(MandoJugador));
                     }

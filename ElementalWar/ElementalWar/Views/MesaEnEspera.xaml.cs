@@ -161,7 +161,8 @@ namespace ElementalWar.Views
                         //mensaje[1] => objJuego.Codigo
                         //mensaje[2] => objJugador.Ip
                         //mensaje[3] => objJugador.Nombre
-                        if (mensaje.Length != 4)
+                        //mensaje[4] => objJugador.Imagen
+                        if (mensaje.Length != 5)
                             return;
 
                         //Verificar que es la mesa seleccionada
@@ -172,6 +173,10 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
+                        if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
+                            jugador.Imagen = null;
+                        else
+                            jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
@@ -191,20 +196,6 @@ namespace ElementalWar.Views
                             ((Image)FindName("imglisto" + jugadorUnido.JugadorId)).Opacity = 0;
                             MostrarDatosJugadoresEnPantalla(jugadorUnido.JugadorId);
                         }
-                    }
-                    #endregion
-                    #region El jugador envia la imagen que le corresponde para ser representado en el juego
-                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.EnviarImagenJugador)
-                    {
-                        //mensaje[1] => objJugador.JugadorId
-                        //mensaje[2] => strBytes (objJugador.Imagen)
-                        if (mensaje.Length != 3)
-                            return;
-
-                        if (mensaje[2] == Constantes.Imagenes.SIN_IMAGEN)
-                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = null;
-                        else
-                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = Convert.FromBase64String(mensaje[2]);
                     }
                     #endregion
                     #region El jugador indica que se sale del mando mientras el juego aun no comienza
