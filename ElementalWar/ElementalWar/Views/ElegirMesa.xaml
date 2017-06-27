@@ -69,8 +69,7 @@
             <StackPanel x:Name="Contenido">
                 <Image
                     x:Name="imgLogo"
-                    Width="225"
-                    Height="225"
+                    Width="200"
                     Margin="0,20,0,35"
                     Source="ms-appx:///Assets/Phone/Logo.png" />
 
@@ -149,17 +148,15 @@
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
 
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
-                        <Setter Target="imgAtras.Height" Value="30" />
-                        <Setter Target="lblRegresar.FontSize" Value="30" />
+                        <Setter Target="imgAtras.Height" Value="50" />
+                        <Setter Target="lblRegresar.FontSize" Value="35" />
 
-                        <Setter Target="imgJugador.Width" Value="45" />
-                        <Setter Target="lblBienvenido.FontSize" Value="30" />
+                        <Setter Target="imgJugador.Width" Value="80" />
+                        <Setter Target="lblBienvenido.FontSize" Value="50" />
 
                         <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/Logo.png" />
-                        <Setter Target="imgLogo.Width" Value="300" />
-                        <Setter Target="imgLogo.Height" Value="300" />
 
-                        <Setter Target="lblTexto.FontSize" Value="30" />
+                        <Setter Target="lblTexto.FontSize" Value="40" />
                         <Setter Target="lblTexto.Margin" Value="0,20,0,0" />
                         <Setter Target="txtSala.Height" Value="50" />
                         <Setter Target="txtSala.FontSize" Value="40" />
@@ -175,6 +172,50 @@
                         <Setter Target="lblConectando.FontSize" Value="25" />
                         <Setter Target="prConectando.Width" Value="30" />
                         <Setter Target="prConectando.Height" Value="30" />
+
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState x:Name="fullhdState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
+
+                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
+                        <Setter Target="imgAtras.Height" Value="65" />
+                        <Setter Target="lblRegresar.FontSize" Value="50" />
+                        <Setter Target="panelRegresar.Margin" Value="30" />
+                        <Setter Target="panelInfoJugador.Margin" Value="30" />
+
+                        <Setter Target="imgJugador.Width" Value="120" />
+                        <Setter Target="lblBienvenido.FontSize" Value="70" />
+                        <Setter Target="lblBienvenido.Padding" Value="0,0,25,0" />
+
+                        <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/Logo.png" />
+                        <Setter Target="imgLogo.Width" Value="300" />
+
+                        <Setter Target="lblTexto.FontSize" Value="60" />
+                        <Setter Target="lblTexto.Margin" Value="0,20,0,0" />
+                        <Setter Target="txtSala.Height" Value="70" />
+                        <Setter Target="txtSala.FontSize" Value="40" />
+                        <Setter Target="txtSala.Margin" Value="0,10,0,20" />
+                        <Setter Target="txtSala.Width" Value="320" />
+
+                        <Setter Target="unirmePanel.Orientation" Value="Vertical" />
+
+                        <Setter Target="imgUnirme.Source" Value="ms-appx:///Assets/PC/Buttons/Unirme.png" />
+                        <Setter Target="imgUnirme.Height" Value="100" />
+
+                        <Setter Target="panelConectando.Height" Value="70" />
+                        <Setter Target="lblConectando.FontSize" Value="25" />
+                        <Setter Target="prConectando.Width" Value="30" />
+                        <Setter Target="prConectando.Height" Value="30" />
+
+
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

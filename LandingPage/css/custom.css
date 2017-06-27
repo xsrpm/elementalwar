@@ -1,0 +1,66 @@
+#juega {
+    color: white;
+}
+
+    #juega h3 {
+        text-shadow: 2px 2px #000000;
+        font-weight: normal;
+        padding-bottom: 15px;
+    }
+
+    #juega h4 {
+        font-size: 15px;
+        padding-top: 5px;
+    }
+
+    #juega img {
+        filter: brightness(0) invert(1);
+        max-height: 64px;
+        max-width: 64px;
+    }
+
+@font-face {
+    font-family: 'CaviarDreams';
+    src: url('../fonts/CaviarDreams.ttf');
+}
+
+.titulo {
+    font-family: 'CaviarDreams' !important;
+    font-size: 30px !important;
+}
+
+@media (max-width:767px) {
+    .imgTitulo {
+        height: 30px;
+        width: 30px;
+        margin-top: -10px;
+        padding-right: 5px;
+    }
+}
+
+@media (min-width:768px) {
+    .imgTitulo {
+        height: 30px;
+        width: 30px;
+        margin-top: -10px;
+        padding-right: 5px;
+    }
+}
+
+@media (min-width:992px) {
+    .imgTitulo {
+        height: 30px;
+        width: 30px;
+        margin-top: -10px;
+        padding-right: 5px;
+    }
+}
+
+@media (min-width:1200px) {
+    .imgTitulo {
+        height: 30px;
+        width: 30px;
+        margin-top: -10px;
+        padding-right: 5px;
+    }
+}

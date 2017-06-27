@@ -2,6 +2,7 @@
 using SynapseSDK;
 using System;
 using System.Linq;
+using System.Threading;
 using Util;
 using Windows.Graphics.Display;
 using Windows.Networking;
@@ -22,18 +23,38 @@ namespace ElementalWar.Views
     public sealed partial class MesaEnEspera : Page
     {
         private Juego objJuego;
+        private bool recibirComando;
+        private Timer timerCuentaRegresivaInicioJuego;
+        private int cuentaRegresiva;
 
         public MesaEnEspera()
         {
             this.InitializeComponent();
-            objJuego = new Juego();
-            btnJugar.Visibility = Visibility.Collapsed;
+
+            InicializarVariables();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait;
             IniciarSDK();
+        }
+
+        private void InicializarVariables()
+        {
+            objJuego = new Juego();
+            recibirComando = true;
+
+            timerCuentaRegresivaInicioJuego = new Timer(timerCuentaRegresivaInicioJuegoCallback, null, Timeout.Infinite, Timeout.Infinite);
+            cuentaRegresiva = 4;
+
+            contadorPanel.Visibility = Visibility.Collapsed;
+            flechaizq0.Opacity = 0;
+            flechader0.Opacity = 0;
+            imglisto0.Opacity = 0;
+            flechaizq1.Opacity = 0;
+            flechader1.Opacity = 0;
+            imglisto1.Opacity = 0;
         }
 
         private async void imgAtras_Tapped(object sender, TappedRoutedEventArgs e)
@@ -52,12 +73,6 @@ namespace ElementalWar.Views
                 App.objSDK.setObjMetodoReceptorString = null;
             }
             this.Frame.Navigate(typeof(SeleccionarRol));
-        }
-
-        private void btnJugar_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
-                this.Frame.Navigate(typeof(MesaTablero), objJuego);
         }
 
         private void MostrarDatosJugadoresEnPantalla(int jugadorId)
@@ -146,7 +161,8 @@ namespace ElementalWar.Views
                         //mensaje[1] => objJuego.Codigo
                         //mensaje[2] => objJugador.Ip
                         //mensaje[3] => objJugador.Nombre
-                        if (mensaje.Length != 4)
+                        //mensaje[4] => objJugador.Imagen
+                        if (mensaje.Length != 5)
                             return;
 
                         //Verificar que es la mesa seleccionada
@@ -157,6 +173,10 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
+                        if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
+                            jugador.Imagen = null;
+                        else
+                            jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
@@ -170,27 +190,12 @@ namespace ElementalWar.Views
 
                             //Mostrar datos del jugadors en pantalla
                             GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorUnido.JugadorId);
+                            //Dibujar UI Jugador
+                            ((Image)FindName("flechaizq" + jugadorUnido.JugadorId)).Opacity = 1;
+                            ((Image)FindName("flechader" + jugadorUnido.JugadorId)).Opacity = 1;
+                            ((Image)FindName("imglisto" + jugadorUnido.JugadorId)).Opacity = 0;
                             MostrarDatosJugadoresEnPantalla(jugadorUnido.JugadorId);
                         }
-                    }
-                    #endregion
-                    #region El jugador envia la imagen que le corresponde para ser representado en el juego
-                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.EnviarImagenJugador)
-                    {
-                        //mensaje[1] => objJugador.JugadorId
-                        //mensaje[2] => strBytes (objJugador.Imagen)
-                        if (mensaje.Length != 3)
-                            return;
-
-                        if (mensaje[2] == Constantes.Imagenes.SIN_IMAGEN)
-                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = null;
-                        else
-                            objJuego.Jugadores[int.Parse(mensaje[1])].Imagen = Convert.FromBase64String(mensaje[2]);
-
-                        //Habilitar el boton jugar solo despues de que el jugador haya enviado su imagen
-                        if (objJuego.Jugadores.Count(x => x.Ip != "") >= 2)
-                            btnJugar.Visibility = Visibility.Visible;
-
                     }
                     #endregion
                     #region El jugador indica que se sale del mando mientras el juego aun no comienza
@@ -203,7 +208,12 @@ namespace ElementalWar.Views
                         //Desconectar al jugador
                         if (GameLogic.LogicaMesaEnEspera.MesaEliminarJugador(objJuego, objJuego.Jugadores[int.Parse(mensaje[1])].Ip))
                         {
-                            MostrarDatosJugadoresEnPantalla(int.Parse(mensaje[1]));
+                            var jugadorId = int.Parse(mensaje[1]);
+                            //ReDibujar UI Jugador
+                            ((Image)FindName("flechaizq" + jugadorId)).Opacity = 0;
+                            ((Image)FindName("flechader" + jugadorId)).Opacity = 0;
+                            ((Image)FindName("imglisto" + jugadorId)).Opacity = 0;
+                            MostrarDatosJugadoresEnPantalla(jugadorId);
                         }
                     }
                     #endregion
@@ -216,20 +226,31 @@ namespace ElementalWar.Views
                             return;
 
                         //En esta pantalla solo se realiza el cambio de elemento
-                        CambiarElemento(int.Parse(mensaje[1]), int.Parse(mensaje[2]));
+                        EvaluarComandoJugador(int.Parse(mensaje[1]), int.Parse(mensaje[2]));
                     }
                     #endregion
-
-                    //Deshabilitar el boton jugar cuando hayan menos de 2 jugadores
-                    if (objJuego.Jugadores.Count(x => x.Ip != "") < 2)
-                        btnJugar.Visibility = Visibility.Collapsed;
-                    else
-                        btnJugar.Visibility = Visibility.Visible;
                 }
             }
             catch (Exception ex)
             {
                 Helper.MensajeOk(ex.Message);
+            }
+        }
+
+        private void EvaluarComandoJugador(int jugadorId, int movimiento)
+        {
+            if (recibirComando)
+            {
+                switch (movimiento)
+                {
+                    case Constantes.Mensajes.Juego.AccionMando.Izquierda:
+                    case Constantes.Mensajes.Juego.AccionMando.Derecha:
+                        CambiarElemento(jugadorId, movimiento);
+                        break;
+                    case Constantes.Mensajes.Juego.AccionMando.Accion:
+                        MarcarJugadorListo(jugadorId);
+                        break;
+                }
             }
         }
 
@@ -240,6 +261,49 @@ namespace ElementalWar.Views
                 GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
                 MostrarDatosJugadoresEnPantalla(jugadorId);
             }
+        }
+
+        private void MarcarJugadorListo(int jugadorId)
+        {
+            if (!objJuego.Jugadores[jugadorId].Listo)
+            {
+                objJuego.Jugadores[jugadorId].Listo = true;
+                ((Image)FindName("flechaizq" + jugadorId)).Opacity = 0;
+                ((Image)FindName("flechader" + jugadorId)).Opacity = 0;
+                ((Image)FindName("imglisto" + jugadorId)).Opacity = 1;
+            }
+            else
+            {
+                objJuego.Jugadores[jugadorId].Listo = false;
+                ((Image)FindName("flechaizq" + jugadorId)).Opacity = 1;
+                ((Image)FindName("flechader" + jugadorId)).Opacity = 1;
+                ((Image)FindName("imglisto" + jugadorId)).Opacity = 0;
+            }
+
+            if (objJuego.Jugadores[0].Listo && objJuego.Jugadores[1].Listo)
+            {
+                recibirComando = false;
+                contadorPanel.Visibility = Visibility.Visible;
+                timerCuentaRegresivaInicioJuego.Change(0, 1000 * 1);
+            }
+        }
+
+        private async void timerCuentaRegresivaInicioJuegoCallback(object state)
+        {
+            await App.UIDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                cuentaRegresiva--;
+
+                if (cuentaRegresiva >= 0)
+                {
+                    lblContador.Text = cuentaRegresiva.ToString();
+                }
+                else
+                {
+                    timerCuentaRegresivaInicioJuego.Change(Timeout.Infinite, Timeout.Infinite);
+                    this.Frame.Navigate(typeof(MesaTablero), objJuego);
+                }
+            });
         }
     }
 }

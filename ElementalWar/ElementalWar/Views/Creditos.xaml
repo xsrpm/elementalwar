@@ -160,19 +160,11 @@
                         x:Name="txt11"
                         FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
                         FontSize="17"
-                        FontWeight="Bold"
-                        Foreground="White"
-                        Text="Patsy Rodriguez"
-                        TextAlignment="Center" />
-                    <TextBlock
-                        x:Name="txt12"
-                        FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
-                        FontSize="17"
                         Foreground="White"
                         Text="ASESOR"
                         TextAlignment="Center" />
                     <TextBlock
-                        x:Name="txt13"
+                        x:Name="txt12"
                         FontFamily="ms-appx:///Assets/Fonts/CaviarDreams.ttf#Caviar Dreams"
                         FontSize="17"
                         FontWeight="Bold"
@@ -192,11 +184,12 @@
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
 
                         <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
-                        <Setter Target="imgAtras.Height" Value="30" />
-                        <Setter Target="lblRegresar.FontSize" Value="30" />
+                        <Setter Target="imgAtras.Height" Value="50" />
+                        <Setter Target="lblRegresar.FontSize" Value="35" />
 
-                        <Setter Target="imgJugador.Width" Value="45" />
-                        <Setter Target="lblBienvenido.FontSize" Value="30" />
+                        <Setter Target="imgJugador.Width" Value="80" />
+                        <Setter Target="lblBienvenido.FontSize" Value="50" />
+
 
                         <Setter Target="Contenido.Orientation" Value="Horizontal" />
                         <Setter Target="Contenido.HorizontalAlignment" Value="Center" />
@@ -205,22 +198,66 @@
                         <Setter Target="CreditosPanel.Width" Value="300" />
 
                         <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/Logo.png" />
-                        <Setter Target="imgLogo.Width" Value="300" />
-                        <Setter Target="imgLogo.Height" Value="300" />
+                        <Setter Target="imgLogo.Width" Value="350" />
+                        <Setter Target="imgLogo.Height" Value="350" />
 
-                        <Setter Target="txt1.FontSize" Value="23" />
-                        <Setter Target="txt2.FontSize" Value="23" />
-                        <Setter Target="txt3.FontSize" Value="23" />
-                        <Setter Target="txt4.FontSize" Value="23" />
-                        <Setter Target="txt5.FontSize" Value="23" />
-                        <Setter Target="txt6.FontSize" Value="23" />
-                        <Setter Target="txt7.FontSize" Value="23" />
-                        <Setter Target="txt8.FontSize" Value="23" />
-                        <Setter Target="txt9.FontSize" Value="23" />
-                        <Setter Target="txt10.FontSize" Value="23" />
-                        <Setter Target="txt11.FontSize" Value="23" />
-                        <Setter Target="txt12.FontSize" Value="23" />
-                        <Setter Target="txt13.FontSize" Value="23" />
+                        <Setter Target="txt1.FontSize" Value="25" />
+                        <Setter Target="txt2.FontSize" Value="25" />
+                        <Setter Target="txt3.FontSize" Value="25" />
+                        <Setter Target="txt4.FontSize" Value="25" />
+                        <Setter Target="txt5.FontSize" Value="25" />
+                        <Setter Target="txt6.FontSize" Value="25" />
+                        <Setter Target="txt7.FontSize" Value="25" />
+                        <Setter Target="txt8.FontSize" Value="25" />
+                        <Setter Target="txt9.FontSize" Value="25" />
+                        <Setter Target="txt10.FontSize" Value="25" />
+                        <Setter Target="txt11.FontSize" Value="25" />
+                        <Setter Target="txt12.FontSize" Value="25" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup>
+                <VisualState x:Name="fullhdState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
+
+                        <Setter Target="imgAtras.Source" Value="ms-appx:///Assets/PC/Buttons/Regresar.png" />
+                        <Setter Target="imgAtras.Height" Value="65" />
+                        <Setter Target="lblRegresar.FontSize" Value="50" />
+                        <Setter Target="panelRegresar.Margin" Value="30" />
+                        <Setter Target="panelInfoJugador.Margin" Value="30" />
+
+                        <Setter Target="imgJugador.Width" Value="120" />
+                        <Setter Target="lblBienvenido.FontSize" Value="70" />
+                        <Setter Target="lblBienvenido.Padding" Value="0,0,25,0" />
+
+
+                        <Setter Target="Contenido.Orientation" Value="Horizontal" />
+                        <Setter Target="Contenido.HorizontalAlignment" Value="Center" />
+                        <Setter Target="Contenido.Margin" Value="0,25,0,0" />
+                        <Setter Target="CreditosPanel.Margin" Value="100,0,0,0" />
+                        <Setter Target="CreditosPanel.Width" Value="550" />
+
+                        <Setter Target="imgLogo.Source" Value="ms-appx:///Assets/PC/Logo.png" />
+                        <Setter Target="imgLogo.Width" Value="580" />
+                        <Setter Target="imgLogo.Height" Value="580" />
+
+                        <Setter Target="txt1.FontSize" Value="40" />
+                        <Setter Target="txt2.FontSize" Value="40" />
+                        <Setter Target="txt3.FontSize" Value="40" />
+                        <Setter Target="txt4.FontSize" Value="40" />
+                        <Setter Target="txt5.FontSize" Value="40" />
+                        <Setter Target="txt6.FontSize" Value="40" />
+                        <Setter Target="txt7.FontSize" Value="40" />
+                        <Setter Target="txt8.FontSize" Value="40" />
+                        <Setter Target="txt9.FontSize" Value="40" />
+                        <Setter Target="txt10.FontSize" Value="40" />
+                        <Setter Target="txt11.FontSize" Value="40" />
+                        <Setter Target="txt12.FontSize" Value="40" />
+
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
