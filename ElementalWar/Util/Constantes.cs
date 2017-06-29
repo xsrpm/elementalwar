@@ -43,6 +43,7 @@
             {
                 public const string SolicitudUnirse = "SU";
                 public const string ConfirmacionUnirse = "CU";
+                public const string ConfirmacionUnirseJuego = "CUJ";
                 public const string EnviarImagenJugador = "EIJ";
             }
 

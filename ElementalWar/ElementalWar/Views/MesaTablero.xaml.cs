@@ -231,7 +231,7 @@ namespace ElementalWar.Views
         }
         #endregion
 
-        private void ReceptorJuego(string strIp, string strMensaje)
+        private async void ReceptorJuego(string strIp, string strMensaje)
         {
             try
             {
@@ -267,6 +267,36 @@ namespace ElementalWar.Views
                             recibirComando = false;
                             FinalizarJuego(true);
                         }
+                    }
+                    #endregion
+                    #region Jugador solicita unirse a la mesa
+                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.SolicitudUnirse)
+                    {
+                        //mensaje[1] => objJuego.Codigo
+                        //mensaje[2] => objJugador.Ip
+                        //mensaje[3] => objJugador.Nombre
+                        //mensaje[4] => objJugador.Imagen
+                        if (mensaje.Length != 5)
+                            return;
+
+                        //Verificar que es la mesa seleccionada
+                        if (mensaje[1] != objJuego.Codigo)
+                            return;
+
+                        //Verificar que el jugador se encontraba en la mesa
+                        var jugador = objJuego.Jugadores.Find(x => x.Ip == mensaje[2]);
+                        if (jugador == null)
+                        {
+                            return;
+                        }
+
+                        //El jugador pertenece a la mesa, notificar
+                        await App.objSDK.ConnectStreamSocket(new HostName(jugador.Ip));
+                        await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.ConfirmacionUnirseJuego + Constantes.SEPARADOR +
+                                objJuego.Ip + Constantes.SEPARADOR +
+                                jugador.JugadorId + Constantes.SEPARADOR +
+                                jugador.Elemento.ElementoId + Constantes.SEPARADOR +
+                                objJuego.JugadorIdTurno);
                     }
                     #endregion
                 }

@@ -58,6 +58,21 @@ namespace ElementalWar.Views
 
             PanelReconexionOcultar();
             timerMantenerConexion = new Timer(timerMantenerConexionCallback, null, TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(Constantes.Reconexion.KeepAlive));
+
+            if (e.Parameter != null)
+            {
+                var jugadorIdTurno = int.Parse(e.Parameter.ToString());
+                if (jugadorIdTurno == App.objJugador.JugadorId)
+                {
+                    mandoActivo = false;
+                    HabilitarControles();
+                }
+                else
+                {
+                    mandoActivo = true;
+                    DeshabilitarControles();
+                }
+            }
         }
 
         #region Revision de conexion
