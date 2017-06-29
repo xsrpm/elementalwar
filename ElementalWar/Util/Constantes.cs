@@ -120,5 +120,11 @@
                 }
             }
         }
+
+        public struct Reconexion
+        {
+            public const int KeepAlive = 5;
+            public const int CountTimeoutConnection = 1;
+        }
     }
 }

@@ -173,10 +173,6 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
-                        if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
-                            jugador.Imagen = null;
-                        else
-                            jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
@@ -187,6 +183,11 @@ namespace ElementalWar.Views
                                 objJuego.Ip + Constantes.SEPARADOR +
                                 jugadorUnido.JugadorId + Constantes.SEPARADOR +
                                 jugadorUnido.Elemento.ElementoId);
+
+                            if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
+                                jugador.Imagen = null;
+                            else
+                                jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                             //Mostrar datos del jugadors en pantalla
                             GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorUnido.JugadorId);
