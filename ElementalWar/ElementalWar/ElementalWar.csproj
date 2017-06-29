@@ -205,8 +205,8 @@
     <Content Include="Assets\PC\Buttons\Regresar.png" />
     <Content Include="Assets\PC\Buttons\Unirme.png" />
     <Content Include="Assets\PC\FondoNumeroFichas.png" />
-    <Content Include="Assets\PC\Jugador\Jugador2.png" />
-    <Content Include="Assets\PC\Jugador\Jugador1.png" />
+    <Content Include="Assets\PC\Jugador\Alerta.png" />
+    <Content Include="Assets\PC\Jugador\Jugador.png" />
     <Content Include="Assets\PC\Jugador\Listo.png" />
     <Content Include="Assets\PC\Mando\Abajo.png" />
     <Content Include="Assets\PC\Mando\Arriba.png" />

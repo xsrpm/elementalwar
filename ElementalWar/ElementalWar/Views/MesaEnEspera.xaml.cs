@@ -257,10 +257,13 @@ namespace ElementalWar.Views
 
         private void CambiarElemento(int jugadorId, int movimiento)
         {
-            if (GameLogic.LogicaMesaEnEspera.CambiarFichaJugador(objJuego, jugadorId, jugadorId == 0 ? 1 : 0, movimiento))
+            if (!objJuego.Jugadores[jugadorId].Listo)
             {
-                GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
-                MostrarDatosJugadoresEnPantalla(jugadorId);
+                if (GameLogic.LogicaMesaEnEspera.CambiarFichaJugador(objJuego, jugadorId, jugadorId == 0 ? 1 : 0, movimiento))
+                {
+                    GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
+                    MostrarDatosJugadoresEnPantalla(jugadorId);
+                }
             }
         }
 

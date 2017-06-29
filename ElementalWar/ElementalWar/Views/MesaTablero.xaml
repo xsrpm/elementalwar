@@ -44,7 +44,7 @@
                             x:Name="imgJugador1"
                             Grid.Column="1"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador1.png"
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png"
                             Tapped="imgJugador1_Tapped" />
                         <TextBlock
                             x:Name="lblJugador1"
@@ -75,6 +75,33 @@
                             FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
                             FontSize="36"
                             Text="0" />
+                    </Grid>
+                    <Grid
+                        x:Name="panelDesconexionJugador0"
+                        Grid.Row="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Source="ms-appx:///Assets/PC/Jugador/Alerta.png" />
+                        <TextBlock
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="Al parecer el jugador" />
+                        <TextBlock
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="se desconectó" />
                     </Grid>
                 </Grid>
 
@@ -649,7 +676,7 @@
                             x:Name="imgJugador2"
                             Grid.Column="2"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador2.png"
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png"
                             Tapped="imgJugador2_Tapped" />
                     </Grid>
                     <Grid
@@ -673,6 +700,33 @@
                             FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
                             FontSize="36"
                             Text="0" />
+                    </Grid>
+                    <Grid
+                        x:Name="panelDesconexionJugador1"
+                        Grid.Row="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Source="ms-appx:///Assets/PC/Jugador/Alerta.png" />
+                        <TextBlock
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="Al parecer el jugador" />
+                        <TextBlock
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="se desconectó" />
                     </Grid>
                 </Grid>
             </Grid>
