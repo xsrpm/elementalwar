@@ -31,8 +31,6 @@ namespace ElementalWar.Views
         private SolidColorBrush colorActivo;
         private SolidColorBrush colorTransparente;
         private Timer timerMantenerConexion;
-        private bool auxJug1;
-        private bool auxJug2;
 
         public MesaTablero()
         {
@@ -75,33 +73,19 @@ namespace ElementalWar.Views
             if (dispositivos.FirstOrDefault(x => x.IP == objJuego.Jugadores[0].Ip) == null)
             {
                 panelDesconexionJugador0.Visibility = Visibility.Visible;
-                auxJug1 = true;
             }
             else
             {
                 panelDesconexionJugador0.Visibility = Visibility.Collapsed;
-                if (auxJug1 && objJuego.JugadorIdTurno == 0)
-                {
-                    await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[0].Ip));
-                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
-                }
-                auxJug1 = false;
             }
 
             if (dispositivos.FirstOrDefault(x => x.IP == objJuego.Jugadores[1].Ip) == null)
             {
                 panelDesconexionJugador1.Visibility = Visibility.Visible;
-                auxJug2 = true;
             }
             else
             {
                 panelDesconexionJugador1.Visibility = Visibility.Collapsed;
-                if (auxJug2 && objJuego.JugadorIdTurno == 1)
-                {
-                    auxJug2 = false;
-                    await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[1].Ip));
-                    await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
-                }
             }
         }
         #endregion
@@ -125,7 +109,6 @@ namespace ElementalWar.Views
             colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
             colorActivo = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORSOMBREADO);
             colorTransparente = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORTRANSPARENTE);
-            auxJug1 = auxJug2 = false;
             timerMantenerConexion = new Timer(timerMantenerConexionCallback, null, TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(Constantes.Reconexion.KeepAlive));
         }
 
