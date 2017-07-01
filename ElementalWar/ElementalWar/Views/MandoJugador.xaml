@@ -204,6 +204,35 @@
             </StackPanel>
         </StackPanel>
 
+        <Grid
+            x:Name="panelReconexion"
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.7"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Foreground="White"
+                Grid.Column="0"
+                Padding="10,0,0,10"
+                FontSize="20"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="Intentando establer la conexión..."/>
+            <ProgressRing
+                x:Name="prConectando"
+                Grid.Column="1"
+                Padding="10,5,10,5"
+                Height="40"
+                Width="40" />
+        </Grid>
+
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="pcState">

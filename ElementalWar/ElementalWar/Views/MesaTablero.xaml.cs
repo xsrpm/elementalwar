@@ -1,6 +1,8 @@
 ﻿using DataModel;
 using SynapseSDK;
 using System;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Util;
 using Windows.Graphics.Display;
@@ -28,6 +30,7 @@ namespace ElementalWar.Views
         private SolidColorBrush colorInvalido;
         private SolidColorBrush colorActivo;
         private SolidColorBrush colorTransparente;
+        private Timer timerMantenerConexion;
 
         public MesaTablero()
         {
@@ -50,6 +53,43 @@ namespace ElementalWar.Views
             Inicializar();
         }
 
+        #region Revision de conexion
+        private async void timerMantenerConexionCallback(object state)
+        {
+            await App.UIDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                VerificarConexion();
+            });
+        }
+
+        private async void VerificarConexion()
+        {
+            IniciarSDK();
+
+            App.objSDK.clearDeviceCollection();
+            await App.objSDK.MulticastPing();
+            var dispositivos = App.objSDK.getDeviceCollection();
+
+            if (dispositivos.FirstOrDefault(x => x.IP == objJuego.Jugadores[0].Ip) == null)
+            {
+                panelDesconexionJugador0.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                panelDesconexionJugador0.Visibility = Visibility.Collapsed;
+            }
+
+            if (dispositivos.FirstOrDefault(x => x.IP == objJuego.Jugadores[1].Ip) == null)
+            {
+                panelDesconexionJugador1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                panelDesconexionJugador1.Visibility = Visibility.Collapsed;
+            }
+        }
+        #endregion
+
         #region Inicializacion
         private void Inicializar()
         {
@@ -69,10 +109,13 @@ namespace ElementalWar.Views
             colorInvalido = new SolidColorBrush(Windows.UI.Colors.Red);
             colorActivo = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORSOMBREADO);
             colorTransparente = Convertidor.GetSolidColorBrush(Constantes.Colores.COLORTRANSPARENTE);
+            timerMantenerConexion = new Timer(timerMantenerConexionCallback, null, TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(Constantes.Reconexion.KeepAlive));
         }
 
         private async void DibujarInfoJugadores()
         {
+            lblCodigoMesa.Text = "Mesa: " + objJuego.Codigo;
+
             Uri uri;
             BitmapImage imagen;
             IRandomAccessStream fileStream;
@@ -231,7 +274,7 @@ namespace ElementalWar.Views
         }
         #endregion
 
-        private void ReceptorJuego(string strIp, string strMensaje)
+        private async void ReceptorJuego(string strIp, string strMensaje)
         {
             try
             {
@@ -267,6 +310,36 @@ namespace ElementalWar.Views
                             recibirComando = false;
                             FinalizarJuego(true);
                         }
+                    }
+                    #endregion
+                    #region Jugador solicita unirse a la mesa
+                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.SolicitudUnirse)
+                    {
+                        //mensaje[1] => objJuego.Codigo
+                        //mensaje[2] => objJugador.Ip
+                        //mensaje[3] => objJugador.Nombre
+                        //mensaje[4] => objJugador.Imagen
+                        if (mensaje.Length != 5)
+                            return;
+
+                        //Verificar que es la mesa seleccionada
+                        if (mensaje[1] != objJuego.Codigo)
+                            return;
+
+                        //Verificar que el jugador se encontraba en la mesa
+                        var jugador = objJuego.Jugadores.Find(x => x.Ip == mensaje[2]);
+                        if (jugador == null)
+                        {
+                            return;
+                        }
+
+                        //El jugador pertenece a la mesa, notificar
+                        await App.objSDK.ConnectStreamSocket(new HostName(jugador.Ip));
+                        await App.objSDK.StreamPing(Constantes.Mensajes.UnirseMesa.ConfirmacionUnirseJuego + Constantes.SEPARADOR +
+                                objJuego.Ip + Constantes.SEPARADOR +
+                                jugador.JugadorId + Constantes.SEPARADOR +
+                                jugador.Elemento.ElementoId + Constantes.SEPARADOR +
+                                objJuego.JugadorIdTurno);
                     }
                     #endregion
                 }

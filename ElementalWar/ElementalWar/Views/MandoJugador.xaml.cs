@@ -1,5 +1,6 @@
 ﻿using SynapseSDK;
 using System;
+using System.Threading;
 using Util;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
@@ -24,6 +25,8 @@ namespace ElementalWar.Views
     public sealed partial class MandoJugador : Page
     {
         private bool mandoActivo = true;
+        private Timer timerMantenerConexion;
+        private int contReconexion;
 
         public MandoJugador()
         {
@@ -52,7 +55,69 @@ namespace ElementalWar.Views
             IniciarSDK();
 
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
+
+            PanelReconexionOcultar();
+            timerMantenerConexion = new Timer(timerMantenerConexionCallback, null, TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(Constantes.Reconexion.KeepAlive));
+
+            if (e.Parameter != null)
+            {
+                var jugadorIdTurno = int.Parse(e.Parameter.ToString());
+                if (jugadorIdTurno == App.objJugador.JugadorId)
+                {
+                    mandoActivo = false;
+                    HabilitarControles();
+                }
+                else
+                {
+                    mandoActivo = true;
+                    DeshabilitarControles();
+                }
+            }
         }
+
+        #region Revision de conexion
+        private async void timerMantenerConexionCallback(object state)
+        {
+            await App.UIDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                VerificarConexion();
+            });
+        }
+
+        private void VerificarConexion()
+        {
+            IniciarSDK();
+
+            if (App.objSDK.SocketIsConnected)
+                contReconexion = 0;
+            else
+                contReconexion++;
+
+            if (contReconexion == Constantes.Reconexion.CountTimeoutConnection)
+            {
+                contReconexion = 0;
+                PanelReconexionMostrar();
+            }
+            else
+            {
+                PanelReconexionOcultar();
+            }
+        }
+
+        #region Panel reconexion
+        private void PanelReconexionMostrar()
+        {
+            prConectando.IsActive = true;
+            panelReconexion.Visibility = Visibility.Visible;
+        }
+
+        private void PanelReconexionOcultar()
+        {
+            panelReconexion.Visibility = Visibility.Collapsed;
+            prConectando.IsActive = false;
+        }
+        #endregion
+        #endregion
 
         private async void imgAtras_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -69,6 +134,8 @@ namespace ElementalWar.Views
             //Confirma que desea salir de la mesa
             if ((int)result.Id == 1)
             {
+                timerMantenerConexion.Change(Timeout.Infinite, Timeout.Infinite);
+
                 //Notificar a la mesa que se esta saliendo de la mesa
                 await App.objSDK.StreamPing(Constantes.Mensajes.Juego.JugadorSaleMesa + Constantes.SEPARADOR +
                     App.objJugador.JugadorId);

@@ -64,7 +64,7 @@
                             x:Name="imgJugador1"
                             Width="100"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador1.png" />
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png" />
                         <TextBlock
                             x:Name="lblJugador1"
                             Padding="10,0,0,0"
@@ -90,7 +90,7 @@
                             x:Name="imgJugador2"
                             Width="100"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador2.png" />
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png" />
                     </StackPanel>
                 </Grid>
             </Grid>

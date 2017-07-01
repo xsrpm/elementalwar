@@ -44,7 +44,7 @@
                             x:Name="imgJugador1"
                             Grid.Column="1"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador1.png"
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png"
                             Tapped="imgJugador1_Tapped" />
                         <TextBlock
                             x:Name="lblJugador1"
@@ -76,6 +76,33 @@
                             FontSize="36"
                             Text="0" />
                     </Grid>
+                    <Grid
+                        x:Name="panelDesconexionJugador0"
+                        Grid.Row="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Source="ms-appx:///Assets/PC/Jugador/Alerta.png" />
+                        <TextBlock
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="Al parecer el jugador" />
+                        <TextBlock
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="se desconectó" />
+                    </Grid>
                 </Grid>
 
                 <Grid x:Name="panelJuego" Grid.Column="1">
@@ -92,6 +119,16 @@
                         <ColumnDefinition Width=".82*" />
                         <ColumnDefinition Width=".09*" />
                     </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        x:Name="lblCodigoMesa"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontSize="20"
+                        Padding="0,0,0,5"
+                        Text="Mesa: 138" />
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.Background>
@@ -649,7 +686,7 @@
                             x:Name="imgJugador2"
                             Grid.Column="2"
                             VerticalAlignment="Center"
-                            Source="ms-appx:///Assets/PC/Jugador/Jugador2.png"
+                            Source="ms-appx:///Assets/PC/Jugador/Jugador.png"
                             Tapped="imgJugador2_Tapped" />
                     </Grid>
                     <Grid
@@ -674,6 +711,33 @@
                             FontSize="36"
                             Text="0" />
                     </Grid>
+                    <Grid
+                        x:Name="panelDesconexionJugador1"
+                        Grid.Row="4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Source="ms-appx:///Assets/PC/Jugador/Alerta.png" />
+                        <TextBlock
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="Al parecer el jugador" />
+                        <TextBlock
+                            Grid.Row="2"
+                            HorizontalAlignment="Center"
+                            FontFamily="ms-appx:///Assets/Fonts/BigNoodleTitling.ttf#BigNoodleTitling"
+                            FontSize="25"
+                            Text="se desconectó" />
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
@@ -692,6 +756,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="Fondo.ImageSource" Value="ms-appx:///Assets/PC/Fondo.png" />
+                        <Setter Target="lblCodigoMesa.FontSize" Value="30" />
                         <Setter Target="lblJugador1.FontSize" Value="52" />
                         <Setter Target="lblJugador2.FontSize" Value="52" />
                         <Setter Target="lblPuntosJugador1.FontSize" Value="53" />

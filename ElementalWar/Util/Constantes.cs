@@ -43,6 +43,7 @@
             {
                 public const string SolicitudUnirse = "SU";
                 public const string ConfirmacionUnirse = "CU";
+                public const string ConfirmacionUnirseJuego = "CUJ";
                 public const string EnviarImagenJugador = "EIJ";
             }
 
@@ -119,6 +120,12 @@
                     public const string Aire = "ms-appx:///Assets/Elementos/Fondo/Aire.png";
                 }
             }
+        }
+
+        public struct Reconexion
+        {
+            public const int KeepAlive = 4;
+            public const int CountTimeoutConnection = 1;
         }
     }
 }

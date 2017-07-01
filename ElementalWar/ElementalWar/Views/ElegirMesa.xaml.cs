@@ -221,6 +221,29 @@ namespace ElementalWar.Views
                         this.Frame.Navigate(typeof(MandoJugador));
                     }
                     #endregion
+                    #region Jugador recibe la confirmacion que se ha unido a la mesa - Juego
+                    else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.ConfirmacionUnirseJuego)
+                    {
+                        //mensaje[1] => objJuego.Ip
+                        //mensaje[2] => objJugador.JugadorId
+                        //mensaje[3] => objJugador.Elemento
+                        //mensaje[4] => objJuego.JugadorIdTurno
+                        if (mensaje.Length != 5)
+                            return;
+
+                        txtSala.IsEnabled = false;
+                        imgUnirme.Visibility = Visibility.Collapsed;
+                        panelConectando.Visibility = Visibility.Visible;
+                        prConectando.IsActive = true;
+
+                        //Reenviar a la pantalla del mando, el juega ya inicio
+                        App.objJugador.MesaIp = mensaje[1];
+                        App.objJugador.JugadorId = int.Parse(mensaje[2]);
+                        App.objJugador.Elemento = new Elemento { ElementoId = int.Parse(mensaje[3]) };
+
+                        this.Frame.Navigate(typeof(MandoJugador), mensaje[4]);
+                    }
+                    #endregion
                 }
             }
             catch (Exception ex)

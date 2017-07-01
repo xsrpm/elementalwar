@@ -173,10 +173,6 @@ namespace ElementalWar.Views
                         var jugador = new Jugador();
                         jugador.Ip = mensaje[2];
                         jugador.Nombre = mensaje[3];
-                        if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
-                            jugador.Imagen = null;
-                        else
-                            jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                         var jugadorUnido = GameLogic.LogicaMesaEnEspera.MesaAgregarJugador(objJuego, jugador);
                         if (jugadorUnido != null)
@@ -187,6 +183,11 @@ namespace ElementalWar.Views
                                 objJuego.Ip + Constantes.SEPARADOR +
                                 jugadorUnido.JugadorId + Constantes.SEPARADOR +
                                 jugadorUnido.Elemento.ElementoId);
+
+                            if (mensaje[4] == Constantes.Imagenes.SIN_IMAGEN)
+                                jugador.Imagen = null;
+                            else
+                                jugador.Imagen = Convert.FromBase64String(mensaje[4]);
 
                             //Mostrar datos del jugadors en pantalla
                             GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorUnido.JugadorId);
@@ -204,6 +205,11 @@ namespace ElementalWar.Views
                         //mensaje[1] => objJugador.JugadorId
                         if (mensaje.Length != 2)
                             return;
+
+                        if (objJuego.Jugadores.Count(x => x.Listo) == 2)
+                        {
+                            return;
+                        }
 
                         //Desconectar al jugador
                         if (GameLogic.LogicaMesaEnEspera.MesaEliminarJugador(objJuego, objJuego.Jugadores[int.Parse(mensaje[1])].Ip))
@@ -256,10 +262,13 @@ namespace ElementalWar.Views
 
         private void CambiarElemento(int jugadorId, int movimiento)
         {
-            if (GameLogic.LogicaMesaEnEspera.CambiarFichaJugador(objJuego, jugadorId, jugadorId == 0 ? 1 : 0, movimiento))
+            if (!objJuego.Jugadores[jugadorId].Listo)
             {
-                GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
-                MostrarDatosJugadoresEnPantalla(jugadorId);
+                if (GameLogic.LogicaMesaEnEspera.CambiarFichaJugador(objJuego, jugadorId, jugadorId == 0 ? 1 : 0, movimiento))
+                {
+                    GameLogic.LogicaMesaEnEspera.SetearElementoJugador(objJuego, jugadorId);
+                    MostrarDatosJugadoresEnPantalla(jugadorId);
+                }
             }
         }
 
