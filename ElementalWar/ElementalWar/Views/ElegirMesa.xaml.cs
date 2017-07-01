@@ -221,7 +221,7 @@ namespace ElementalWar.Views
                         this.Frame.Navigate(typeof(MandoJugador));
                     }
                     #endregion
-                    #region Jugador recibe la confirmacion que se ha unido a la mesa
+                    #region Jugador recibe la confirmacion que se ha unido a la mesa - Juego
                     else if (mensaje[0] == Constantes.Mensajes.UnirseMesa.ConfirmacionUnirseJuego)
                     {
                         //mensaje[1] => objJuego.Ip

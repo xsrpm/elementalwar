@@ -82,10 +82,10 @@ namespace ElementalWar.Views
                 panelDesconexionJugador0.Visibility = Visibility.Collapsed;
                 if (auxJug1 && objJuego.JugadorIdTurno == 0)
                 {
-                    auxJug1 = false;
                     await App.objSDK.ConnectStreamSocket(new HostName(objJuego.Jugadores[0].Ip));
                     await App.objSDK.StreamPing(Constantes.Mensajes.Juego.HabilitarControles);
                 }
+                auxJug1 = false;
             }
 
             if (dispositivos.FirstOrDefault(x => x.IP == objJuego.Jugadores[1].Ip) == null)
@@ -131,6 +131,8 @@ namespace ElementalWar.Views
 
         private async void DibujarInfoJugadores()
         {
+            lblCodigoMesa.Text = "Mesa: " + objJuego.Codigo;
+
             Uri uri;
             BitmapImage imagen;
             IRandomAccessStream fileStream;

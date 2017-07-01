@@ -206,6 +206,11 @@ namespace ElementalWar.Views
                         if (mensaje.Length != 2)
                             return;
 
+                        if (objJuego.Jugadores.Count(x => x.Listo) == 2)
+                        {
+                            return;
+                        }
+
                         //Desconectar al jugador
                         if (GameLogic.LogicaMesaEnEspera.MesaEliminarJugador(objJuego, objJuego.Jugadores[int.Parse(mensaje[1])].Ip))
                         {
